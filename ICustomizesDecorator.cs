@@ -2,6 +2,8 @@ public interface ICustomizesDecorator<TService> where TService : class
 {
     ICustomizesDecorator<TService> ThenWrapWith<TDecorator>()
         where TDecorator : TService;
+
+    ICustomizesDecorator<TService> ThenWrapWithType(Type decoratorType);
 }
 
 public interface ICustomizesDecorator
