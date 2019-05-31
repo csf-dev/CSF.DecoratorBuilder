@@ -20,7 +20,7 @@ Here is a simple example of planned usage.
 // builder is an AutoFac ContainerBuilder
 builder
   .RegisterDecoratedService<IMyService>(b => {
-    return b.UsingBaseImpl<BaseImplementation>()
+    return b.UsingInitialImpl<BaseImplementation>()
       .ThenWrapWith<Decorator1>()
       .ThenWrapWith<Decorator2>();
   });
@@ -37,7 +37,7 @@ Here is a simple example of planned usage.
 // provider is an injected IGetsAutofacDecoratedService
 var service = provider
   .GetDecoratedService<IMyService>(b => {
-    return b.UsingBaseImpl<BaseImplementation>()
+    return b.UsingInitialImpl<BaseImplementation>()
       .ThenWrapWith<Decorator1>()
       .ThenWrapWith<Decorator2>();
   });
@@ -80,25 +80,8 @@ I would like it to be possible, though, to choose these types via a normal metho
 ### Providing parameters
 I would like two points at which parameters may be provided for the purpose of resolving the implementation types.
 
+The first parameter injection point is when choosing the initial implementation type and/or the decorator implementation type(s).  These points should facilitate a collection of zero or more **AutoFac Parameters** which will be passed on to the resolution operations for those services.
 
-# Outdated past this point
-Everything that follows are old notes, for revision.
+The second parameter injection point is to be global (for the whole decorator).  This should facilitate the provision or zero or more parameters which are passed to *every resolve operation* for the implementation types.
 
-
-
-
-```csharp
-public interface ISelectsBaseImplementation
-{
-    IWrapsWithDecorators<TService> WithBaseImplementation<TImpl>()
-        where TImpl : class,TService;
-    
-    IWrapsWithDecorators<TService> WithBaseImplementation(Type implType);
-
-    IWrapsWithDecorators<TService> WithBaseImplementation<TImpl>(Func<IComponentContext,TImpl> factory)
-        where TImpl : class,TService;
-}
-```
-
-## Parameters
-Each of the functions: `WithBaseImplementation` & `ThenWrapWith` (with the exception of the overload which takes a factory function) will also take a `params` array of AutoFac parameters. These will be extra parameters passed to the resolution of the component.
+Most of the time (where we have access to the AutoFac library), this will be a collection of first-class AutoFac parameter objects.  In the case where we do not have access to AutoFac itself, the only way to do this would be by resolving the implementations via a delegate factory, or assuming that the parameter values are all typed parameters.  This will limit the flexibility, at the cost of abstracting from AutoFac.
