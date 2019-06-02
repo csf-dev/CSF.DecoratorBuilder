@@ -4,7 +4,9 @@ This is a development plan for a service which will make it easier to flexibly b
 [the decorator pattern]: https://en.wikipedia.org/wiki/Decorator_pattern
 [AutoFac]: https://autofac.org/
 
-I have decided to only support AutoFac directly within this project, because there is little to gain in abstracting away from AutoFac. Whilst it would be possible to abstract away (particularly via the dotnet core dependency injection abstractions), much of the power of the DI framework would be lost, such as named, typed and positional parameters.
+I have decided to only support AutoFac directly within this project. There is little to gain in abstracting away from AutoFac. Whilst it would be possible to do so (particularly via the dotnet core dependency injection abstractions), much of the power of the DI framework would be lost, such as named, typed and positional parameters.
+
+I would like to create a package which does not require a reference to AutoFac, though. This will support a cut-down subset of the functionality.
 
 ## Desired requirements
 The following indicates how I'd like to use this service, under a few different scenarios.
