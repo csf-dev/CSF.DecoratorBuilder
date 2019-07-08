@@ -1,8 +1,9 @@
 ﻿using System;
+using Autofac.Core;
 
 namespace CSF.DecoratorBuilder.AutoFac
 {
-    public interface ICustomizesAutofacDecorator<TService> where TService : class
+    public interface ICustomizesAutofacDecorator<in TService> where TService : class
     {
         ICustomizesAutofacDecorator<TService> ThenWrapWith<TDecorator>(params Parameter[] autofacParams)
             where TDecorator : TService;
