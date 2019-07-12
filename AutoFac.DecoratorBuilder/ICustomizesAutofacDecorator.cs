@@ -8,13 +8,11 @@ namespace CSF.DecoratorBuilder.AutoFac
         ICustomizesAutofacDecorator<TService> ThenWrapWith<TDecorator>(params Parameter[] autofacParams)
             where TDecorator : TService;
         ICustomizesAutofacDecorator<TService> ThenWrapWithType(Type decoratorType, params Parameter[] autofacParams);
-        ICustomizesAutofacDecorator<TService> WithGlobalParameters(params Parameter[] autofacParams);
     }
     public interface ICustomizesAutofacDecorator
     {
         ICustomizesAutofacDecorator ThenWrapWith<TDecorator>(params Parameter[] autofacParams)
             where TDecorator : class;
         ICustomizesAutofacDecorator ThenWrapWithType(Type decoratorType, params Parameter[] autofacParams);
-        ICustomizesAutofacDecorator WithGlobalParameters(params Parameter[] autofacParams);
     }
 }
