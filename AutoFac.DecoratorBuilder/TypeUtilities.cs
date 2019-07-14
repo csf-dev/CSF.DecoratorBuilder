@@ -12,7 +12,10 @@ namespace CSF.DecoratorBuilder.AutoFac
 
         internal static bool DoesImplTypeDeriveFromServiceType(Type implType, Type serviceType)
         {
-            return implType == serviceType || implType.GetTypeInfo().IsSubclassOf(serviceType);
+            if(implType == serviceType) return true;
+            var implTypeInfo = implType.GetTypeInfo();
+            var serviceTypeInfo = serviceType.GetTypeInfo();
+            return serviceTypeInfo.IsAssignableFrom(implTypeInfo);
         }
     }
 }
