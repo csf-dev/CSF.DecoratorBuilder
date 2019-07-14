@@ -27,16 +27,18 @@ using System;
 using Autofac;
 using Autofac.Core;
 
-namespace CSF.DecoratorBuilder.AutoFac
+namespace CSF.DecoratorBuilder.Autofac
 {
-    public class AutofacDecoratorCustomizer : ICustomizesAutofacDecorator
+    public class AutofacDecoratorCustomizer : ICustomizesAutofacDecorator, IGetsService
     {
         readonly IResolver resolver;
         readonly Type serviceType;
 
         public object Implementation { get; }
 
-        public ICustomizesAutofacDecorator ThenWrapWith<TDecorator>(params Parameter[] autofacParams) where TDecorator : class
+        public object GetService() => Implementation;
+
+        public AutofacDecoratorCustomizer ThenWrapWith<TDecorator>(params Parameter[] autofacParams) where TDecorator : class
         {
             if(!TypeUtilities.DoesImplTypeDeriveFromServiceType(typeof(TDecorator), serviceType))
                 throw new ArgumentException($"The decorator type {typeof(TDecorator).FullName} must derive from the service type {serviceType.FullName}.");
@@ -45,13 +47,23 @@ namespace CSF.DecoratorBuilder.AutoFac
             return new AutofacDecoratorCustomizer(resolver, serviceType, decoratorImpl);
         }
 
-        public ICustomizesAutofacDecorator ThenWrapWithType(Type decoratorType, params Parameter[] autofacParams)
+        public AutofacDecoratorCustomizer ThenWrapWithType(Type decoratorType, params Parameter[] autofacParams)
         {
             if(!TypeUtilities.DoesImplTypeDeriveFromServiceType(decoratorType, serviceType))
                 throw new ArgumentException($"The decorator type {decoratorType.FullName} must derive from the service type {serviceType.FullName}.");
 
             var decoratorImpl = resolver.Resolve(decoratorType, autofacParams.AddTypedParam(serviceType, Implementation));
             return new AutofacDecoratorCustomizer(resolver, serviceType, decoratorImpl);
+        }
+
+        ICustomizesAutofacDecorator ICustomizesAutofacDecorator.ThenWrapWith<TDecorator>(params Parameter[] autofacParams)
+        {
+            return ThenWrapWith<TDecorator>(autofacParams);
+        }
+
+        ICustomizesAutofacDecorator ICustomizesAutofacDecorator.ThenWrapWithType(Type decoratorType, params Parameter[] autofacParams)
+        {
+            return ThenWrapWithType(decoratorType, autofacParams);
         }
 
         public AutofacDecoratorCustomizer(IResolver resolver, Type serviceType, object implementation)

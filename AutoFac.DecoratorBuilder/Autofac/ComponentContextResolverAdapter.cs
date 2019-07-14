@@ -1,5 +1,5 @@
 ﻿//
-// IResolver.cs
+// ComponentContextResolverAdapter.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -25,13 +25,28 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
+using Autofac;
 using Autofac.Core;
 
-namespace CSF.DecoratorBuilder
+namespace CSF.DecoratorBuilder.Autofac
 {
-    public interface IResolver
+    public class ComponentContextResolverAdapter : IResolver
     {
-        TService Resolve<TService>(IEnumerable<Parameter> parameters);
-        object Resolve(Type serviceType, IEnumerable<Parameter> parameters);
+        readonly IComponentContext ctx;
+
+        public TService Resolve<TService>(IEnumerable<Parameter> parameters)
+        {
+            return ctx.Resolve<TService>(parameters);
+        }
+
+        public object Resolve(Type serviceType, IEnumerable<Parameter> parameters)
+        {
+            return ctx.Resolve(serviceType, parameters);
+        }
+
+        public ComponentContextResolverAdapter(IComponentContext ctx)
+        {
+            this.ctx = ctx ?? throw new ArgumentNullException(nameof(ctx));
+        }
     }
 }

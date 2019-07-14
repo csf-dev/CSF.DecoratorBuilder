@@ -24,6 +24,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CSF.DecoratorBuilder\CSF.DecoratorBuilder.csproj" />
-    <ProjectReference Include="..\AutoFac.DecoratorBuilder\CSF.DecoratorBuilder.AutoFac.csproj" />
+    <ProjectReference Include="..\AutoFac.DecoratorBuilder\CSF.DecoratorBuilder.Impl.csproj" />
   </ItemGroup>
 </Project>

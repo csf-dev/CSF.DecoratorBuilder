@@ -1,5 +1,5 @@
 ﻿//
-// IResolver.cs
+// IProvidesImplementation.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,14 +24,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections.Generic;
-using Autofac.Core;
-
 namespace CSF.DecoratorBuilder
 {
-    public interface IResolver
+    public interface IGetsService
     {
-        TService Resolve<TService>(IEnumerable<Parameter> parameters);
-        object Resolve(Type serviceType, IEnumerable<Parameter> parameters);
+        object GetService();
+    }
+
+    public interface IGetsService<T>
+    {
+        T GetService();
     }
 }

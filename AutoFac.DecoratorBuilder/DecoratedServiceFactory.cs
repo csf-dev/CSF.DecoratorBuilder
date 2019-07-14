@@ -1,5 +1,5 @@
 ﻿//
-// ComponentContextResolverAdapter.cs
+// DecoratedServiceFactory.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,29 +24,34 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections.Generic;
-using Autofac;
-using Autofac.Core;
+using CSF.DecoratorBuilder.Autofac;
+using CSF.DecoratorBuilder.NonAutofac;
 
-namespace CSF.DecoratorBuilder.AutoFac
+namespace CSF.DecoratorBuilder
 {
-    public class ComponentContextResolverAdapter : IResolver
+    public class DecoratedServiceFactory : IGetsDecoratedService
     {
-        readonly IComponentContext ctx;
+        readonly IResolver resolver;
 
-        public TService Resolve<TService>(IEnumerable<Parameter> parameters)
+        public TService GetDecoratedService<TService>(Func<ICreatesDecorator<TService>, ICustomizesDecorator<TService>> customizationFunc) where TService : class
         {
-            return ctx.Resolve<TService>(parameters);
+            var builder = new AutofacGenericDecoratorBuilder<TService>(resolver);
+            var builderAdapter = new GenericDecoratorBuilderAdapter<TService>(builder);
+            var customizer = (IGetsService<TService>) customizationFunc(builderAdapter);
+            return customizer.GetService();
         }
 
-        public object Resolve(Type serviceType, IEnumerable<Parameter> parameters)
+        public object GetDecoratedService(Type serviceType, Func<ICreatesDecorator, ICustomizesDecorator> customizationFunc)
         {
-            return ctx.Resolve(serviceType, parameters);
+            var builder = new AutofacDecoratorBuilder(resolver, serviceType);
+            var builderAdapter = new DecoratorBuilderAdapter(builder);
+            var customizer = (IGetsService) customizationFunc(builderAdapter);
+            return customizer.GetService();
         }
 
-        public ComponentContextResolverAdapter(IComponentContext ctx)
+        public DecoratedServiceFactory(IResolver resolver)
         {
-            this.ctx = ctx ?? throw new ArgumentNullException(nameof(ctx));
+            this.resolver = resolver ?? throw new ArgumentNullException(nameof(resolver));
         }
     }
 }

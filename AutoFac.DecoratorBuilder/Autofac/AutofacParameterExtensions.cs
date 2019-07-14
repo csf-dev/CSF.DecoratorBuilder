@@ -4,7 +4,7 @@ using System.Linq;
 using Autofac;
 using Autofac.Core;
 
-namespace CSF.DecoratorBuilder.AutoFac
+namespace CSF.DecoratorBuilder.Autofac
 {
     internal static class AutofacParameterExtensions
     {

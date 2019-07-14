@@ -1,5 +1,5 @@
 ﻿//
-// IResolver.cs
+// DecoratorBuilderModule.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -24,14 +24,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections.Generic;
-using Autofac.Core;
+using Autofac;
 
 namespace CSF.DecoratorBuilder
 {
-    public interface IResolver
+    public class DecoratorBuilderModule : Module
     {
-        TService Resolve<TService>(IEnumerable<Parameter> parameters);
-        object Resolve(Type serviceType, IEnumerable<Parameter> parameters);
+        protected override void Load(ContainerBuilder builder)
+        {
+            builder
+                .RegisterAssemblyTypes(ThisAssembly)
+                .Except<DecoratorBuilderModule>()
+                .AsSelf()
+                .AsImplementedInterfaces();
+        }
     }
 }

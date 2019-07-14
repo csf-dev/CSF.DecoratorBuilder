@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace CSF.DecoratorBuilder.AutoFac
+namespace CSF.DecoratorBuilder
 {
     internal class TypeUtilities
     {

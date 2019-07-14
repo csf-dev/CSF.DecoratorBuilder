@@ -27,7 +27,7 @@ using System;
 using System.Collections.Generic;
 using Autofac;
 using Autofac.Core;
-using CSF.DecoratorBuilder.AutoFac;
+using CSF.DecoratorBuilder.Autofac;
 using CSF.DecoratorBuilder.Tests.SampleService;
 using Moq;
 using NUnit.Framework;
@@ -61,9 +61,9 @@ namespace CSF.DecoratorBuilder.Tests.Autofac
         }
 
         [Test, AutoMoqData]
-        public void UsingInitialImpl_passes_params_to_context(IResolver resolver,
-                                                              ServiceImpl1 impl,
-                                                              Parameter[] parameters)
+        public void UsingInitialImpl_passes_params_to_resolver(IResolver resolver,
+                                                               ServiceImpl1 impl,
+                                                               Parameter[] parameters)
         {
             var sut = new AutofacDecoratorBuilder(resolver, typeof(IServiceInterface));
             Mock.Get(resolver)
@@ -88,7 +88,7 @@ namespace CSF.DecoratorBuilder.Tests.Autofac
         }
 
         [Test, AutoMoqData]
-        public void UsingInitialImplType_resolves_impl_from_context(IResolver resolver, ServiceImpl1 impl)
+        public void UsingInitialImplType_resolves_impl_from_resolver(IResolver resolver, ServiceImpl1 impl)
         {
             var sut = new AutofacDecoratorBuilder(resolver, typeof(IServiceInterface));
             Mock.Get(resolver)
@@ -101,9 +101,9 @@ namespace CSF.DecoratorBuilder.Tests.Autofac
         }
 
         [Test, AutoMoqData]
-        public void UsingInitialImplType_passes_params_to_context(IResolver resolver,
-                                                                  ServiceImpl1 impl,
-                                                                  Parameter[] parameters)
+        public void UsingInitialImplType_passes_params_to_resolver(IResolver resolver,
+                                                                   ServiceImpl1 impl,
+                                                                   Parameter[] parameters)
         {
             var sut = new AutofacDecoratorBuilder(resolver, typeof(IServiceInterface));
             Mock.Get(resolver)

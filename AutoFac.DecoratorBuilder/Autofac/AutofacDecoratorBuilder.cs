@@ -2,14 +2,14 @@
 using Autofac;
 using Autofac.Core;
 
-namespace CSF.DecoratorBuilder.AutoFac
+namespace CSF.DecoratorBuilder.Autofac
 {
     public class AutofacDecoratorBuilder : ICreatesAutofacDecorator
     {
         readonly IResolver resolver;
         readonly Type serviceType;
 
-        public ICustomizesAutofacDecorator UsingInitialImpl<TInitialImpl>(params Parameter[] autofacParams) where TInitialImpl : class
+        public AutofacDecoratorCustomizer UsingInitialImpl<TInitialImpl>(params Parameter[] autofacParams) where TInitialImpl : class
         {
             if(!TypeUtilities.DoesImplTypeDeriveFromServiceType(typeof(TInitialImpl), serviceType))
                 throw new ArgumentException($"The implementation type {typeof(TInitialImpl).FullName} must derive from the service type {serviceType.FullName}.");
@@ -18,13 +18,23 @@ namespace CSF.DecoratorBuilder.AutoFac
             return new AutofacDecoratorCustomizer(resolver, serviceType, initialImpl);
         }
 
-        public ICustomizesAutofacDecorator UsingInitialImplType(Type initialImplType, params Parameter[] autofacParams)
+        public AutofacDecoratorCustomizer UsingInitialImplType(Type initialImplType, params Parameter[] autofacParams)
         {
             if(!TypeUtilities.DoesImplTypeDeriveFromServiceType(initialImplType, serviceType))
                 throw new ArgumentException($"The implementation type {initialImplType.FullName} must derive from the service type {serviceType.FullName}.");
 
             var initialImpl = resolver.Resolve(initialImplType, autofacParams);
             return new AutofacDecoratorCustomizer(resolver, serviceType, initialImpl);
+        }
+
+        ICustomizesAutofacDecorator ICreatesAutofacDecorator.UsingInitialImpl<TInitialImpl>(params Parameter[] autofacParams)
+        {
+            return UsingInitialImpl<TInitialImpl>(autofacParams);
+        }
+
+        ICustomizesAutofacDecorator ICreatesAutofacDecorator.UsingInitialImplType(Type initialImplType, params Parameter[] autofacParams)
+        {
+            return UsingInitialImplType(initialImplType, autofacParams);
         }
 
         public AutofacDecoratorBuilder(IResolver resolver, Type serviceType)
