@@ -1,0 +1,11 @@
+language: csharp
+solution: AutoFac.DecoratorBuilder.sln
+
+jobs:
+    include:
+        -   dotnet: 2.2.207
+            mono: latest
+
+script:
+    -   dotnet build
+    -   dotnet test
