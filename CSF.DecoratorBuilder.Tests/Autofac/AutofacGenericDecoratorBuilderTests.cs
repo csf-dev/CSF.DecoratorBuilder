@@ -35,27 +35,19 @@ using NUnit.Framework;
 namespace CSF.DecoratorBuilder.Tests.Autofac
 {
     [TestFixture,Parallelizable]
-    public class AutofacDecoratorBuilderTests
+    public class AutofacGenericDecoratorBuilderTests
     {
         #region UsingInitialImpl
 
         [Test, AutoMoqData]
-        public void UsingInitialImpl_throws_exception_if_generic_impl_does_not_derive_from_service(IResolver resolver)
-        {
-            var sut = new AutofacDecoratorBuilder(resolver, typeof(IServiceInterface));
-
-            Assert.That(() => sut.UsingInitialImpl<DifferentImpl>(), Throws.ArgumentException);
-        }
-
-        [Test, AutoMoqData]
         public void UsingInitialImpl_resolves_impl_from_resolver(IResolver resolver, ServiceImpl1 impl)
         {
-            var sut = new AutofacDecoratorBuilder(resolver, typeof(IServiceInterface));
+            var sut = new AutofacGenericDecoratorBuilder<IServiceInterface>(resolver);
             Mock.Get(resolver)
                 .Setup(x => x.Resolve<ServiceImpl1>(It.IsAny<IEnumerable<Parameter>>()))
                 .Returns(impl);
 
-            var result = sut.UsingInitialImpl<ServiceImpl1>();
+            var result = (AutofacGenericDecoratorCustomizer<IServiceInterface>) sut.UsingInitialImpl<ServiceImpl1>();
 
             Assert.That(result?.Implementation, Is.SameAs(impl));
         }
@@ -65,12 +57,12 @@ namespace CSF.DecoratorBuilder.Tests.Autofac
                                                                ServiceImpl1 impl,
                                                                Parameter[] parameters)
         {
-            var sut = new AutofacDecoratorBuilder(resolver, typeof(IServiceInterface));
+            var sut = new AutofacGenericDecoratorBuilder<IServiceInterface>(resolver);
             Mock.Get(resolver)
                 .Setup(x => x.Resolve<ServiceImpl1>(parameters))
                 .Returns(impl);
 
-            var result = sut.UsingInitialImpl<ServiceImpl1>(parameters);
+            var result = (AutofacGenericDecoratorCustomizer<IServiceInterface>) sut.UsingInitialImpl<ServiceImpl1>(parameters);
 
             Assert.That(result?.Implementation, Is.SameAs(impl));
         }
@@ -82,7 +74,7 @@ namespace CSF.DecoratorBuilder.Tests.Autofac
         [Test, AutoMoqData]
         public void UsingInitialImplType_throws_exception_if_impl_type_does_not_derive_from_service(IResolver resolver)
         {
-            var sut = new AutofacDecoratorBuilder(resolver, typeof(IServiceInterface));
+            var sut = new AutofacGenericDecoratorBuilder<IServiceInterface>(resolver);
 
             Assert.That(() => sut.UsingInitialImplType(typeof(DifferentImpl)), Throws.ArgumentException);
         }
@@ -90,12 +82,12 @@ namespace CSF.DecoratorBuilder.Tests.Autofac
         [Test, AutoMoqData]
         public void UsingInitialImplType_resolves_impl_from_resolver(IResolver resolver, ServiceImpl1 impl)
         {
-            var sut = new AutofacDecoratorBuilder(resolver, typeof(IServiceInterface));
+            var sut = new AutofacGenericDecoratorBuilder<IServiceInterface>(resolver);
             Mock.Get(resolver)
                 .Setup(x => x.Resolve(typeof(ServiceImpl1), It.IsAny<IEnumerable<Parameter>>()))
                 .Returns(impl);
 
-            var result = sut.UsingInitialImplType(typeof(ServiceImpl1));
+            var result = (AutofacGenericDecoratorCustomizer<IServiceInterface>) sut.UsingInitialImplType(typeof(ServiceImpl1));
 
             Assert.That(result?.Implementation, Is.SameAs(impl));
         }
@@ -105,12 +97,12 @@ namespace CSF.DecoratorBuilder.Tests.Autofac
                                                                    ServiceImpl1 impl,
                                                                    Parameter[] parameters)
         {
-            var sut = new AutofacDecoratorBuilder(resolver, typeof(IServiceInterface));
+            var sut = new AutofacGenericDecoratorBuilder<IServiceInterface>(resolver);
             Mock.Get(resolver)
                 .Setup(x => x.Resolve(typeof(ServiceImpl1), parameters))
                 .Returns(impl);
 
-            var result = sut.UsingInitialImplType(typeof(ServiceImpl1), parameters);
+            var result = (AutofacGenericDecoratorCustomizer<IServiceInterface>) sut.UsingInitialImplType(typeof(ServiceImpl1), parameters);
 
             Assert.That(result?.Implementation, Is.SameAs(impl));
         }
