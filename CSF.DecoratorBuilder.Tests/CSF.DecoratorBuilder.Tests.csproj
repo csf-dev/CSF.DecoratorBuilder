@@ -3,8 +3,6 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <IsTestProject>true</IsTestProject>
-    <NoWarn>1701;1702;NU1603</NoWarn>
-    <OutputType>Library</OutputType>
   </PropertyGroup>
 
   <ItemGroup>
