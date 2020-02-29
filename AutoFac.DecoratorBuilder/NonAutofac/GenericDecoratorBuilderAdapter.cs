@@ -24,6 +24,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Linq;
 using Autofac;
 
 namespace CSF.DecoratorBuilder.NonAutofac
@@ -32,148 +33,15 @@ namespace CSF.DecoratorBuilder.NonAutofac
     {
         readonly ICreatesAutofacDecorator<TService> builder;
 
-        public ICustomizesDecorator<TService> UsingInitialImpl<TInitialImpl>() where TInitialImpl : class, TService
+        public ICustomizesDecorator<TService> UsingInitialImpl<TInitialImpl>(params TypedParam[] parameters) where TInitialImpl : class, TService
         {
-            var customizer = builder.UsingInitialImpl<TInitialImpl>();
+            var customizer = builder.UsingInitialImpl<TInitialImpl>(parameters?.Select(x => new TypedParameter(x.Type, x.Value)).ToArray() ?? new TypedParameter[0]);
             return new GenericDecoratorCustomizerAdapter<TService>(customizer);
         }
 
-        public ICustomizesDecorator<TService> UsingInitialImpl<TInitialImpl, TParam1>(TParam1 param1) where TInitialImpl : class, TService
+        public ICustomizesDecorator<TService> UsingInitialImplType(Type initialImplType, params TypedParam[] parameters)
         {
-            var customizer = builder.UsingInitialImpl<TInitialImpl>(TypedParameter.From(param1));
-            return new GenericDecoratorCustomizerAdapter<TService>(customizer);
-        }
-
-        public ICustomizesDecorator<TService> UsingInitialImpl<TInitialImpl, TParam1, TParam2>(TParam1 param1, TParam2 param2) where TInitialImpl : class, TService
-        {
-            var customizer = builder.UsingInitialImpl<TInitialImpl>(TypedParameter.From(param1),
-                                                                    TypedParameter.From(param2));
-            return new GenericDecoratorCustomizerAdapter<TService>(customizer);
-        }
-
-        public ICustomizesDecorator<TService> UsingInitialImpl<TInitialImpl, TParam1, TParam2, TParam3>(TParam1 param1, TParam2 param2, TParam3 param3) where TInitialImpl : class, TService
-        {
-            var customizer = builder.UsingInitialImpl<TInitialImpl>(TypedParameter.From(param1),
-                                                                    TypedParameter.From(param2),
-                                                                    TypedParameter.From(param3));
-            return new GenericDecoratorCustomizerAdapter<TService>(customizer);
-        }
-
-        public ICustomizesDecorator<TService> UsingInitialImpl<TInitialImpl, TParam1, TParam2, TParam3, TParam4>(TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4) where TInitialImpl : class, TService
-        {
-            var customizer = builder.UsingInitialImpl<TInitialImpl>(TypedParameter.From(param1),
-                                                                    TypedParameter.From(param2),
-                                                                    TypedParameter.From(param3),
-                                                                    TypedParameter.From(param4));
-            return new GenericDecoratorCustomizerAdapter<TService>(customizer);
-        }
-
-        public ICustomizesDecorator<TService> UsingInitialImpl<TInitialImpl, TParam1, TParam2, TParam3, TParam4, TParam5>(TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5) where TInitialImpl : class, TService
-        {
-            var customizer = builder.UsingInitialImpl<TInitialImpl>(TypedParameter.From(param1),
-                                                                    TypedParameter.From(param2),
-                                                                    TypedParameter.From(param3),
-                                                                    TypedParameter.From(param4),
-                                                                    TypedParameter.From(param5));
-            return new GenericDecoratorCustomizerAdapter<TService>(customizer);
-        }
-
-        public ICustomizesDecorator<TService> UsingInitialImpl<TInitialImpl, TParam1, TParam2, TParam3, TParam4, TParam5, TParam6>(TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5, TParam6 param6) where TInitialImpl : class, TService
-        {
-            var customizer = builder.UsingInitialImpl<TInitialImpl>(TypedParameter.From(param1),
-                                                                    TypedParameter.From(param2),
-                                                                    TypedParameter.From(param3),
-                                                                    TypedParameter.From(param4),
-                                                                    TypedParameter.From(param5),
-                                                                    TypedParameter.From(param6));
-            return new GenericDecoratorCustomizerAdapter<TService>(customizer);
-        }
-
-        public ICustomizesDecorator<TService> UsingInitialImpl<TInitialImpl, TParam1, TParam2, TParam3, TParam4, TParam5, TParam6, TParam7>(TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5, TParam6 param6, TParam7 param7) where TInitialImpl : class, TService
-        {
-            var customizer = builder.UsingInitialImpl<TInitialImpl>(TypedParameter.From(param1),
-                                                                    TypedParameter.From(param2),
-                                                                    TypedParameter.From(param3),
-                                                                    TypedParameter.From(param4),
-                                                                    TypedParameter.From(param5),
-                                                                    TypedParameter.From(param6),
-                                                                    TypedParameter.From(param7));
-            return new GenericDecoratorCustomizerAdapter<TService>(customizer);
-        }
-
-        public ICustomizesDecorator<TService> UsingInitialImplType(Type initialImplType)
-        {
-            var customizer = builder.UsingInitialImplType(initialImplType);
-            return new GenericDecoratorCustomizerAdapter<TService>(customizer);
-        }
-
-        public ICustomizesDecorator<TService> UsingInitialImplType<TParam1>(Type initialImplType, TParam1 param1)
-        {
-            var customizer = builder.UsingInitialImplType(initialImplType,
-                                                          TypedParameter.From(param1));
-            return new GenericDecoratorCustomizerAdapter<TService>(customizer);
-        }
-
-        public ICustomizesDecorator<TService> UsingInitialImplType<TParam1, TParam2>(Type initialImplType, TParam1 param1, TParam2 param2)
-        {
-            var customizer = builder.UsingInitialImplType(initialImplType,
-                                                          TypedParameter.From(param1),
-                                                          TypedParameter.From(param2));
-            return new GenericDecoratorCustomizerAdapter<TService>(customizer);
-        }
-
-        public ICustomizesDecorator<TService> UsingInitialImplType<TParam1, TParam2, TParam3>(Type initialImplType, TParam1 param1, TParam2 param2, TParam3 param3)
-        {
-            var customizer = builder.UsingInitialImplType(initialImplType,
-                                                          TypedParameter.From(param1),
-                                                          TypedParameter.From(param2),
-                                                          TypedParameter.From(param3));
-            return new GenericDecoratorCustomizerAdapter<TService>(customizer);
-        }
-
-        public ICustomizesDecorator<TService> UsingInitialImplType<TParam1, TParam2, TParam3, TParam4>(Type initialImplType, TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4)
-        {
-            var customizer = builder.UsingInitialImplType(initialImplType,
-                                                          TypedParameter.From(param1),
-                                                          TypedParameter.From(param2),
-                                                          TypedParameter.From(param3),
-                                                          TypedParameter.From(param4));
-            return new GenericDecoratorCustomizerAdapter<TService>(customizer);
-        }
-
-        public ICustomizesDecorator<TService> UsingInitialImplType<TParam1, TParam2, TParam3, TParam4, TParam5>(Type initialImplType, TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5)
-        {
-            var customizer = builder.UsingInitialImplType(initialImplType,
-                                                          TypedParameter.From(param1),
-                                                          TypedParameter.From(param2),
-                                                          TypedParameter.From(param3),
-                                                          TypedParameter.From(param4),
-                                                          TypedParameter.From(param5));
-            return new GenericDecoratorCustomizerAdapter<TService>(customizer);
-        }
-
-        public ICustomizesDecorator<TService> UsingInitialImplType<TParam1, TParam2, TParam3, TParam4, TParam5, TParam6>(Type initialImplType, TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5, TParam6 param6)
-        {
-            var customizer = builder.UsingInitialImplType(initialImplType,
-                                                          TypedParameter.From(param1),
-                                                          TypedParameter.From(param2),
-                                                          TypedParameter.From(param3),
-                                                          TypedParameter.From(param4),
-                                                          TypedParameter.From(param5),
-                                                          TypedParameter.From(param6));
-            return new GenericDecoratorCustomizerAdapter<TService>(customizer);
-        }
-
-        public ICustomizesDecorator<TService> UsingInitialImplType<TParam1, TParam2, TParam3, TParam4, TParam5, TParam6, TParam7>(Type initialImplType, TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5, TParam6 param6, TParam7 param7)
-        {
-            var customizer = builder.UsingInitialImplType(initialImplType,
-                                                          TypedParameter.From(param1),
-                                                          TypedParameter.From(param2),
-                                                          TypedParameter.From(param3),
-                                                          TypedParameter.From(param4),
-                                                          TypedParameter.From(param5),
-                                                          TypedParameter.From(param6),
-                                                          TypedParameter.From(param7));
+            var customizer = builder.UsingInitialImplType(initialImplType, parameters?.Select(x => new TypedParameter(x.Type, x.Value)).ToArray() ?? new TypedParameter[0]);
             return new GenericDecoratorCustomizerAdapter<TService>(customizer);
         }
 

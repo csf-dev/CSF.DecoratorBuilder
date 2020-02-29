@@ -24,6 +24,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Linq;
 using Autofac;
 
 namespace CSF.DecoratorBuilder.NonAutofac
@@ -34,148 +35,15 @@ namespace CSF.DecoratorBuilder.NonAutofac
 
         public TService GetService() => ((IGetsService<TService>) builder).GetService();
 
-        public ICustomizesDecorator<TService> ThenWrapWith<TDecorator>() where TDecorator : class, TService
+        public ICustomizesDecorator<TService> ThenWrapWith<TDecorator>(params TypedParam[] parameters) where TDecorator : class, TService
         {
-            var customizer = builder.ThenWrapWith<TDecorator>();
+            var customizer = builder.ThenWrapWith<TDecorator>(parameters?.Select(x => new TypedParameter(x.Type, x.Value)).ToArray() ?? new TypedParameter[0]);
             return new GenericDecoratorCustomizerAdapter<TService>(customizer);
         }
 
-        public ICustomizesDecorator<TService> ThenWrapWith<TDecorator, TParam1>(TParam1 param1) where TDecorator : class, TService
+        public ICustomizesDecorator<TService> ThenWrapWithType(Type decoratorType, params TypedParam[] parameters)
         {
-            var customizer = builder.ThenWrapWith<TDecorator>(TypedParameter.From(param1));
-            return new GenericDecoratorCustomizerAdapter<TService>(customizer);
-        }
-
-        public ICustomizesDecorator<TService> ThenWrapWith<TDecorator, TParam1, TParam2>(TParam1 param1, TParam2 param2) where TDecorator : class, TService
-        {
-            var customizer = builder.ThenWrapWith<TDecorator>(TypedParameter.From(param1),
-                                                              TypedParameter.From(param2));
-            return new GenericDecoratorCustomizerAdapter<TService>(customizer);
-        }
-
-        public ICustomizesDecorator<TService> ThenWrapWith<TDecorator, TParam1, TParam2, TParam3>(TParam1 param1, TParam2 param2, TParam3 param3) where TDecorator : class, TService
-        {
-            var customizer = builder.ThenWrapWith<TDecorator>(TypedParameter.From(param1),
-                                                              TypedParameter.From(param2),
-                                                              TypedParameter.From(param3));
-            return new GenericDecoratorCustomizerAdapter<TService>(customizer);
-        }
-
-        public ICustomizesDecorator<TService> ThenWrapWith<TDecorator, TParam1, TParam2, TParam3, TParam4>(TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4) where TDecorator : class, TService
-        {
-            var customizer = builder.ThenWrapWith<TDecorator>(TypedParameter.From(param1),
-                                                              TypedParameter.From(param2),
-                                                              TypedParameter.From(param3),
-                                                              TypedParameter.From(param4));
-            return new GenericDecoratorCustomizerAdapter<TService>(customizer);
-        }
-
-        public ICustomizesDecorator<TService> ThenWrapWith<TDecorator, TParam1, TParam2, TParam3, TParam4, TParam5>(TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5) where TDecorator : class, TService
-        {
-            var customizer = builder.ThenWrapWith<TDecorator>(TypedParameter.From(param1),
-                                                              TypedParameter.From(param2),
-                                                              TypedParameter.From(param3),
-                                                              TypedParameter.From(param4),
-                                                              TypedParameter.From(param5));
-            return new GenericDecoratorCustomizerAdapter<TService>(customizer);
-        }
-
-        public ICustomizesDecorator<TService> ThenWrapWith<TDecorator, TParam1, TParam2, TParam3, TParam4, TParam5, TParam6>(TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5, TParam6 param6) where TDecorator : class, TService
-        {
-            var customizer = builder.ThenWrapWith<TDecorator>(TypedParameter.From(param1),
-                                                              TypedParameter.From(param2),
-                                                              TypedParameter.From(param3),
-                                                              TypedParameter.From(param4),
-                                                              TypedParameter.From(param5),
-                                                              TypedParameter.From(param6));
-            return new GenericDecoratorCustomizerAdapter<TService>(customizer);
-        }
-
-        public ICustomizesDecorator<TService> ThenWrapWith<TDecorator, TParam1, TParam2, TParam3, TParam4, TParam5, TParam6, TParam7>(TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5, TParam6 param6, TParam7 param7) where TDecorator : class, TService
-        {
-            var customizer = builder.ThenWrapWith<TDecorator>(TypedParameter.From(param1),
-                                                              TypedParameter.From(param2),
-                                                              TypedParameter.From(param3),
-                                                              TypedParameter.From(param4),
-                                                              TypedParameter.From(param5),
-                                                              TypedParameter.From(param6),
-                                                              TypedParameter.From(param7));
-            return new GenericDecoratorCustomizerAdapter<TService>(customizer);
-        }
-
-        public ICustomizesDecorator<TService> ThenWrapWithType(Type decoratorType)
-        {
-            var customizer = builder.ThenWrapWithType(decoratorType);
-            return new GenericDecoratorCustomizerAdapter<TService>(customizer);
-        }
-
-        public ICustomizesDecorator<TService> ThenWrapWithType<TParam1>(Type decoratorType, TParam1 param1)
-        {
-            var customizer = builder.ThenWrapWithType(decoratorType,
-                                                      TypedParameter.From(param1));
-            return new GenericDecoratorCustomizerAdapter<TService>(customizer);
-        }
-
-        public ICustomizesDecorator<TService> ThenWrapWithType<TParam1, TParam2>(Type decoratorType, TParam1 param1, TParam2 param2)
-        {
-            var customizer = builder.ThenWrapWithType(decoratorType,
-                                                      TypedParameter.From(param1),
-                                                      TypedParameter.From(param2));
-            return new GenericDecoratorCustomizerAdapter<TService>(customizer);
-        }
-
-        public ICustomizesDecorator<TService> ThenWrapWithType<TParam1, TParam2, TParam3>(Type decoratorType, TParam1 param1, TParam2 param2, TParam3 param3)
-        {
-            var customizer = builder.ThenWrapWithType(decoratorType,
-                                                      TypedParameter.From(param1),
-                                                      TypedParameter.From(param2),
-                                                      TypedParameter.From(param3));
-            return new GenericDecoratorCustomizerAdapter<TService>(customizer);
-        }
-
-        public ICustomizesDecorator<TService> ThenWrapWithType<TParam1, TParam2, TParam3, TParam4>(Type decoratorType, TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4)
-        {
-            var customizer = builder.ThenWrapWithType(decoratorType,
-                                                      TypedParameter.From(param1),
-                                                      TypedParameter.From(param2),
-                                                      TypedParameter.From(param3),
-                                                      TypedParameter.From(param4));
-            return new GenericDecoratorCustomizerAdapter<TService>(customizer);
-        }
-
-        public ICustomizesDecorator<TService> ThenWrapWithType<TParam1, TParam2, TParam3, TParam4, TParam5>(Type decoratorType, TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5)
-        {
-            var customizer = builder.ThenWrapWithType(decoratorType,
-                                                      TypedParameter.From(param1),
-                                                      TypedParameter.From(param2),
-                                                      TypedParameter.From(param3),
-                                                      TypedParameter.From(param4),
-                                                      TypedParameter.From(param5));
-            return new GenericDecoratorCustomizerAdapter<TService>(customizer);
-        }
-
-        public ICustomizesDecorator<TService> ThenWrapWithType<TParam1, TParam2, TParam3, TParam4, TParam5, TParam6>(Type decoratorType, TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5, TParam6 param6)
-        {
-            var customizer = builder.ThenWrapWithType(decoratorType,
-                                                      TypedParameter.From(param1),
-                                                      TypedParameter.From(param2),
-                                                      TypedParameter.From(param3),
-                                                      TypedParameter.From(param4),
-                                                      TypedParameter.From(param5),
-                                                      TypedParameter.From(param6));
-            return new GenericDecoratorCustomizerAdapter<TService>(customizer);
-        }
-
-        public ICustomizesDecorator<TService> ThenWrapWithType<TParam1, TParam2, TParam3, TParam4, TParam5, TParam6, TParam7>(Type decoratorType, TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5, TParam6 param6, TParam7 param7)
-        {
-            var customizer = builder.ThenWrapWithType(decoratorType,
-                                                      TypedParameter.From(param1),
-                                                      TypedParameter.From(param2),
-                                                      TypedParameter.From(param3),
-                                                      TypedParameter.From(param4),
-                                                      TypedParameter.From(param5),
-                                                      TypedParameter.From(param6),
-                                                      TypedParameter.From(param7));
+            var customizer = builder.ThenWrapWithType(decoratorType, parameters?.Select(x => new TypedParameter(x.Type, x.Value)).ToArray() ?? new TypedParameter[0]);
             return new GenericDecoratorCustomizerAdapter<TService>(customizer);
         }
 
