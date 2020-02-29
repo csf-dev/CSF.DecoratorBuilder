@@ -21,10 +21,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Properties\" />
     <Folder Include="Autofac\" />
     <Folder Include="NonAutofac\" />
     <Folder Include="SampleService\" />
+    <Folder Include="NonAutofac\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CSF.DecoratorBuilder\CSF.DecoratorBuilder.csproj" />
