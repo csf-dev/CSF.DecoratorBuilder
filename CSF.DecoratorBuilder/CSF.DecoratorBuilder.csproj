@@ -1,10 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.2</TargetFramework>
+    <TargetFrameworks>netstandard1.1;netstandard2.0;netstandard2.1;net45;net461</TargetFrameworks>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="DecoratorBuilder.cs" />
-  </ItemGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\$(Configuration)</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\$(Configuration)</OutputPath>
+  </PropertyGroup>
+    
+  <Import Project="..\Tools\EnableNet45BuildOnUnix.targets" />
 </Project>

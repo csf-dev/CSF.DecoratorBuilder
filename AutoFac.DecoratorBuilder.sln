@@ -20,6 +20,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{F4BDF84A
 	ProjectSection(SolutionItems) = preProject
 		.appveyor.yml = .appveyor.yml
 		.travis.yml = .travis.yml
+		Tools\EnableNet45BuildOnUnix.targets = Tools\EnableNet45BuildOnUnix.targets
 	EndProjectSection
 EndProject
 Global
