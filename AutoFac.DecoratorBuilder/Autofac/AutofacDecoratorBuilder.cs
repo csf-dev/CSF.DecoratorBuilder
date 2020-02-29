@@ -1,5 +1,4 @@
 ﻿using System;
-using Autofac;
 using Autofac.Core;
 
 namespace CSF.DecoratorBuilder.Autofac

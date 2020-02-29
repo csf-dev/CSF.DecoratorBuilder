@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace CSF.DecoratorBuilder
 {
-    internal class TypeUtilities
+    internal static class TypeUtilities
     {
         internal static bool DoesImplTypeDeriveFromServiceType<TService>(Type implType)
         {
