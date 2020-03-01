@@ -2,11 +2,58 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard1.1;netstandard2.0;netstandard2.1;net45;net461</TargetFrameworks>
+    <PackageId>CSF.DecoratorBuilder</PackageId>
+    <Authors>craigfowler</Authors>
+    <Title>Decorator builder for Autofac</Title>
+    <Description>A builder &amp; a factory service for Autofac that creates services using the decorator pattern</Description>
+    <ReleaseVersion>1.0.0</ReleaseVersion>
+    <Version>$(ReleaseVersion)</Version>
+    <PackageVersion>$(ReleaseVersion)</PackageVersion>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Copyright>Copyright 2020 - CSF Software Limited</Copyright>
+    <PackageProjectUrl>https://github.com/csf-dev/AutoFac.DecoratorBuilder</PackageProjectUrl>
+    <RepositoryUrl>$(PackageProjectUrl)</RepositoryUrl>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\CSF-Software-OSS.snk</AssemblyOriginatorKeyFile>
     <RootNamespace>CSF.DecoratorBuilder</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <OutputPath>bin\$(Configuration)</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\$(Configuration)</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Autofac_51|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <OutputPath>bin\$(Configuration)</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Autofac_40|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <OutputPath>bin\$(Configuration)</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Autofac_49|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <OutputPath>bin\$(Configuration)</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Autofac_50|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <OutputPath>bin\$(Configuration)</OutputPath>
+  </PropertyGroup>
+    
   <ItemGroup>
-    <PackageReference Include="Autofac" Version="4.0.1" />
+    <PackageReference Include="Autofac" Version="[4.0.1,6.0.0)" Condition="'$(Configuration)' == 'Debug' or '$(Configuration)' == 'Release'" />
+    <PackageReference Include="Autofac" Version="4.0.1" Condition="'$(Configuration)' == 'Autofac_40'" />
+    <PackageReference Include="Autofac" Version="4.9.4" Condition="'$(Configuration)' == 'Autofac_49'" />
+    <PackageReference Include="Autofac" Version="5.0.0" Condition="'$(Configuration)' == 'Autofac_50'" />
+    <PackageReference Include="Autofac" Version="5.1.2" Condition="'$(Configuration)' == 'Autofac_51'" />
   </ItemGroup>
 
   <ItemGroup>

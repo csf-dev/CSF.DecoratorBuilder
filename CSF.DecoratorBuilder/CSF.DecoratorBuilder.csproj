@@ -2,12 +2,29 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard1.1;netstandard2.0;netstandard2.1;net45;net461</TargetFrameworks>
+    <PackageId>CSF.DecoratorBuilder.Interfaces</PackageId>
+    <Authors>craigfowler</Authors>
+    <Title>Decorator builder: Interfaces</Title>
+    <Description>Interfaces for a builder &amp; a factory service that creates services using the decorator pattern</Description>
+    <ReleaseVersion>1.0.0</ReleaseVersion>
+    <Version>$(ReleaseVersion)</Version>
+    <PackageVersion>$(ReleaseVersion)</PackageVersion>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Copyright>Copyright 2020 - CSF Software Limited</Copyright>
+    <PackageProjectUrl>https://github.com/csf-dev/AutoFac.DecoratorBuilder</PackageProjectUrl>
+    <RepositoryUrl>$(PackageProjectUrl)</RepositoryUrl>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\CSF-Software-OSS.snk</AssemblyOriginatorKeyFile>
+    <RootNamespace>CSF.DecoratorBuilder</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
     <OutputPath>bin\$(Configuration)</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
     <OutputPath>bin\$(Configuration)</OutputPath>
   </PropertyGroup>
     
