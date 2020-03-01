@@ -8,4 +8,7 @@ jobs:
 
 script:
     -   dotnet build
-    -   dotnet test
+    -   dotnet test -c Autofac_51
+    -   dotnet test -c Autofac_50
+    -   dotnet test -c Autofac_49
+    -   dotnet test -c Autofac_40

@@ -5,11 +5,40 @@
     <IsTestProject>true</IsTestProject>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' " />
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' " />
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Autofac_51|AnyCPU' ">
+    <IntermediateOutputPath>obj\$(Configuration)</IntermediateOutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <OutputPath>bin\$(Configuration)</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Autofac_40|AnyCPU' ">
+    <IntermediateOutputPath>obj\$(Configuration)</IntermediateOutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <OutputPath>bin\$(Configuration)</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Autofac_49|AnyCPU' ">
+    <IntermediateOutputPath>obj\$(Configuration)</IntermediateOutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <OutputPath>bin\$(Configuration)</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Autofac_50|AnyCPU' ">
+    <IntermediateOutputPath>obj\$(Configuration)</IntermediateOutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <OutputPath>bin\$(Configuration)</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="NUnit" Version="3.12.0" />
     <PackageReference Include="AutoFixture.NUnit3" Version="4.11.0" />
     <PackageReference Include="AutoFixture.AutoMoq" Version="4.11.0" />
-    <PackageReference Include="Autofac" Version="4.0.1" />
+    <PackageReference Include="Autofac" Version="4.0.1" Condition="'$(Configuration)' == 'Autofac_40'" />
+    <PackageReference Include="Autofac" Version="4.9.4" Condition="'$(Configuration)' == 'Autofac_49'" />
+    <PackageReference Include="Autofac" Version="5.0.0" Condition="'$(Configuration)' == 'Autofac_50'" />
+    <PackageReference Include="Autofac" Version="5.1.2" Condition="'$(Configuration)' == 'Autofac_51'" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
     <PackageReference Include="coverlet.msbuild" Version="2.8.0">
