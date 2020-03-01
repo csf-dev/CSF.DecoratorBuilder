@@ -1,7 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.1;netstandard2.0;netstandard2.1;net45;net461</TargetFrameworks>
+    <TargetFrameworks Condition="'$(Configuration)' == 'Debug' or '$(Configuration)' == 'Release'">netstandard1.1;netstandard2.0;netstandard2.1;net45;net461</TargetFrameworks>
+    <TargetFrameworks Condition="'$(Configuration)' == 'Autofac_40'">netstandard1.1;netstandard2.0;netstandard2.1;net45;net461</TargetFrameworks>
+    <TargetFrameworks Condition="'$(Configuration)' == 'Autofac_49'">netstandard1.1;netstandard2.0;netstandard2.1;net45;net461</TargetFrameworks>
+    <TargetFrameworks Condition="'$(Configuration)' == 'Autofac_50'">netstandard2.0;netstandard2.1;net461</TargetFrameworks>
+    <TargetFrameworks Condition="'$(Configuration)' == 'Autofac_51'">netstandard2.0;netstandard2.1;net461</TargetFrameworks>
+  </PropertyGroup>
+  <PropertyGroup>
     <PackageId>CSF.DecoratorBuilder</PackageId>
     <Authors>craigfowler</Authors>
     <Title>Decorator builder for Autofac</Title>
