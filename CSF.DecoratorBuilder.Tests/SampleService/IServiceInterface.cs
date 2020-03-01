@@ -28,6 +28,6 @@ namespace CSF.DecoratorBuilder.Tests.SampleService
 {
     public interface IServiceInterface
     {
-        void ServiceMethod();
+        string ServiceMethod();
     }
 }

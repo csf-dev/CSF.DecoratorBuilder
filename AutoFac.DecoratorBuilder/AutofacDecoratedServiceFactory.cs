@@ -24,7 +24,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using Autofac;
 using CSF.DecoratorBuilder.Autofac;
 
 namespace CSF.DecoratorBuilder
@@ -45,14 +44,6 @@ namespace CSF.DecoratorBuilder
             var builder = new AutofacDecoratorBuilder(resolver, serviceType);
             var customizer = (IGetsService) customizationFunc(builder);
             return customizer.GetService();
-        }
-
-        public AutofacDecoratedServiceFactory(IComponentContext context)
-        {
-            if(context == null)
-                throw new ArgumentNullException(nameof(context));
-
-            resolver = new ComponentContextResolverAdapter(context);
         }
 
         public AutofacDecoratedServiceFactory(IResolver resolver)
