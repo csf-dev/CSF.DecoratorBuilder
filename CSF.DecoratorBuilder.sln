@@ -11,7 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSF.DecoratorBuilder.Tests"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{0BF4A688-0E57-42E3-9CAD-DC1AAC8FFCA5}"
 	ProjectSection(SolutionItems) = preProject
-		Description.md = Description.md
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
