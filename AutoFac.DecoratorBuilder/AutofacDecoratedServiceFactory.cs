@@ -47,14 +47,6 @@ namespace CSF.DecoratorBuilder
             return customizer.GetService();
         }
 
-        public AutofacDecoratedServiceFactory(IComponentContext context)
-        {
-            if(context == null)
-                throw new ArgumentNullException(nameof(context));
-
-            resolver = new ComponentContextResolverAdapter(context);
-        }
-
         public AutofacDecoratedServiceFactory(IResolver resolver)
         {
             this.resolver = resolver ?? throw new ArgumentNullException(nameof(resolver));

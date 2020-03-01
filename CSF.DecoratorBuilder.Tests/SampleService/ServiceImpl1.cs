@@ -28,13 +28,6 @@ namespace CSF.DecoratorBuilder.Tests.SampleService
 {
     public class ServiceImpl1 : IServiceInterface
     {
-        public ServiceImpl1()
-        {
-        }
-
-        public void ServiceMethod()
-        {
-            throw new NotImplementedException();
-        }
+        public string ServiceMethod() => GetType().Name;
     }
 }
