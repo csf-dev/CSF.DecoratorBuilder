@@ -58,6 +58,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CSF.DecoratorBuilder\CSF.DecoratorBuilder.csproj" />
-    <ProjectReference Include="..\AutoFac.DecoratorBuilder\CSF.DecoratorBuilder.Impl.csproj" />
+    <ProjectReference Include="..\CSF.DecoratorBuilder.Impl\CSF.DecoratorBuilder.Impl.csproj" />
   </ItemGroup>
 </Project>
