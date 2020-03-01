@@ -1,0 +1,87 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.489
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSF.DecoratorBuilder.Impl", "CSF.DecoratorBuilder.Impl\CSF.DecoratorBuilder.Impl.csproj", "{58597BD3-6B55-4B0E-B6E6-425D6A9DD539}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSF.DecoratorBuilder", "CSF.DecoratorBuilder\CSF.DecoratorBuilder.csproj", "{4A164FCB-0BCA-48AE-8224-3143E60B924D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSF.DecoratorBuilder.Tests", "CSF.DecoratorBuilder.Tests\CSF.DecoratorBuilder.Tests.csproj", "{C989363A-0B80-4F22-963B-11652E4062D2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{0BF4A688-0E57-42E3-9CAD-DC1AAC8FFCA5}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{F4BDF84A-32EF-4285-961C-E3A0E941EC6C}"
+	ProjectSection(SolutionItems) = preProject
+		.appveyor.yml = .appveyor.yml
+		.travis.yml = .travis.yml
+		Tools\EnableNet45BuildOnUnix.targets = Tools\EnableNet45BuildOnUnix.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Autofac_40|Any CPU = Autofac_40|Any CPU
+		Autofac_49|Any CPU = Autofac_49|Any CPU
+		Autofac_50|Any CPU = Autofac_50|Any CPU
+		Autofac_51|Any CPU = Autofac_51|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{58597BD3-6B55-4B0E-B6E6-425D6A9DD539}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58597BD3-6B55-4B0E-B6E6-425D6A9DD539}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58597BD3-6B55-4B0E-B6E6-425D6A9DD539}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58597BD3-6B55-4B0E-B6E6-425D6A9DD539}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58597BD3-6B55-4B0E-B6E6-425D6A9DD539}.Autofac_40|Any CPU.ActiveCfg = Autofac_40|Any CPU
+		{58597BD3-6B55-4B0E-B6E6-425D6A9DD539}.Autofac_40|Any CPU.Build.0 = Autofac_40|Any CPU
+		{58597BD3-6B55-4B0E-B6E6-425D6A9DD539}.Autofac_49|Any CPU.ActiveCfg = Autofac_49|Any CPU
+		{58597BD3-6B55-4B0E-B6E6-425D6A9DD539}.Autofac_49|Any CPU.Build.0 = Autofac_49|Any CPU
+		{58597BD3-6B55-4B0E-B6E6-425D6A9DD539}.Autofac_50|Any CPU.ActiveCfg = Autofac_50|Any CPU
+		{58597BD3-6B55-4B0E-B6E6-425D6A9DD539}.Autofac_50|Any CPU.Build.0 = Autofac_50|Any CPU
+		{58597BD3-6B55-4B0E-B6E6-425D6A9DD539}.Autofac_51|Any CPU.ActiveCfg = Autofac_51|Any CPU
+		{58597BD3-6B55-4B0E-B6E6-425D6A9DD539}.Autofac_51|Any CPU.Build.0 = Autofac_51|Any CPU
+		{4A164FCB-0BCA-48AE-8224-3143E60B924D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A164FCB-0BCA-48AE-8224-3143E60B924D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A164FCB-0BCA-48AE-8224-3143E60B924D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A164FCB-0BCA-48AE-8224-3143E60B924D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A164FCB-0BCA-48AE-8224-3143E60B924D}.Autofac_40|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A164FCB-0BCA-48AE-8224-3143E60B924D}.Autofac_40|Any CPU.Build.0 = Debug|Any CPU
+		{4A164FCB-0BCA-48AE-8224-3143E60B924D}.Autofac_49|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A164FCB-0BCA-48AE-8224-3143E60B924D}.Autofac_49|Any CPU.Build.0 = Debug|Any CPU
+		{4A164FCB-0BCA-48AE-8224-3143E60B924D}.Autofac_50|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A164FCB-0BCA-48AE-8224-3143E60B924D}.Autofac_50|Any CPU.Build.0 = Debug|Any CPU
+		{4A164FCB-0BCA-48AE-8224-3143E60B924D}.Autofac_51|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A164FCB-0BCA-48AE-8224-3143E60B924D}.Autofac_51|Any CPU.Build.0 = Debug|Any CPU
+		{C989363A-0B80-4F22-963B-11652E4062D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C989363A-0B80-4F22-963B-11652E4062D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C989363A-0B80-4F22-963B-11652E4062D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C989363A-0B80-4F22-963B-11652E4062D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C989363A-0B80-4F22-963B-11652E4062D2}.Autofac_40|Any CPU.ActiveCfg = Autofac_40|Any CPU
+		{C989363A-0B80-4F22-963B-11652E4062D2}.Autofac_40|Any CPU.Build.0 = Autofac_40|Any CPU
+		{C989363A-0B80-4F22-963B-11652E4062D2}.Autofac_49|Any CPU.ActiveCfg = Autofac_49|Any CPU
+		{C989363A-0B80-4F22-963B-11652E4062D2}.Autofac_49|Any CPU.Build.0 = Autofac_49|Any CPU
+		{C989363A-0B80-4F22-963B-11652E4062D2}.Autofac_50|Any CPU.ActiveCfg = Autofac_50|Any CPU
+		{C989363A-0B80-4F22-963B-11652E4062D2}.Autofac_50|Any CPU.Build.0 = Autofac_50|Any CPU
+		{C989363A-0B80-4F22-963B-11652E4062D2}.Autofac_51|Any CPU.ActiveCfg = Autofac_51|Any CPU
+		{C989363A-0B80-4F22-963B-11652E4062D2}.Autofac_51|Any CPU.Build.0 = Autofac_51|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D53086AF-237B-4520-9662-2D595DA3E222}
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.TextStylePolicy = $1
+		$1.TabsToSpaces = True
+		$1.NoTabsAfterNonTabs = True
+		$1.EolMarker = Unix
+		$1.scope = text/plain
+		version = 1.0.0
+	EndGlobalSection
+EndGlobal
