@@ -26,12 +26,12 @@
 
 namespace CSF.DecoratorBuilder
 {
-    public interface IGetsService
+    internal interface IGetsService
     {
         object GetService();
     }
 
-    public interface IGetsService<out T>
+    internal interface IGetsService<out T>
     {
         T GetService();
     }
