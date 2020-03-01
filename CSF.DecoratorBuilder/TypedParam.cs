@@ -2,7 +2,9 @@
 namespace CSF.DecoratorBuilder
 {
     /// <summary>
-    /// An abstraction for an injected object of a specified type.
+    /// An abstraction for an injected object of a specified type.  This is equivalent to Autofac's
+    /// <c>TypedParameter</c> object.  This will will be mapped to an Autofac typed parameter when used
+    /// with an Autofac container.
     /// </summary>
     public sealed class TypedParam
     {

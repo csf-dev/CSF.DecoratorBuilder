@@ -28,10 +28,14 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>portable</DebugType>
     <OutputPath>bin\$(Configuration)</OutputPath>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\CSF.DecoratorBuilder.Impl.xml</DocumentationFile>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>false</DebugSymbols>
+    <DebugType></DebugType>
     <OutputPath>bin\$(Configuration)</OutputPath>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\CSF.DecoratorBuilder.Impl.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Autofac_51|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
