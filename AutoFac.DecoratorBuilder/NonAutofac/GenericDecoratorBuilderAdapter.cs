@@ -29,22 +29,42 @@ using Autofac;
 
 namespace CSF.DecoratorBuilder.NonAutofac
 {
+    /// <summary>
+    /// Generic/type-safe implementation of a decorator-builder service which makes NO direct use of Autofac in its public API,
+    /// except for its constructor.  Consume this class via <see cref="IGetsDecoratedService"/>.
+    /// </summary>
     public class GenericDecoratorBuilderAdapter<TService> : ICreatesDecorator<TService> where TService : class
     {
         readonly ICreatesAutofacDecorator<TService> builder;
 
+        /// <summary>
+        /// Selects the initial implementation type using a generic type parameter.
+        /// </summary>
+        /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
+        /// <param name="parameters">An optional collection of <see cref="TypedParam"/>.</param>
+        /// <typeparam name="TInitialImpl">The type of the initial concrete implementation.</typeparam>
         public ICustomizesDecorator<TService> UsingInitialImpl<TInitialImpl>(params TypedParam[] parameters) where TInitialImpl : class, TService
         {
             var customizer = builder.UsingInitialImpl<TInitialImpl>(parameters?.Select(x => new TypedParameter(x.Type, x.Value)).ToArray() ?? new TypedParameter[0]);
             return new GenericDecoratorCustomizerAdapter<TService>(customizer);
         }
 
+        /// <summary>
+        /// Selects the initial implementation type.
+        /// </summary>
+        /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
+        /// <param name="initialImplType">The type of the initial concrete implementation.</param>
+        /// <param name="parameters">An optional collection of <see cref="TypedParam"/>.</param>
         public ICustomizesDecorator<TService> UsingInitialImplType(Type initialImplType, params TypedParam[] parameters)
         {
             var customizer = builder.UsingInitialImplType(initialImplType, parameters?.Select(x => new TypedParameter(x.Type, x.Value)).ToArray() ?? new TypedParameter[0]);
             return new GenericDecoratorCustomizerAdapter<TService>(customizer);
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GenericDecoratorBuilderAdapter{TService}"/> class.
+        /// </summary>
+        /// <param name="builder">A wrapped autofac-specific decorator-builder.</param>
         public GenericDecoratorBuilderAdapter(ICreatesAutofacDecorator<TService> builder)
         {
             this.builder = builder ?? throw new ArgumentNullException(nameof(builder));

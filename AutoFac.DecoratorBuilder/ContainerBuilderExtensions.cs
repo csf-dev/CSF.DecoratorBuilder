@@ -31,6 +31,9 @@ using Autofac.Core;
 
 namespace CSF.DecoratorBuilder
 {
+    /// <summary>
+    /// Extension methods for the Autofac <c>ContainerBuilder</c>.
+    /// </summary>
     public static class ContainerBuilderExtensions
     {
         /// <summary>

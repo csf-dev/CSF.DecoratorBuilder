@@ -30,20 +30,41 @@ using Autofac.Core;
 
 namespace CSF.DecoratorBuilder.Autofac
 {
+    /// <summary>
+    /// An adapter type which allows an Autofac <c>IComponentContext</c> to be used
+    /// as an <see cref="IResolver"/>.
+    /// </summary>
     public class ComponentContextResolverAdapter : IResolver
     {
         readonly IComponentContext ctx;
 
+        /// <summary>
+        /// Resolve a service, with a collection of parameters.
+        /// </summary>
+        /// <returns>The resolved service.</returns>
+        /// <param name="parameters">Parameters.</param>
+        /// <typeparam name="TService">The service type.</typeparam>
         public TService Resolve<TService>(IEnumerable<Parameter> parameters)
         {
             return ctx.Resolve<TService>(parameters);
         }
 
+        /// <summary>
+        /// Resolve a service, with a collection of parameters.
+        /// </summary>
+        /// <returns>The resolved service.</returns>
+        /// <param name="serviceType">The service type.</param>
+        /// <param name="parameters">Parameters.</param>
         public object Resolve(Type serviceType, IEnumerable<Parameter> parameters)
         {
             return ctx.Resolve(serviceType, parameters);
         }
 
+        /// <summary>
+        /// Initializes a new instance of the
+        /// <see cref="ComponentContextResolverAdapter"/> class.
+        /// </summary>
+        /// <param name="ctx">The Autofac component context.</param>
         public ComponentContextResolverAdapter(IComponentContext ctx)
         {
             this.ctx = ctx ?? throw new ArgumentNullException(nameof(ctx));

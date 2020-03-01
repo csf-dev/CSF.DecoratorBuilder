@@ -29,9 +29,27 @@ using Autofac.Core;
 
 namespace CSF.DecoratorBuilder
 {
+    /// <summary>
+    /// An abstraction for a service which can resolve other services.  This is not intended for use in consuming code.
+    /// In practice this is an abstraction of Autofac <c>IComponentContext</c>, exposing a limited subset of its
+    /// functionality.
+    /// </summary>
     public interface IResolver
     {
+        /// <summary>
+        /// Resolve a service, with a collection of parameters.
+        /// </summary>
+        /// <returns>The resolved service.</returns>
+        /// <param name="parameters">Parameters.</param>
+        /// <typeparam name="TService">The service type.</typeparam>
         TService Resolve<TService>(IEnumerable<Parameter> parameters);
+
+        /// <summary>
+        /// Resolve a service, with a collection of parameters.
+        /// </summary>
+        /// <returns>The resolved service.</returns>
+        /// <param name="serviceType">The service type.</param>
+        /// <param name="parameters">Parameters.</param>
         object Resolve(Type serviceType, IEnumerable<Parameter> parameters);
     }
 }

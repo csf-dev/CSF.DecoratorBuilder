@@ -27,8 +27,16 @@ using Autofac;
 
 namespace CSF.DecoratorBuilder
 {
+    /// <summary>
+    /// An Autofac <c>Module</c> which registers all of the CSF.DecoratorBuilder types.
+    /// Register this module to use the decorator builder in your own application.
+    /// </summary>
     public class DecoratorBuilderModule : Module
     {
+        /// <summary>
+        /// Load the current module.
+        /// </summary>
+        /// <param name="builder">A container builder.</param>
         protected override void Load(ContainerBuilder builder)
         {
             builder

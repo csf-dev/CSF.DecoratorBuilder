@@ -3,12 +3,13 @@
 namespace CSF.DecoratorBuilder
 {
     /// <summary>
-    /// Builds and returns a service instance, using the decorator pattern.
+    /// A factory service which uses the decorator pattern to build and return a service by specifying which implementation types
+    /// to use and in which order.
     /// </summary>
     public interface IGetsDecoratedService
     {
         /// <summary>
-        /// Gets a service using the decorator pattern.
+        /// Builds and returns an instance of a service, using the decorator pattern.
         /// </summary>
         /// <returns>The service instance.</returns>
         /// <param name="customizationFunc">A customization function, to build the 'shape' of the decorated service.</param>
@@ -17,7 +18,7 @@ namespace CSF.DecoratorBuilder
             where TService : class;
 
         /// <summary>
-        /// Gets a service using the decorator pattern.
+        /// Builds and returns an instance of a service, using the decorator pattern.
         /// </summary>
         /// <returns>The service instance.</returns>
         /// <param name="serviceType">The service type, typically an interface.</param>

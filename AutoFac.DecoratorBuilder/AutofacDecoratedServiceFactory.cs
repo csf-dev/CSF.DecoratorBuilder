@@ -28,10 +28,20 @@ using CSF.DecoratorBuilder.Autofac;
 
 namespace CSF.DecoratorBuilder
 {
+    /// <summary>
+    /// A factory service which can build and resolve other services, using the decorator pattern.
+    /// This implementation directly references Autofac 'concepts' and requires a reference to the Autofac assemblies.
+    /// </summary>
     public class AutofacDecoratedServiceFactory : IGetsAutofacDecoratedService
     {
         readonly IResolver resolver;
 
+        /// <summary>
+        /// Gets a service using the decorator pattern.
+        /// </summary>
+        /// <returns>The service instance.</returns>
+        /// <param name="customizationFunc">A customization function, to build the 'shape' of the decorated service.</param>
+        /// <typeparam name="TService">The service type, typically an interface.</typeparam>
         public TService GetDecoratedService<TService>(Func<ICreatesAutofacDecorator<TService>, ICustomizesAutofacDecorator<TService>> customizationFunc) where TService : class
         {
             var builder = new AutofacGenericDecoratorBuilder<TService>(resolver);
@@ -39,6 +49,12 @@ namespace CSF.DecoratorBuilder
             return customizer.GetService();
         }
 
+        /// <summary>
+        /// Gets a service using the decorator pattern.
+        /// </summary>
+        /// <returns>The service instance.</returns>
+        /// <param name="serviceType">The service type, typically an interface.</param>
+        /// <param name="customizationFunc">A customization function, to build the 'shape' of the decorated service.</param>
         public object GetDecoratedService(Type serviceType, Func<ICreatesAutofacDecorator, ICustomizesAutofacDecorator> customizationFunc)
         {
             var builder = new AutofacDecoratorBuilder(resolver, serviceType);
@@ -46,6 +62,10 @@ namespace CSF.DecoratorBuilder
             return customizer.GetService();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AutofacDecoratedServiceFactory"/> class.
+        /// </summary>
+        /// <param name="resolver">A resolver service by which further components may be retrieved where required.</param>
         public AutofacDecoratedServiceFactory(IResolver resolver)
         {
             this.resolver = resolver ?? throw new ArgumentNullException(nameof(resolver));
