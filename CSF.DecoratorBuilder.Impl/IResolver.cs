@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
+using Autofac;
 using Autofac.Core;
 
 namespace CSF.DecoratorBuilder
@@ -51,5 +52,11 @@ namespace CSF.DecoratorBuilder
         /// <param name="serviceType">The service type.</param>
         /// <param name="parameters">Parameters.</param>
         object Resolve(Type serviceType, IEnumerable<Parameter> parameters);
+
+        /// <summary>
+        /// Gets the underlying component context.
+        /// </summary>
+        /// <returns>The component context.</returns>
+        IComponentContext GetComponentContext();
     }
 }

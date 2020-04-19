@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Autofac;
 using Autofac.Core;
 
 namespace CSF.DecoratorBuilder.Autofac
@@ -42,11 +44,28 @@ namespace CSF.DecoratorBuilder.Autofac
             return new AutofacDecoratorCustomizer(resolver, serviceType, initialImpl);
         }
 
+        /// <summary>
+        /// Selects the initial implementation type using a generic type parameter.
+        /// </summary>
+        /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
+        /// <param name="resolverFunc">A function which is used to resolve the initial implementation object.</param>
+        public AutofacDecoratorCustomizer UsingInitialImpl(Func<IComponentContext, object> resolverFunc)
+        {
+            if (resolverFunc == null)
+                throw new ArgumentNullException(nameof(resolverFunc));
+
+            var initialImpl = resolverFunc(resolver.GetComponentContext());
+            return new AutofacDecoratorCustomizer(resolver, serviceType, initialImpl);
+        }
+
         ICustomizesAutofacDecorator ICreatesAutofacDecorator.UsingInitialImpl<TInitialImpl>(params Parameter[] autofacParams)
             => UsingInitialImpl<TInitialImpl>(autofacParams);
 
         ICustomizesAutofacDecorator ICreatesAutofacDecorator.UsingInitialImplType(Type initialImplType, params Parameter[] autofacParams)
             => UsingInitialImplType(initialImplType, autofacParams);
+
+        ICustomizesAutofacDecorator ICreatesAutofacDecorator.UsingInitialImpl(Func<IComponentContext, object> resolverFunc)
+            => UsingInitialImpl(resolverFunc);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AutofacDecoratorBuilder"/> class.

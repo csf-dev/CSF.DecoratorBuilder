@@ -80,6 +80,36 @@ namespace CSF.DecoratorBuilder.Tests
             }
         }
 
+        [Test]
+        public void Static_registration_may_use_decorator_which_uses_resolution_function()
+        {
+            void CustomiseContainer(ContainerBuilder builder)
+            {
+                builder.RegisterDecoratedService<IServiceInterface>(d => d.UsingInitialImpl<ServiceImpl1>().ThenWrapWith((impl, ctx) => new ServiceDecorator2(impl, 5)));
+            }
+
+            using (var scope = container.BeginLifetimeScope(CustomiseContainer))
+            {
+                var service = scope.Resolve<IServiceInterface>();
+                Assert.That(() => service.ServiceMethod(), Is.EqualTo("ServiceDecorator2: 5\nServiceImpl1"));
+            }
+        }
+
+        [Test]
+        public void Static_registration_may_use_initial_impl_which_uses_resolution_function()
+        {
+            void CustomiseContainer(ContainerBuilder builder)
+            {
+                builder.RegisterDecoratedService<IServiceInterface>(d => d.UsingInitialImpl(ctx => new ServiceImpl3()).ThenWrapWith<ServiceDecorator1>());
+            }
+
+            using (var scope = container.BeginLifetimeScope(CustomiseContainer))
+            {
+                var service = scope.Resolve<IServiceInterface>();
+                Assert.That(() => service.ServiceMethod(), Is.EqualTo("ServiceDecorator1\nServiceImpl3"));
+            }
+        }
+
         #region Embedded types
 
         public class AutofacServiceFactory
