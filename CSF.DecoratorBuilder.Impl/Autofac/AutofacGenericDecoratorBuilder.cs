@@ -1,4 +1,5 @@
 ﻿using System;
+using Autofac;
 using Autofac.Core;
 
 namespace CSF.DecoratorBuilder.Autofac
@@ -35,6 +36,17 @@ namespace CSF.DecoratorBuilder.Autofac
         public ICustomizesAutofacDecorator<TService> UsingInitialImplType(Type initialImplType, params Parameter[] autofacParams)
         {
             var customizer = builder.UsingInitialImplType(initialImplType, autofacParams);
+            return new AutofacGenericDecoratorCustomizer<TService>(customizer, (TService) customizer.Implementation);
+        }
+
+        /// <summary>
+        /// Selects the initial implementation type using a generic type parameter.
+        /// </summary>
+        /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
+        /// <param name="resolverFunc">A function which is used to resolve the initial implementation object.</param>
+        public ICustomizesAutofacDecorator<TService> UsingInitialImpl(Func<IComponentContext, TService> resolverFunc)
+        {
+            var customizer = builder.UsingInitialImpl(resolverFunc);
             return new AutofacGenericDecoratorCustomizer<TService>(customizer, (TService) customizer.Implementation);
         }
 

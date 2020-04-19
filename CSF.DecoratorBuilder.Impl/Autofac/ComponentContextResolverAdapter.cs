@@ -61,6 +61,12 @@ namespace CSF.DecoratorBuilder.Autofac
         }
 
         /// <summary>
+        /// Gets the underlying component context.
+        /// </summary>
+        /// <returns>The component context.</returns>
+        public IComponentContext GetComponentContext() => ctx;
+
+        /// <summary>
         /// Initializes a new instance of the
         /// <see cref="ComponentContextResolverAdapter"/> class.
         /// </summary>
