@@ -82,6 +82,6 @@ Global
 		$1.NoTabsAfterNonTabs = True
 		$1.EolMarker = Unix
 		$1.scope = text/plain
-		version = 1.0.0
+		version = 2.0.0
 	EndGlobalSection
 EndGlobal

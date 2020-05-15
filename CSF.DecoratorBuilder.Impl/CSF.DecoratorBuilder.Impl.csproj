@@ -6,13 +6,13 @@
     <TargetFrameworks Condition="'$(Configuration)' == 'Autofac_49'">netstandard1.1;netstandard2.0;netstandard2.1;net45;net461</TargetFrameworks>
     <TargetFrameworks Condition="'$(Configuration)' == 'Autofac_50'">netstandard2.0;netstandard2.1;net461</TargetFrameworks>
     <TargetFrameworks Condition="'$(Configuration)' == 'Autofac_51'">netstandard2.0;netstandard2.1;net461</TargetFrameworks>
+    <ReleaseVersion>2.0.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup>
     <PackageId>CSF.DecoratorBuilder</PackageId>
     <Authors>craigfowler</Authors>
     <Title>Decorator builder for Autofac</Title>
     <Description>A builder &amp; a factory service for Autofac that creates services using the decorator pattern</Description>
-    <ReleaseVersion>1.0.0</ReleaseVersion>
     <Version>$(ReleaseVersion)</Version>
     <PackageVersion>$(ReleaseVersion)</PackageVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
