@@ -66,6 +66,23 @@ namespace CSF.DecoratorBuilder.Autofac
         }
 
         /// <summary>
+        /// Selects a decorator using a resolver function.  The implementation directly
+        /// before this point in the decorator 'stack' (be it the initial implementation or a
+        /// decorator itself) will be passed to the selected implementation.  Thus this implementation
+        /// will 'wrap' the one before it.
+        /// </summary>
+        /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
+        /// <param name="resolverFunc">A function which is used to resolve the decorator object.</param>
+        public AutofacDecoratorCustomizer ThenWrapWith(Func<object, IComponentContext, object> resolverFunc)
+        {
+            if (resolverFunc == null)
+                throw new ArgumentNullException(nameof(resolverFunc));
+
+            var decoratorImpl = resolverFunc(Implementation, resolver.GetComponentContext());
+            return new AutofacDecoratorCustomizer(resolver, serviceType, decoratorImpl);
+        }
+
+        /// <summary>
         /// Selects a decorator type.  The implementation directly
         /// before this point in the decorator 'stack' (be it the initial implementation or a
         /// decorator itself) will be passed to the selected implementation.  Thus this implementation
@@ -80,23 +97,6 @@ namespace CSF.DecoratorBuilder.Autofac
                 throw new ArgumentException($"The decorator type {decoratorType.FullName} must derive from the service type {serviceType.FullName}.");
 
             var decoratorImpl = resolver.Resolve(decoratorType, autofacParams.AddTypedParam(serviceType, Implementation));
-            return new AutofacDecoratorCustomizer(resolver, serviceType, decoratorImpl);
-        }
-
-        /// <summary>
-        /// Selects a decorator using a resolver function.  The implementation directly
-        /// before this point in the decorator 'stack' (be it the initial implementation or a
-        /// decorator itself) will be passed to the selected implementation.  Thus this implementation
-        /// will 'wrap' the one before it.
-        /// </summary>
-        /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
-        /// <param name="resolverFunc">A function which is used to resolve the decorator object.</param>
-        public AutofacDecoratorCustomizer ThenWrapWith(Func<object, IComponentContext, object> resolverFunc)
-        {
-            if (resolverFunc == null)
-                throw new ArgumentNullException(nameof(resolverFunc));
-
-            var decoratorImpl = resolverFunc(Implementation, resolver.GetComponentContext());
             return new AutofacDecoratorCustomizer(resolver, serviceType, decoratorImpl);
         }
 

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Autofac;
 using Autofac.Core;
 
@@ -23,6 +22,13 @@ namespace CSF.DecoratorBuilder
             where TInitialImpl : class, TService;
 
         /// <summary>
+        /// Selects the initial implementation type using a generic type parameter.
+        /// </summary>
+        /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
+        /// <param name="resolverFunc">A function which is used to resolve the initial implementation object.</param>
+        ICustomizesAutofacDecorator<TService> UsingInitialImpl(Func<IComponentContext, TService> resolverFunc);
+
+        /// <summary>
         /// Selects the initial implementation type.
         /// </summary>
         /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
@@ -30,13 +36,6 @@ namespace CSF.DecoratorBuilder
         /// <param name="autofacParams">An optional collection of <see cref="Parameter"/>.</param>
         ICustomizesAutofacDecorator<TService> UsingInitialImplType(Type initialImplType,
             params Parameter[] autofacParams);
-
-        /// <summary>
-        /// Selects the initial implementation type using a generic type parameter.
-        /// </summary>
-        /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
-        /// <param name="resolverFunc">A function which is used to resolve the initial implementation object.</param>
-        ICustomizesAutofacDecorator<TService> UsingInitialImpl(Func<IComponentContext, TService> resolverFunc);
     }
 
     /// <summary>
@@ -56,18 +55,18 @@ namespace CSF.DecoratorBuilder
             where TInitialImpl : class;
 
         /// <summary>
+        /// Selects the initial implementation type using a generic type parameter.
+        /// </summary>
+        /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
+        /// <param name="resolverFunc">A function which is used to resolve the initial implementation object.</param>
+        ICustomizesAutofacDecorator UsingInitialImpl(Func<IComponentContext, object> resolverFunc);
+
+        /// <summary>
         /// Selects the initial implementation type.
         /// </summary>
         /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
         /// <param name="initialImplType">The type of the initial concrete implementation.</param>
         /// <param name="autofacParams">An optional collection of <see cref="Parameter"/>.</param>
         ICustomizesAutofacDecorator UsingInitialImplType(Type initialImplType, params Parameter[] autofacParams);
-
-        /// <summary>
-        /// Selects the initial implementation type using a generic type parameter.
-        /// </summary>
-        /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
-        /// <param name="resolverFunc">A function which is used to resolve the initial implementation object.</param>
-        ICustomizesAutofacDecorator UsingInitialImpl(Func<IComponentContext, object> resolverFunc);
     }
 }

@@ -24,6 +24,16 @@ namespace CSF.DecoratorBuilder
             where TDecorator : class, TService;
 
         /// <summary>
+        /// Selects a decorator using a resolver function.  The implementation directly
+        /// before this point in the decorator 'stack' (be it the initial implementation or a
+        /// decorator itself) will be passed to the selected implementation.  Thus this implementation
+        /// will 'wrap' the one before it.
+        /// </summary>
+        /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
+        /// <param name="resolverFunc">A function which is used to resolve the decorator object.</param>
+        ICustomizesAutofacDecorator<TService> ThenWrapWith(Func<TService, IComponentContext, TService> resolverFunc);
+
+        /// <summary>
         /// Selects a decorator type.  The implementation directly
         /// before this point in the decorator 'stack' (be it the initial implementation or a
         /// decorator itself) will be passed to the selected implementation.  Thus this implementation
@@ -33,16 +43,6 @@ namespace CSF.DecoratorBuilder
         /// <param name="decoratorType">The type of the concrete implementation to use as a decorator.</param>
         /// <param name="autofacParams">An optional collection of <see cref="Parameter"/>.</param>
         ICustomizesAutofacDecorator<TService> ThenWrapWithType(Type decoratorType, params Parameter[] autofacParams);
-
-        /// <summary>
-        /// Selects a decorator using a resolver function.  The implementation directly
-        /// before this point in the decorator 'stack' (be it the initial implementation or a
-        /// decorator itself) will be passed to the selected implementation.  Thus this implementation
-        /// will 'wrap' the one before it.
-        /// </summary>
-        /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
-        /// <param name="resolverFunc">A function which is used to resolve the decorator object.</param>
-        ICustomizesAutofacDecorator<TService> ThenWrapWith(Func<TService, IComponentContext, TService> resolverFunc);
     }
 
     /// <summary>
@@ -64,6 +64,16 @@ namespace CSF.DecoratorBuilder
             where TDecorator : class;
 
         /// <summary>
+        /// Selects a decorator using a resolver function.  The implementation directly
+        /// before this point in the decorator 'stack' (be it the initial implementation or a
+        /// decorator itself) will be passed to the selected implementation.  Thus this implementation
+        /// will 'wrap' the one before it.
+        /// </summary>
+        /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
+        /// <param name="resolverFunc">A function which is used to resolve the decorator object.</param>
+        ICustomizesAutofacDecorator ThenWrapWith(Func<object, IComponentContext, object> resolverFunc);
+
+        /// <summary>
         /// Selects a decorator type.  The implementation directly
         /// before this point in the decorator 'stack' (be it the initial implementation or a
         /// decorator itself) will be passed to the selected implementation.  Thus this implementation
@@ -73,15 +83,5 @@ namespace CSF.DecoratorBuilder
         /// <param name="decoratorType">The type of the concrete implementation to use as a decorator.</param>
         /// <param name="autofacParams">An optional collection of <see cref="Parameter"/>.</param>
         ICustomizesAutofacDecorator ThenWrapWithType(Type decoratorType, params Parameter[] autofacParams);
-
-        /// <summary>
-        /// Selects a decorator using a resolver function.  The implementation directly
-        /// before this point in the decorator 'stack' (be it the initial implementation or a
-        /// decorator itself) will be passed to the selected implementation.  Thus this implementation
-        /// will 'wrap' the one before it.
-        /// </summary>
-        /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
-        /// <param name="resolverFunc">A function which is used to resolve the decorator object.</param>
-        ICustomizesAutofacDecorator ThenWrapWith(Func<object, IComponentContext, object> resolverFunc);
     }
 }
