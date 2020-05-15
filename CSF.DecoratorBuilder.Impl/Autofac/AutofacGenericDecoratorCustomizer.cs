@@ -1,4 +1,5 @@
 ﻿using System;
+using Autofac;
 using Autofac.Core;
 
 namespace CSF.DecoratorBuilder.Autofac
@@ -35,6 +36,20 @@ namespace CSF.DecoratorBuilder.Autofac
         {
             var customizer = builder.ThenWrapWith<TDecorator>(autofacParams);
             return new AutofacGenericDecoratorCustomizer<TService>(customizer, (TService) customizer.Implementation);
+        }
+
+        /// <summary>
+        /// Selects a decorator using a resolver function.  The implementation directly
+        /// before this point in the decorator 'stack' (be it the initial implementation or a
+        /// decorator itself) will be passed to the selected implementation.  Thus this implementation
+        /// will 'wrap' the one before it.
+        /// </summary>
+        /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
+        /// <param name="resolverFunc">A function which is used to resolve the decorator object.</param>
+        public ICustomizesAutofacDecorator<TService> ThenWrapWith(Func<TService, IComponentContext, TService> resolverFunc)
+        {
+            var customizer = builder.ThenWrapWith((wrapped, ctx) => resolverFunc((TService)wrapped, ctx));
+            return new AutofacGenericDecoratorCustomizer<TService>(customizer, (TService)customizer.Implementation);
         }
 
         /// <summary>
