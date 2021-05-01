@@ -26,8 +26,10 @@
 using System;
 namespace CSF.DecoratorBuilder.Tests.SampleService
 {
-    public static class DifferentImpl
+    public class DifferentImpl
     {
         public static string ServiceMethod() => throw new NotImplementedException();
+
+        protected DifferentImpl() {}
     }
 }
