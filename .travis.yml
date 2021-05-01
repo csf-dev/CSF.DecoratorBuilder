@@ -3,7 +3,7 @@ solution: CSF.DecoratorBuilder.sln
 
 jobs:
     include:
-        -   dotnet: 5.0.5
+        -   dotnet: 5.0.2
             mono: none
 
 script:
