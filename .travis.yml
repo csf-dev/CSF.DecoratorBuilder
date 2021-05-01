@@ -3,11 +3,12 @@ solution: CSF.DecoratorBuilder.sln
 
 jobs:
     include:
-        -   dotnet: 3.1.101
-            mono: latest
+        -   dotnet: 5.0.2
+            mono: none
 
 script:
     -   dotnet build
+    -   dotnet test -c Autofac_62
     -   dotnet test -c Autofac_51
     -   dotnet test -c Autofac_50
     -   dotnet test -c Autofac_49

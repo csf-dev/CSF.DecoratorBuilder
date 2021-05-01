@@ -6,7 +6,7 @@
     <Authors>craigfowler</Authors>
     <Title>Decorator builder: Interfaces</Title>
     <Description>Interfaces for a builder &amp; a factory service that creates services using the decorator pattern</Description>
-    <ReleaseVersion>2.0.0</ReleaseVersion>
+    <ReleaseVersion>2.1.0</ReleaseVersion>
     <Version>$(ReleaseVersion)</Version>
     <PackageVersion>$(ReleaseVersion)</PackageVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -32,5 +32,8 @@
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\CSF.DecoratorBuilder.xml</DocumentationFile>
   </PropertyGroup>
     
-  <Import Project="..\Tools\EnableNet45BuildOnUnix.targets" />
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="all" />
+  </ItemGroup>
+  
 </Project>

@@ -28,6 +28,6 @@ namespace CSF.DecoratorBuilder.Tests.SampleService
 {
     public class DifferentImpl
     {
-        public string ServiceMethod() => throw new NotImplementedException();
+        public static string ServiceMethod() => throw new NotImplementedException();
     }
 }

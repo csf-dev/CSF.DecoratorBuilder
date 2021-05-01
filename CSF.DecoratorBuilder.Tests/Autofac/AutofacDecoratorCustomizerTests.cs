@@ -59,7 +59,7 @@ namespace CSF.DecoratorBuilder.Tests.Autofac
                 .Setup(x => x.Resolve<ServiceImpl2>(It.IsAny<IEnumerable<Parameter>>()))
                 .Returns(impl);
 
-            var result = (AutofacDecoratorCustomizer) sut.ThenWrapWith<ServiceImpl2>();
+            var result = sut.ThenWrapWith<ServiceImpl2>();
 
             Assert.That(result?.Implementation, Is.SameAs(impl));
         }
@@ -75,7 +75,7 @@ namespace CSF.DecoratorBuilder.Tests.Autofac
                 .Setup(x => x.Resolve<ServiceImpl2>(It.Is<IEnumerable<Parameter>>(p => parameters.All(y => p.Contains(y)))))
                 .Returns(impl);
 
-            var result = (AutofacDecoratorCustomizer) sut.ThenWrapWith<ServiceImpl2>(parameters);
+            var result = sut.ThenWrapWith<ServiceImpl2>(parameters);
 
             Assert.That(result?.Implementation, Is.SameAs(impl));
         }
@@ -91,7 +91,7 @@ namespace CSF.DecoratorBuilder.Tests.Autofac
                 .Setup(x => x.Resolve<ServiceImpl2>(It.Is<IEnumerable<Parameter>>(p => p.OfType<TypedParameter>().Any(a => a.Type == typeof(IServiceInterface) && a.Value == initialImpl))))
                 .Returns(impl);
 
-            var result = (AutofacDecoratorCustomizer) sut.ThenWrapWith<ServiceImpl2>(parameters);
+            var result = sut.ThenWrapWith<ServiceImpl2>(parameters);
 
             Assert.That(result?.Implementation, Is.SameAs(impl));
         }
@@ -119,7 +119,7 @@ namespace CSF.DecoratorBuilder.Tests.Autofac
                 .Setup(x => x.Resolve(typeof(ServiceImpl2), It.IsAny<IEnumerable<Parameter>>()))
                 .Returns(impl);
 
-            var result = (AutofacDecoratorCustomizer) sut.ThenWrapWithType(typeof(ServiceImpl2));
+            var result = sut.ThenWrapWithType(typeof(ServiceImpl2));
 
             Assert.That(result?.Implementation, Is.SameAs(impl));
         }
@@ -135,7 +135,7 @@ namespace CSF.DecoratorBuilder.Tests.Autofac
                 .Setup(x => x.Resolve(typeof(ServiceImpl2), It.Is<IEnumerable<Parameter>>(p => parameters.All(y => p.Contains(y)))))
                 .Returns(impl);
 
-            var result = (AutofacDecoratorCustomizer) sut.ThenWrapWithType(typeof(ServiceImpl2), parameters);
+            var result = sut.ThenWrapWithType(typeof(ServiceImpl2), parameters);
 
             Assert.That(result?.Implementation, Is.SameAs(impl));
         }
@@ -151,7 +151,7 @@ namespace CSF.DecoratorBuilder.Tests.Autofac
                 .Setup(x => x.Resolve(typeof(ServiceImpl2), It.Is<IEnumerable<Parameter>>(p => p.OfType<TypedParameter>().Any(a => a.Type == typeof(IServiceInterface) && a.Value == initialImpl))))
                 .Returns(impl);
 
-            var result = (AutofacDecoratorCustomizer) sut.ThenWrapWithType(typeof(ServiceImpl2), parameters);
+            var result = sut.ThenWrapWithType(typeof(ServiceImpl2), parameters);
 
             Assert.That(result?.Implementation, Is.SameAs(impl));
         }
