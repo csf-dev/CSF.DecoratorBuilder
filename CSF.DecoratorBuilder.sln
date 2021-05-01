@@ -1,5 +1,4 @@
-
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28701.123
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -29,6 +28,7 @@ Global
 		Autofac_49|Any CPU = Autofac_49|Any CPU
 		Autofac_50|Any CPU = Autofac_50|Any CPU
 		Autofac_51|Any CPU = Autofac_51|Any CPU
+		Autofac_62|Any CPU = Autofac_62|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{58597BD3-6B55-4B0E-B6E6-425D6A9DD539}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -43,6 +43,8 @@ Global
 		{58597BD3-6B55-4B0E-B6E6-425D6A9DD539}.Autofac_50|Any CPU.Build.0 = Autofac_50|Any CPU
 		{58597BD3-6B55-4B0E-B6E6-425D6A9DD539}.Autofac_51|Any CPU.ActiveCfg = Autofac_51|Any CPU
 		{58597BD3-6B55-4B0E-B6E6-425D6A9DD539}.Autofac_51|Any CPU.Build.0 = Autofac_51|Any CPU
+		{58597BD3-6B55-4B0E-B6E6-425D6A9DD539}.Autofac_62|Any CPU.ActiveCfg = Autofac_62|Any CPU
+		{58597BD3-6B55-4B0E-B6E6-425D6A9DD539}.Autofac_62|Any CPU.Build.0 = Autofac_62|Any CPU
 		{4A164FCB-0BCA-48AE-8224-3143E60B924D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4A164FCB-0BCA-48AE-8224-3143E60B924D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A164FCB-0BCA-48AE-8224-3143E60B924D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -55,6 +57,8 @@ Global
 		{4A164FCB-0BCA-48AE-8224-3143E60B924D}.Autofac_50|Any CPU.Build.0 = Debug|Any CPU
 		{4A164FCB-0BCA-48AE-8224-3143E60B924D}.Autofac_51|Any CPU.ActiveCfg = Debug|Any CPU
 		{4A164FCB-0BCA-48AE-8224-3143E60B924D}.Autofac_51|Any CPU.Build.0 = Debug|Any CPU
+		{4A164FCB-0BCA-48AE-8224-3143E60B924D}.Autofac_62|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A164FCB-0BCA-48AE-8224-3143E60B924D}.Autofac_62|Any CPU.Build.0 = Debug|Any CPU
 		{C989363A-0B80-4F22-963B-11652E4062D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C989363A-0B80-4F22-963B-11652E4062D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C989363A-0B80-4F22-963B-11652E4062D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -67,6 +71,8 @@ Global
 		{C989363A-0B80-4F22-963B-11652E4062D2}.Autofac_50|Any CPU.Build.0 = Autofac_50|Any CPU
 		{C989363A-0B80-4F22-963B-11652E4062D2}.Autofac_51|Any CPU.ActiveCfg = Autofac_51|Any CPU
 		{C989363A-0B80-4F22-963B-11652E4062D2}.Autofac_51|Any CPU.Build.0 = Autofac_51|Any CPU
+		{C989363A-0B80-4F22-963B-11652E4062D2}.Autofac_62|Any CPU.ActiveCfg = Autofac_62|Any CPU
+		{C989363A-0B80-4F22-963B-11652E4062D2}.Autofac_62|Any CPU.Build.0 = Autofac_62|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

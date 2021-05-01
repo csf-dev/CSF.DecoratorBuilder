@@ -6,6 +6,7 @@
     <TargetFrameworks Condition="'$(Configuration)' == 'Autofac_49'">netstandard1.1;netstandard2.0;netstandard2.1;net45;net461</TargetFrameworks>
     <TargetFrameworks Condition="'$(Configuration)' == 'Autofac_50'">netstandard2.0;netstandard2.1;net461</TargetFrameworks>
     <TargetFrameworks Condition="'$(Configuration)' == 'Autofac_51'">netstandard2.0;netstandard2.1;net461</TargetFrameworks>
+    <TargetFrameworks Condition="'$(Configuration)' == 'Autofac_62'">netstandard2.0;netstandard2.1;net5.0</TargetFrameworks>
     <ReleaseVersion>2.0.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup>
@@ -37,6 +38,11 @@
     <OutputPath>bin\$(Configuration)</OutputPath>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\CSF.DecoratorBuilder.Impl.xml</DocumentationFile>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Autofac_62|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <OutputPath>bin\$(Configuration)</OutputPath>
+  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Autofac_51|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>portable</DebugType>
@@ -59,11 +65,12 @@
   </PropertyGroup>
     
   <ItemGroup>
-    <PackageReference Include="Autofac" Version="[4.0.1,6.0.0)" Condition="'$(Configuration)' == 'Debug' or '$(Configuration)' == 'Release'" />
+    <PackageReference Include="Autofac" Version="[4.0.1,7.0.0)" Condition="'$(Configuration)' == 'Debug' or '$(Configuration)' == 'Release'" />
     <PackageReference Include="Autofac" Version="4.0.1" Condition="'$(Configuration)' == 'Autofac_40'" />
     <PackageReference Include="Autofac" Version="4.9.4" Condition="'$(Configuration)' == 'Autofac_49'" />
     <PackageReference Include="Autofac" Version="5.0.0" Condition="'$(Configuration)' == 'Autofac_50'" />
     <PackageReference Include="Autofac" Version="5.1.2" Condition="'$(Configuration)' == 'Autofac_51'" />
+    <PackageReference Include="Autofac" Version="6.2.0" Condition="'$(Configuration)' == 'Autofac_62'" />
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="all" />
   </ItemGroup>
 
