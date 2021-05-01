@@ -32,5 +32,8 @@
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\CSF.DecoratorBuilder.xml</DocumentationFile>
   </PropertyGroup>
     
-  <Import Project="..\Tools\EnableNet45BuildOnUnix.targets" />
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="all" />
+  </ItemGroup>
+  
 </Project>
