@@ -19,7 +19,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{F4BDF84A
 	ProjectSection(SolutionItems) = preProject
 		.appveyor.yml = .appveyor.yml
 		.travis.yml = .travis.yml
-		Tools\EnableNet45BuildOnUnix.targets = Tools\EnableNet45BuildOnUnix.targets
 	EndProjectSection
 EndProject
 Global
@@ -74,14 +73,5 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D53086AF-237B-4520-9662-2D595DA3E222}
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		Policies = $0
-		$0.TextStylePolicy = $1
-		$1.TabsToSpaces = True
-		$1.NoTabsAfterNonTabs = True
-		$1.EolMarker = Unix
-		$1.scope = text/plain
-		version = 2.0.0
 	EndGlobalSection
 EndGlobal

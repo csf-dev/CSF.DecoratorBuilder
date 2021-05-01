@@ -64,6 +64,7 @@
     <PackageReference Include="Autofac" Version="4.9.4" Condition="'$(Configuration)' == 'Autofac_49'" />
     <PackageReference Include="Autofac" Version="5.0.0" Condition="'$(Configuration)' == 'Autofac_50'" />
     <PackageReference Include="Autofac" Version="5.1.2" Condition="'$(Configuration)' == 'Autofac_51'" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
@@ -73,6 +74,4 @@
     <Folder Include="Autofac\" />
     <Folder Include="NonAutofac\" />
   </ItemGroup>
-    
-  <Import Project="..\Tools\EnableNet45BuildOnUnix.targets" />
 </Project>
