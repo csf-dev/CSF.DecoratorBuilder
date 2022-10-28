@@ -65,7 +65,7 @@
     <Folder Include="NonAutofac\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CSF.DecoratorBuilder\CSF.DecoratorBuilder.csproj" />
-    <ProjectReference Include="..\CSF.DecoratorBuilder.Impl\CSF.DecoratorBuilder.Impl.csproj" />
+    <ProjectReference Include="..\CSF.DecoratorBuilder.Abstractions\CSF.DecoratorBuilder.Abstractions.csproj" />
+    <ProjectReference Include="..\CSF.DecoratorBuilder.Autofac\CSF.DecoratorBuilder.Autofac.csproj" />
   </ItemGroup>
 </Project>

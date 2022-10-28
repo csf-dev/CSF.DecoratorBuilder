@@ -2,9 +2,9 @@
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28701.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSF.DecoratorBuilder.Impl", "CSF.DecoratorBuilder.Impl\CSF.DecoratorBuilder.Impl.csproj", "{58597BD3-6B55-4B0E-B6E6-425D6A9DD539}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSF.DecoratorBuilder.Autofac", "CSF.DecoratorBuilder.Autofac\CSF.DecoratorBuilder.Autofac.csproj", "{58597BD3-6B55-4B0E-B6E6-425D6A9DD539}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSF.DecoratorBuilder", "CSF.DecoratorBuilder\CSF.DecoratorBuilder.csproj", "{4A164FCB-0BCA-48AE-8224-3143E60B924D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSF.DecoratorBuilder.Abstractions", "CSF.DecoratorBuilder.Abstractions\CSF.DecoratorBuilder.Abstractions.csproj", "{4A164FCB-0BCA-48AE-8224-3143E60B924D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSF.DecoratorBuilder.Tests", "CSF.DecoratorBuilder.Tests\CSF.DecoratorBuilder.Tests.csproj", "{C989363A-0B80-4F22-963B-11652E4062D2}"
 EndProject
@@ -19,6 +19,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{F4BDF84A
 		.appveyor.yml = .appveyor.yml
 		.travis.yml = .travis.yml
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSF.DecoratorBuilder.Extensions.DependencyInjection", "CSF.DecoratorBuilder.Extensions.DependencyInjection\CSF.DecoratorBuilder.Extensions.DependencyInjection.csproj", "{CB76BEA6-50D1-4F20-AA77-59B8558C5B2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSF.DecoratorBuilder.Common", "CSF.DecoratorBuilder.Common\CSF.DecoratorBuilder.Common.csproj", "{D47EB477-F441-4746-BC06-586D473621F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +77,34 @@ Global
 		{C989363A-0B80-4F22-963B-11652E4062D2}.Autofac_51|Any CPU.Build.0 = Autofac_51|Any CPU
 		{C989363A-0B80-4F22-963B-11652E4062D2}.Autofac_62|Any CPU.ActiveCfg = Autofac_62|Any CPU
 		{C989363A-0B80-4F22-963B-11652E4062D2}.Autofac_62|Any CPU.Build.0 = Autofac_62|Any CPU
+		{CB76BEA6-50D1-4F20-AA77-59B8558C5B2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB76BEA6-50D1-4F20-AA77-59B8558C5B2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB76BEA6-50D1-4F20-AA77-59B8558C5B2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB76BEA6-50D1-4F20-AA77-59B8558C5B2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB76BEA6-50D1-4F20-AA77-59B8558C5B2D}.Autofac_40|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB76BEA6-50D1-4F20-AA77-59B8558C5B2D}.Autofac_40|Any CPU.Build.0 = Debug|Any CPU
+		{CB76BEA6-50D1-4F20-AA77-59B8558C5B2D}.Autofac_49|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB76BEA6-50D1-4F20-AA77-59B8558C5B2D}.Autofac_49|Any CPU.Build.0 = Debug|Any CPU
+		{CB76BEA6-50D1-4F20-AA77-59B8558C5B2D}.Autofac_50|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB76BEA6-50D1-4F20-AA77-59B8558C5B2D}.Autofac_50|Any CPU.Build.0 = Debug|Any CPU
+		{CB76BEA6-50D1-4F20-AA77-59B8558C5B2D}.Autofac_51|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB76BEA6-50D1-4F20-AA77-59B8558C5B2D}.Autofac_51|Any CPU.Build.0 = Debug|Any CPU
+		{CB76BEA6-50D1-4F20-AA77-59B8558C5B2D}.Autofac_62|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB76BEA6-50D1-4F20-AA77-59B8558C5B2D}.Autofac_62|Any CPU.Build.0 = Debug|Any CPU
+		{D47EB477-F441-4746-BC06-586D473621F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D47EB477-F441-4746-BC06-586D473621F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D47EB477-F441-4746-BC06-586D473621F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D47EB477-F441-4746-BC06-586D473621F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D47EB477-F441-4746-BC06-586D473621F9}.Autofac_40|Any CPU.ActiveCfg = Debug|Any CPU
+		{D47EB477-F441-4746-BC06-586D473621F9}.Autofac_40|Any CPU.Build.0 = Debug|Any CPU
+		{D47EB477-F441-4746-BC06-586D473621F9}.Autofac_49|Any CPU.ActiveCfg = Debug|Any CPU
+		{D47EB477-F441-4746-BC06-586D473621F9}.Autofac_49|Any CPU.Build.0 = Debug|Any CPU
+		{D47EB477-F441-4746-BC06-586D473621F9}.Autofac_50|Any CPU.ActiveCfg = Debug|Any CPU
+		{D47EB477-F441-4746-BC06-586D473621F9}.Autofac_50|Any CPU.Build.0 = Debug|Any CPU
+		{D47EB477-F441-4746-BC06-586D473621F9}.Autofac_51|Any CPU.ActiveCfg = Debug|Any CPU
+		{D47EB477-F441-4746-BC06-586D473621F9}.Autofac_51|Any CPU.Build.0 = Debug|Any CPU
+		{D47EB477-F441-4746-BC06-586D473621F9}.Autofac_62|Any CPU.ActiveCfg = Debug|Any CPU
+		{D47EB477-F441-4746-BC06-586D473621F9}.Autofac_62|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
