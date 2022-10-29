@@ -15,6 +15,7 @@
     
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.2.0" Condition="'$(Configuration)' == 'Debug' or '$(Configuration)' == 'Release'" />
+    <PackageReference Include="Autofac" Version="[4.2.0]" Condition="'$(Configuration)' == 'Autofac_42'" />
     <PackageReference Include="Autofac" Version="[4.9.4]" Condition="'$(Configuration)' == 'Autofac_49'" />
     <PackageReference Include="Autofac" Version="[5.0.0]" Condition="'$(Configuration)' == 'Autofac_50'" />
     <PackageReference Include="Autofac" Version="[5.1.2]" Condition="'$(Configuration)' == 'Autofac_51'" />

@@ -51,7 +51,7 @@ test_script:
     - dotnet test -c Autofac_51
     - dotnet test -c Autofac_50
     - dotnet test -c Autofac_49
-    - dotnet test -c Autofac_40
+    - dotnet test -c Autofac_42
 
 after_test:
     - cmd: >
