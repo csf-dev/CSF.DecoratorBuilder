@@ -53,7 +53,7 @@ namespace CSF.DecoratorBuilder
             ServicesToResolve.Enqueue(serviceInfo);
         }
 
-        ServiceResolutionInfo GetServiceResolutionInfo(Type serviceType, Type type, IEnumerable<ITypedResolvable> parameters)
+        static ServiceResolutionInfo GetServiceResolutionInfo(Type serviceType, Type type, IEnumerable<ITypedResolvable> parameters)
         {
             if (serviceType is null)
                 throw new ArgumentNullException(nameof(serviceType));
