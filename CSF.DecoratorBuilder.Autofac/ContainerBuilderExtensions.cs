@@ -25,11 +25,11 @@
 // THE SOFTWARE.
 using System;
 using System.Linq;
-using Autofac;
 using Autofac.Builder;
 using Autofac.Core;
+using CSF.DecoratorBuilder;
 
-namespace CSF.DecoratorBuilder
+namespace Autofac
 {
     /// <summary>
     /// Extension methods for the Autofac <c>ContainerBuilder</c>.

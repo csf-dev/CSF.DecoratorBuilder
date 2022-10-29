@@ -9,6 +9,7 @@ namespace CSF.DecoratorBuilder.Tests
     [TestFixture, Parallelizable(ParallelScope.Self)]
     public class DecoratorBuilderIntegrationTests
     {
+        /*
         IContainer container;
 
         [OneTimeSetUp]
@@ -151,5 +152,6 @@ namespace CSF.DecoratorBuilder.Tests
         }
 
         #endregion
+        */
     }
 }
