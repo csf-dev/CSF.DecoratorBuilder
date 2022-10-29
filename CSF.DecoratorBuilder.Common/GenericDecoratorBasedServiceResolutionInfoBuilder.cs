@@ -24,28 +24,28 @@ namespace CSF.DecoratorBuilder
         /// <inheritdoc/>
         public ICustomizesDecorator<TService> UsingInitialImpl<TInitialImpl>(params ITypedResolvable[] parameters) where TInitialImpl : class, TService
         {
-            resolutionInfo.EnqueueServiceResolutionInfo(typeof(TService), typeof(TInitialImpl), parameters.Union(globalParameters));
+            resolutionInfo.EnqueueServiceResolutionInfo(typeof(TInitialImpl), parameters.Union(globalParameters));
             return this;
         }
 
         /// <inheritdoc/>
         public ICustomizesDecorator<TService> UsingInitialImplType(Type initialImplType, params ITypedResolvable[] parameters)
         {
-            resolutionInfo.EnqueueServiceResolutionInfo(typeof(TService), initialImplType, parameters.Union(globalParameters));
+            resolutionInfo.EnqueueServiceResolutionInfo(initialImplType, parameters.Union(globalParameters));
             return this;
         }
 
         /// <inheritdoc/>
         public ICustomizesDecorator<TService> ThenWrapWith<TDecorator>(params ITypedResolvable[] parameters) where TDecorator : class, TService
         {
-            resolutionInfo.EnqueueServiceResolutionInfo(typeof(TService), typeof(TDecorator), parameters.Union(globalParameters));
+            resolutionInfo.EnqueueServiceResolutionInfo(typeof(TDecorator), parameters.Union(globalParameters));
             return this;
         }
 
         /// <inheritdoc/>
         public ICustomizesDecorator<TService> ThenWrapWithType(Type decoratorType, params ITypedResolvable[] parameters)
         {
-            resolutionInfo.EnqueueServiceResolutionInfo(typeof(TService), decoratorType, parameters.Union(globalParameters));
+            resolutionInfo.EnqueueServiceResolutionInfo(decoratorType, parameters.Union(globalParameters));
             return this;
         }
 

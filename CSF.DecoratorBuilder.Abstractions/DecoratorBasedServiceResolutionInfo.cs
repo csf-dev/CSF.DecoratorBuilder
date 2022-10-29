@@ -44,23 +44,20 @@ namespace CSF.DecoratorBuilder
         /// Creates a new instance of <see cref="ServiceResolutionInfo"/> from the specified parameters
         /// and enqueues it within <see cref="ServicesToResolve"/>.
         /// </summary>
-        /// <param name="serviceType">The overall service type (typically an interface).</param>
         /// <param name="type">The type of the individual service to enqueue (typically a concrete class).</param>
         /// <param name="parameters">A collection of parameters for the resolution of <paramref name="type"/>.</param>
-        public void EnqueueServiceResolutionInfo(Type serviceType, Type type, IEnumerable<ITypedResolvable> parameters)
+        public void EnqueueServiceResolutionInfo(Type type, IEnumerable<ITypedResolvable> parameters)
         {
-            var serviceInfo = GetServiceResolutionInfo(serviceType, type, parameters);
+            var serviceInfo = GetServiceResolutionInfo(type, parameters);
             ServicesToResolve.Enqueue(serviceInfo);
         }
 
-        static ServiceResolutionInfo GetServiceResolutionInfo(Type serviceType, Type type, IEnumerable<ITypedResolvable> parameters)
+        ServiceResolutionInfo GetServiceResolutionInfo(Type type, IEnumerable<ITypedResolvable> parameters)
         {
-            if (serviceType is null)
-                throw new ArgumentNullException(nameof(serviceType));
             if (type is null)
                 throw new ArgumentNullException(nameof(type));
-            if(!serviceType.IsAssignableFrom(type))
-                throw new ArgumentException($"The type {type} must derive from {serviceType}.", nameof(type));
+            if(!ServiceType.IsAssignableFrom(type))
+                throw new ArgumentException($"The type {type} must derive from {ServiceType}.", nameof(type));
 
             var serviceInfo = new ServiceResolutionInfo(type);
 

@@ -45,10 +45,10 @@ namespace Autofac
         /// <typeparam name="TService">The service type, typically an interface.</typeparam>
         public static IRegistrationBuilder<TService,SimpleActivatorData,SingleRegistrationStyle>
             RegisterDecoratedService<TService>(this ContainerBuilder builder,
-                                               Func<ICreatesDecorator<TService>, Parameter[], ICustomizesDecorator<TService>> customizationFunc) where TService : class
+                                               Func<ICreatesAutofacDecorator<TService>, Parameter[], ICustomizesAutofacDecorator<TService>> customizationFunc) where TService : class
         {
             return builder.Register((ctx, parameters) => {
-                var provider = ctx.Resolve<IGetsDecoratedService>();
+                var provider = ctx.Resolve<IGetsAutofacDecoratedService>();
                 var afParams = parameters?.ToArray() ?? Array.Empty<Parameter>();
                 return provider.GetDecoratedService<TService>(creator => customizationFunc(creator, afParams));
             });
@@ -63,7 +63,7 @@ namespace Autofac
         /// <typeparam name="TService">The service type, typically an interface.</typeparam>
         public static IRegistrationBuilder<TService, SimpleActivatorData, SingleRegistrationStyle>
             RegisterDecoratedService<TService>(this ContainerBuilder builder,
-                                               Func<ICreatesDecorator<TService>, ICustomizesDecorator<TService>> customizationFunc) where TService : class
+                                               Func<ICreatesAutofacDecorator<TService>, ICustomizesAutofacDecorator<TService>> customizationFunc) where TService : class
         {
             return builder.RegisterDecoratedService<TService>((creator, afParams) => customizationFunc(creator));
         }
@@ -78,10 +78,10 @@ namespace Autofac
         public static IRegistrationBuilder<object, SimpleActivatorData, SingleRegistrationStyle>
             RegisterDecoratedServiceType(this ContainerBuilder builder,
                                          Type serviceType,
-                                         Func<ICreatesDecorator, Parameter[], ICustomizesDecorator> customizationFunc)
+                                         Func<ICreatesAutofacDecorator, Parameter[], ICustomizesAutofacDecorator> customizationFunc)
         {
             return builder.Register((ctx, parameters) => {
-                var provider = ctx.Resolve<IGetsDecoratedService>();
+                var provider = ctx.Resolve<IGetsAutofacDecoratedService>();
                 var afParams = parameters?.ToArray() ?? Array.Empty<Parameter>();
                 return provider.GetDecoratedService(serviceType, creator => customizationFunc(creator, afParams));
             });
@@ -97,7 +97,7 @@ namespace Autofac
         public static IRegistrationBuilder<object, SimpleActivatorData, SingleRegistrationStyle>
             RegisterDecoratedServiceType(this ContainerBuilder builder,
                                          Type serviceType,
-                                         Func<ICreatesDecorator, ICustomizesDecorator> customizationFunc)
+                                         Func<ICreatesAutofacDecorator, ICustomizesAutofacDecorator> customizationFunc)
         {
             return builder.RegisterDecoratedServiceType(serviceType, (creator, afParams) => customizationFunc(creator));
         }

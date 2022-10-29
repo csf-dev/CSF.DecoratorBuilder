@@ -1,5 +1,5 @@
 ﻿using System;
-namespace CSF.DecoratorBuilder.Tests.SampleService
+namespace CSF.DecoratorBuilder.SampleService
 {
     public class ServiceDecorator2 : IServiceInterface
     {
