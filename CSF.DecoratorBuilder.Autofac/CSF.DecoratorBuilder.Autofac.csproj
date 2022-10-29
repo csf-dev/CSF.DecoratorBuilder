@@ -14,13 +14,13 @@
   </ItemGroup>
     
   <ItemGroup>
-    <PackageReference Include="Autofac" Version="4.9.1" Condition="'$(Configuration)' == 'Debug' or '$(Configuration)' == 'Release'" />
-    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="5.0.0" Condition="'$(Configuration)' == 'Debug' or '$(Configuration)' == 'Release'" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.1.0" />
+    <PackageReference Include="Autofac" Version="4.2.0" Condition="'$(Configuration)' == 'Debug' or '$(Configuration)' == 'Release'" />
     <PackageReference Include="Autofac" Version="[4.9.4]" Condition="'$(Configuration)' == 'Autofac_49'" />
     <PackageReference Include="Autofac" Version="[5.0.0]" Condition="'$(Configuration)' == 'Autofac_50'" />
     <PackageReference Include="Autofac" Version="[5.1.2]" Condition="'$(Configuration)' == 'Autofac_51'" />
     <PackageReference Include="Autofac" Version="[6.2.0]" Condition="'$(Configuration)' == 'Autofac_62'" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.3.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.1.0" />
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="all" />
   </ItemGroup>
 
