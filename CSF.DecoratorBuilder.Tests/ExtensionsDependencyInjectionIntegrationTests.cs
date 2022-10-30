@@ -99,5 +99,17 @@ namespace CSF.DecoratorBuilder
                 Assert.That(() => service.ServiceMethod(), Is.EqualTo("ServiceDecorator1\nServiceImpl3"));
             }
         }
+
+        [Test]
+        public void Static_registration_may_use_decorator_which_uses_resolved_parameter()
+        {
+            services.AddTransientDecorator<IServiceInterface>(d => d.UsingInitialImpl<ServiceImpl1>().ThenWrapWith<ServiceDecorator2>(new ResolvedType(typeof(int), s => 5)));
+
+            using (var serviceProvider = services.BuildServiceProvider())
+            {
+                var service = serviceProvider.GetRequiredService<IServiceInterface>();
+                Assert.That(() => service.ServiceMethod(), Is.EqualTo("ServiceDecorator2: 5\nServiceImpl1"));
+            }
+        }
     }
 }
