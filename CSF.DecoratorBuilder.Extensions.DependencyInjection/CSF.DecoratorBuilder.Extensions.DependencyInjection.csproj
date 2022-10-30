@@ -6,6 +6,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Description>Implementation logic for the creation of objects using the decorator pattern by using the Microsoft.Extensions.DependencyInjection library.</Description>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\CSF.DecoratorBuilder.Extensions.DependencyInjection.xml</DocumentationFile>
+    <NuspecFile>CSF.DecoratorBuilder.Extensions.DependencyInjection.nuspec</NuspecFile>
+    <NuspecProperties>ReleaseVersion=$(PackageVersion);Url=$(PackageProjectUrl);Description=$(Description);CopyrightStatement=$(Copyright);Configuration=$(Configuration)</NuspecProperties>
   </PropertyGroup>
     
   <ItemGroup>
@@ -14,7 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.1.0" />
   </ItemGroup>
   

@@ -6,6 +6,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Description>Implementation logic for the creation of objects using the decorator pattern by using the Autofac library.</Description>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\CSF.DecoratorBuilder.Autofac.xml</DocumentationFile>
+    <NuspecFile>CSF.DecoratorBuilder.Autofac.nuspec</NuspecFile>
+    <NuspecProperties>ReleaseVersion=$(PackageVersion);Url=$(PackageProjectUrl);Description=$(Description);CopyrightStatement=$(Copyright);Configuration=$(Configuration)</NuspecProperties>
   </PropertyGroup>
     
   <ItemGroup>
@@ -20,7 +22,6 @@
     <PackageReference Include="Autofac" Version="[6.2.0]" Condition="'$(Configuration)' == 'Autofac_62'" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.1.0" />
-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="all" />
   </ItemGroup>
 
 </Project>

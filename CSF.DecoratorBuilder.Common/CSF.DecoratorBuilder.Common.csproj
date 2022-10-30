@@ -6,14 +6,11 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Description>Common logic &amp; services for the creation of objects using the decorator pattern.</Description>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\CSF.DecoratorBuilder.Common.xml</DocumentationFile>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
         
   <ItemGroup>
     <ProjectReference Include="..\CSF.DecoratorBuilder.Abstractions\CSF.DecoratorBuilder.Abstractions.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="all" />
   </ItemGroup>
   
 </Project>

@@ -8,6 +8,20 @@ namespace CSF.DecoratorBuilder
     public class DecoratorBasedServiceResolutionInfoBuilderTests
     {
         [Test,AutoMoqData]
+        public void UsingInitialImplTypeShouldThrowIfImplementationTypeIsNull()
+        {
+            var sut = new DecoratorBasedServiceResolutionInfoBuilder(typeof(IServiceInterface));
+            Assert.That(() => sut.UsingInitialImplType(null), Throws.ArgumentNullException);
+        }
+
+        [Test,AutoMoqData]
+        public void UsingInitialImplTypeShouldThrowIfImplementationTypeDoesNotDeriveFromServiceType()
+        {
+            var sut = new DecoratorBasedServiceResolutionInfoBuilder(typeof(IServiceInterface));
+            Assert.That(() => sut.UsingInitialImplType(typeof(string)), Throws.ArgumentException);
+        }
+
+        [Test,AutoMoqData]
         public void UsingInitialImplShouldEnqueueServiceAndCombinationOfIndividualAndGlobalParameters(ITypedResolvable globalParam1,
                                                                                                       ITypedResolvable globalParam2,
                                                                                                       ITypedResolvable param3,

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>CSF.DecoratorBuilder.Extensions.DependencyInjection</id>
+    <version>$ReleaseVersion$</version>
+    <authors>craigfowler</authors>
+    <owners>craigfowler</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <projectUrl>$Url$</projectUrl>
+    <description>$Description$</description>
+    <copyright>$CopyrightStatement$</copyright>
+    <repository url="$Url$" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Microsoft.Extensions.DependencyInjection.Abstractions" version="2.1.0" />
+        <dependency id="CSF.DecoratorBuilder.Abstractions" version="$ReleaseVersion$" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin/$Configuration$/*/CSF.DecoratorBuilder.Extensions.DependencyInjection.dll" target="lib/netstandard2.0/" />
+    <file src="bin/$Configuration$/*/CSF.DecoratorBuilder.Extensions.DependencyInjection.xml" target="lib/netstandard2.0/" />
+    <file src="bin/$Configuration$/*/CSF.DecoratorBuilder.Common.dll" target="lib/netstandard2.0/" />
+    <file src="bin/$Configuration$/*/CSF.DecoratorBuilder.Common.xml" target="lib/netstandard2.0/" />
+  </files>
+</package>
