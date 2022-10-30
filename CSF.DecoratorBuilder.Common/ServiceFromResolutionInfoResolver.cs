@@ -9,7 +9,7 @@ namespace CSF.DecoratorBuilder
     /// </summary>
     public class ServiceFromResolutionInfoResolver : IGetsDecoratedServiceFromResolutionInfo
     {
-        readonly IGetsServiceFromServiceResolutionInfo serviceResolver;
+        readonly IGetsSingleObjectFromResolutionInfo serviceResolver;
 
         /// <inheritdoc/>
         public object GetDecoratedService(DecoratorBasedServiceResolutionInfo resolutionInfo)
@@ -17,7 +17,7 @@ namespace CSF.DecoratorBuilder
             if (resolutionInfo is null)
                 throw new ArgumentNullException(nameof(resolutionInfo));
             if(!resolutionInfo.ServicesToResolve.Any())
-                throw new ArgumentException($"The resolution info must contain at least one {nameof(ServiceResolutionInfo)}.", nameof(resolutionInfo));
+                throw new ArgumentException($"The resolution info must contain at least one {nameof(SingleObjectResolutionInfo)}.", nameof(resolutionInfo));
 
             object impl = null;
             while(resolutionInfo.ServicesToResolve.Any())
@@ -36,7 +36,7 @@ namespace CSF.DecoratorBuilder
         /// </summary>
         /// <param name="serviceResolver">A service resolver.</param>
         /// <exception cref="ArgumentNullException">If <paramref name="serviceResolver"/> is <see langword="null" />.</exception>
-        public ServiceFromResolutionInfoResolver(IGetsServiceFromServiceResolutionInfo serviceResolver)
+        public ServiceFromResolutionInfoResolver(IGetsSingleObjectFromResolutionInfo serviceResolver)
         {
             this.serviceResolver = serviceResolver ?? throw new ArgumentNullException(nameof(serviceResolver));
         }

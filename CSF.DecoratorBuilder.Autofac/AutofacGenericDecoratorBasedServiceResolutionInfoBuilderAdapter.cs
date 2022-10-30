@@ -1,5 +1,9 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using Autofac;
 using Autofac.Core;
+using Autofac.Extensions.DependencyInjection;
 
 namespace CSF.DecoratorBuilder
 {
@@ -12,12 +16,12 @@ namespace CSF.DecoratorBuilder
     /// </para>
     /// </remarks>
     /// <typeparam name="TService">The overall type of the service to be created.</typeparam>
-    public class AutofacGenericDecoratorBasedServiceResolutionInfoBuilderAdapter<TService> :  ICreatesAutofacDecorator<TService>,
-                                                                                              ICustomizesAutofacDecorator<TService>,
-                                                                                              IGetsDecoratorBasedServiceResolutionInfo
-        where TService : class
+    public class AutofacGenericDecoratorBasedServiceResolutionInfoBuilderAdapter<TService> : IAutofacGenericDecoratorBuilder<TService> where TService : class
     {
         readonly GenericDecoratorBasedServiceResolutionInfoBuilder<TService> wrapped;
+
+        /// <inheritdoc/>
+        public DecoratorBasedServiceResolutionInfo ResolutionInfo => wrapped.ResolutionInfo;
 
         /// <inheritdoc/>
         public ICustomizesAutofacDecorator<TService> UsingInitialImpl<TInitialImpl>(params Parameter[] parameters) where TInitialImpl : class, TService
@@ -48,7 +52,58 @@ namespace CSF.DecoratorBuilder
         }
 
         /// <inheritdoc/>
-        public DecoratorBasedServiceResolutionInfo GetResolutionInfo() => wrapped.GetResolutionInfo();
+        public ICustomizesAutofacDecorator<TService> UsingInitialImpl<TInitialImpl>(Func<IComponentContext, IEnumerable<Parameter>, TInitialImpl> factoryFunction,
+                                                                                    params Parameter[] parameters)
+            where TInitialImpl : class, TService
+        {
+            Func<IServiceProvider, IEnumerable<ITypedResolvable>, TInitialImpl> factoryFunc = null;
+            if(!(factoryFunction is null))
+                factoryFunc = (serviceProvider, @params) => factoryFunction(((AutofacServiceProvider)serviceProvider).LifetimeScope,
+                                                                            @params.Cast<ParameterAdapter>().Select(x => x.Parameter).ToList());
+            wrapped.UsingInitialImpl<TInitialImpl>(factoryFunc, parameters.Select(x => new ParameterAdapter(x)).ToArray());
+            return this;
+        }
+
+        /// <inheritdoc/>
+        public ICustomizesAutofacDecorator<TService> UsingInitialImplType(Type initialImplType,
+                                                                          Func<IComponentContext, IEnumerable<Parameter>, TService> factoryFunction,
+                                                                          params Parameter[] parameters)
+        {
+            Func<IServiceProvider, IEnumerable<ITypedResolvable>, TService> factoryFunc = null;
+            if(!(factoryFunction is null))
+                factoryFunc = (serviceProvider, @params) => factoryFunction(((AutofacServiceProvider)serviceProvider).LifetimeScope,
+                                                                            @params.Cast<ParameterAdapter>().Select(x => x.Parameter).ToList());
+            wrapped.UsingInitialImplType(initialImplType, factoryFunc, parameters.Select(x => new ParameterAdapter(x)).ToArray());
+            return this;
+        }
+
+        /// <inheritdoc/>
+        public ICustomizesAutofacDecorator<TService> ThenWrapWith<TDecorator>(Func<TService, IComponentContext, IEnumerable<Parameter>, TDecorator> factoryFunction,
+                                                                              params Parameter[] parameters)
+            where TDecorator : class, TService
+        {
+            Func<TService, IServiceProvider, IEnumerable<ITypedResolvable>, TDecorator> factoryFunc = null;
+            if(!(factoryFunction is null))
+                factoryFunc = (wrapped, serviceProvider, @params) => factoryFunction(wrapped,
+                                                                                     ((AutofacServiceProvider)serviceProvider).LifetimeScope,
+                                                                                     @params.Cast<ParameterAdapter>().Select(x => x.Parameter).ToList());
+            wrapped.ThenWrapWith<TDecorator>(factoryFunc, parameters.Select(x => new ParameterAdapter(x)).ToArray());
+            return this;
+        }
+
+        /// <inheritdoc/>
+        public ICustomizesAutofacDecorator<TService> ThenWrapWithType(Type decoratorType,
+                                                                      Func<TService, IComponentContext, IEnumerable<Parameter>, TService> factoryFunction,
+                                                                      params Parameter[] parameters)
+        {
+            Func<TService, IServiceProvider, IEnumerable<ITypedResolvable>, TService> factoryFunc = null;
+            if(!(factoryFunction is null))
+                factoryFunc = (wrapped, serviceProvider, @params) => factoryFunction(wrapped,
+                                                                                     ((AutofacServiceProvider)serviceProvider).LifetimeScope,
+                                                                                     @params.Cast<ParameterAdapter>().Select(x => x.Parameter).ToList());
+            wrapped.ThenWrapWithType(decoratorType, factoryFunc, parameters.Select(x => new ParameterAdapter(x)).ToArray());
+            return this;
+        }
 
         /// <summary>
         /// Initialises a new instance of <see cref="AutofacGenericDecoratorBasedServiceResolutionInfoBuilderAdapter{TService}"/>.
@@ -59,6 +114,5 @@ namespace CSF.DecoratorBuilder
         {
             this.wrapped = wrapped ?? throw new ArgumentNullException(nameof(wrapped));
         }
-
     }
 }

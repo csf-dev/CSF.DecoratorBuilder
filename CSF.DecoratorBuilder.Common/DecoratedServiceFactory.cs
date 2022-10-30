@@ -21,9 +21,8 @@ namespace CSF.DecoratorBuilder
 
             var builder = new GenericDecoratorBasedServiceResolutionInfoBuilder<TService>(globalParams);
             customizationFunc(builder);
-            var resolutionInfo = builder.GetResolutionInfo();
 
-            return (TService) resolver.GetDecoratedService(resolutionInfo);
+            return (TService) resolver.GetDecoratedService(builder.ResolutionInfo);
         }
 
         /// <inheritdoc/>
@@ -36,9 +35,8 @@ namespace CSF.DecoratorBuilder
 
             var builder = new DecoratorBasedServiceResolutionInfoBuilder(serviceType, globalParams);
             customizationFunc(builder);
-            var resolutionInfo = builder.GetResolutionInfo();
 
-            return resolver.GetDecoratedService(resolutionInfo);
+            return resolver.GetDecoratedService(builder.ResolutionInfo);
         }
 
         /// <summary>

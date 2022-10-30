@@ -10,18 +10,18 @@ namespace CSF.DecoratorBuilder
     /// Implementation of <see cref="IGetsDecoratedServiceFromResolutionInfo"/> which makes use of the functionality
     /// within an <see cref="IComponentContext"/> to resolve services.
     /// </summary>
-    public class AutofacServiceResolver : IGetsServiceFromServiceResolutionInfo
+    public class AutofacServiceResolver : IGetsSingleObjectFromResolutionInfo
     {
         readonly ILifetimeScope scope;
         readonly IServiceProvider services;
 
         /// <inheritdoc/>
-        public object GetService(Type serviceType, ServiceResolutionInfo resolutionInfo, object wrapped = null)
+        public object GetService(Type serviceType, SingleObjectResolutionInfo resolutionInfo, object wrapped = null)
         {
-            if (serviceType is null)
-                throw new ArgumentNullException(nameof(serviceType));
             if (resolutionInfo is null)
                 throw new ArgumentNullException(nameof(resolutionInfo));
+            if(!(resolutionInfo.ResolutionFunction is null))
+                return resolutionInfo.ResolutionFunction.Invoke(wrapped, services, resolutionInfo.Dependencies);
 
             var parameters = resolutionInfo.Dependencies.Select(GetParameter).ToList();
             if(wrapped != null)

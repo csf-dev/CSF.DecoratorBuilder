@@ -13,44 +13,101 @@ namespace CSF.DecoratorBuilder
     /// </para>
     /// </remarks>
     /// <typeparam name="TService">The overall type of the service to be created.</typeparam>
-    public class GenericDecoratorBasedServiceResolutionInfoBuilder<TService> :  ICreatesDecorator<TService>,
-                                                                                ICustomizesDecorator<TService>,
-                                                                                IGetsDecoratorBasedServiceResolutionInfo
-                                                                                where TService : class
+    public class GenericDecoratorBasedServiceResolutionInfoBuilder<TService> : IGenericDecoratorBuilder<TService>
+        where TService : class
     {
         readonly IEnumerable<ITypedResolvable> globalParameters;
-        readonly DecoratorBasedServiceResolutionInfo resolutionInfo;
+
+        /// <inheritdoc/>
+        public DecoratorBasedServiceResolutionInfo ResolutionInfo { get; }
 
         /// <inheritdoc/>
         public ICustomizesDecorator<TService> UsingInitialImpl<TInitialImpl>(params ITypedResolvable[] parameters) where TInitialImpl : class, TService
-        {
-            resolutionInfo.EnqueueServiceResolutionInfo(typeof(TInitialImpl), parameters.Union(globalParameters));
-            return this;
-        }
+            => UsingInitialImpl<TInitialImpl>(null, parameters);
 
         /// <inheritdoc/>
         public ICustomizesDecorator<TService> UsingInitialImplType(Type initialImplType, params ITypedResolvable[] parameters)
-        {
-            resolutionInfo.EnqueueServiceResolutionInfo(initialImplType, parameters.Union(globalParameters));
-            return this;
-        }
+            => UsingInitialImplType(initialImplType, null, parameters);
 
         /// <inheritdoc/>
         public ICustomizesDecorator<TService> ThenWrapWith<TDecorator>(params ITypedResolvable[] parameters) where TDecorator : class, TService
-        {
-            resolutionInfo.EnqueueServiceResolutionInfo(typeof(TDecorator), parameters.Union(globalParameters));
-            return this;
-        }
+            => ThenWrapWith<TDecorator>(null, parameters);
 
         /// <inheritdoc/>
         public ICustomizesDecorator<TService> ThenWrapWithType(Type decoratorType, params ITypedResolvable[] parameters)
+            => ThenWrapWithType(decoratorType, null, parameters);
+
+        /// <inheritdoc/>
+        public ICustomizesDecorator<TService> UsingInitialImpl<TInitialImpl>(Func<IServiceProvider, IEnumerable<ITypedResolvable>, TInitialImpl> factoryFunction,
+                                                                             params ITypedResolvable[] parameters)
+            where TInitialImpl : class, TService
         {
-            resolutionInfo.EnqueueServiceResolutionInfo(decoratorType, parameters.Union(globalParameters));
+            AssertObjectTypeImplementsServiceType(typeof(TInitialImpl));
+
+            Func<object, IServiceProvider, IEnumerable<ITypedResolvable>, object> factoryFunc = null;
+            if(!(factoryFunction is null))
+                factoryFunc = (wrapped, services, @params) => factoryFunction(services, @params);
+            
+            var objectResolutionInfo = new SingleObjectResolutionInfo(typeof(TInitialImpl), parameters.Union(globalParameters), factoryFunc);
+            ResolutionInfo.ServicesToResolve.Enqueue(objectResolutionInfo);
             return this;
         }
 
         /// <inheritdoc/>
-        public DecoratorBasedServiceResolutionInfo GetResolutionInfo() => resolutionInfo;
+        public ICustomizesDecorator<TService> UsingInitialImplType(Type initialImplType,
+                                                                   Func<IServiceProvider, IEnumerable<ITypedResolvable>, TService> factoryFunction,
+                                                                   params ITypedResolvable[] parameters)
+        {
+            AssertObjectTypeImplementsServiceType(initialImplType);
+
+            Func<object, IServiceProvider, IEnumerable<ITypedResolvable>, object> factoryFunc = null;
+            if(!(factoryFunction is null))
+                factoryFunc = (wrapped, services, @params) => factoryFunction(services, @params);
+            
+            var objectResolutionInfo = new SingleObjectResolutionInfo(initialImplType, parameters.Union(globalParameters), factoryFunc);
+            ResolutionInfo.ServicesToResolve.Enqueue(objectResolutionInfo);
+            return this;
+        }
+
+        /// <inheritdoc/>
+        public ICustomizesDecorator<TService> ThenWrapWith<TDecorator>(Func<TService, IServiceProvider, IEnumerable<ITypedResolvable>, TDecorator> factoryFunction,
+                                                                       params ITypedResolvable[] parameters)
+            where TDecorator : class, TService
+        {
+            AssertObjectTypeImplementsServiceType(typeof(TDecorator));
+
+            Func<object, IServiceProvider, IEnumerable<ITypedResolvable>, object> factoryFunc = null;
+            if(!(factoryFunction is null))
+                factoryFunc = (wrapped, services, @params) => factoryFunction((TService) wrapped, services, @params);
+            
+            var objectResolutionInfo = new SingleObjectResolutionInfo(typeof(TDecorator), parameters.Union(globalParameters), factoryFunc);
+            ResolutionInfo.ServicesToResolve.Enqueue(objectResolutionInfo);
+            return this;
+        }
+
+        /// <inheritdoc/>
+        public ICustomizesDecorator<TService> ThenWrapWithType(Type decoratorType,
+                                                               Func<TService, IServiceProvider, IEnumerable<ITypedResolvable>, TService> factoryFunction,
+                                                               params ITypedResolvable[] parameters)
+        {
+            AssertObjectTypeImplementsServiceType(decoratorType);
+
+            Func<object, IServiceProvider, IEnumerable<ITypedResolvable>, object> factoryFunc = null;
+            if(!(factoryFunction is null))
+                factoryFunc = (wrapped, services, @params) => factoryFunction((TService) wrapped, services, @params);
+            
+            var objectResolutionInfo = new SingleObjectResolutionInfo(decoratorType, parameters.Union(globalParameters), factoryFunc);
+            ResolutionInfo.ServicesToResolve.Enqueue(objectResolutionInfo);
+            return this;
+        }
+
+        void AssertObjectTypeImplementsServiceType(Type objectType)
+        {
+            if (objectType is null)
+                throw new ArgumentNullException(nameof(objectType));
+            if (!typeof(TService).IsAssignableFrom(objectType))
+                throw new ArgumentException($"The type {objectType} must derive from {typeof(TService)}.", nameof(objectType));
+        }
 
         /// <summary>
         /// Initialises a new instance of <see cref="GenericDecoratorBasedServiceResolutionInfoBuilder{TService}"/>.
@@ -59,7 +116,7 @@ namespace CSF.DecoratorBuilder
         public GenericDecoratorBasedServiceResolutionInfoBuilder(params ITypedResolvable[] globalParameters)
         {
             this.globalParameters = globalParameters;
-            resolutionInfo = new DecoratorBasedServiceResolutionInfo(typeof(TService));
+            ResolutionInfo = new DecoratorBasedServiceResolutionInfo(typeof(TService));
         }
 
     }

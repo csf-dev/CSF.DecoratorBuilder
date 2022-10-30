@@ -15,7 +15,7 @@ namespace CSF.DecoratorBuilder
         {
             var sut = new DecoratorBasedServiceResolutionInfoBuilder(typeof(IServiceInterface), globalParam1, globalParam2);
             sut.UsingInitialImpl<ServiceImpl1>(param3, param4);
-            var result = sut.GetResolutionInfo();
+            var result = sut.ResolutionInfo;
             Assert.Multiple(() =>
             {
                 Assert.That(result.ServicesToResolve, Has.Count.EqualTo(1), "One service to resolve");
@@ -33,7 +33,7 @@ namespace CSF.DecoratorBuilder
         {
             var sut = new DecoratorBasedServiceResolutionInfoBuilder(typeof(IServiceInterface), globalParam1, globalParam2);
             sut.UsingInitialImplType(typeof(ServiceImpl1), param3, param4);
-            var result = sut.GetResolutionInfo();
+            var result = sut.ResolutionInfo;
             Assert.Multiple(() =>
             {
                 Assert.That(result.ServicesToResolve, Has.Count.EqualTo(1), "One service to resolve");
@@ -51,7 +51,7 @@ namespace CSF.DecoratorBuilder
         {
             var sut = new DecoratorBasedServiceResolutionInfoBuilder(typeof(IServiceInterface), globalParam1, globalParam2);
             sut.ThenWrapWith<ServiceImpl1>(param3, param4);
-            var result = sut.GetResolutionInfo();
+            var result = sut.ResolutionInfo;
             Assert.Multiple(() =>
             {
                 Assert.That(result.ServicesToResolve, Has.Count.EqualTo(1), "One service to resolve");
@@ -69,7 +69,7 @@ namespace CSF.DecoratorBuilder
         {
             var sut = new DecoratorBasedServiceResolutionInfoBuilder(typeof(IServiceInterface), globalParam1, globalParam2);
             sut.ThenWrapWithType(typeof(ServiceImpl1), param3, param4);
-            var result = sut.GetResolutionInfo();
+            var result = sut.ResolutionInfo;
             Assert.Multiple(() =>
             {
                 Assert.That(result.ServicesToResolve, Has.Count.EqualTo(1), "One service to resolve");

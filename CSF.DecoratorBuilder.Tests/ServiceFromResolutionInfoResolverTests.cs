@@ -22,16 +22,16 @@ namespace CSF.DecoratorBuilder
         }
 
         [Test,AutoMoqData]
-        public void GetDecoratedServiceShouldReturnTheExpectedResultInAThreeClassDecoratorStack([Frozen] IGetsServiceFromServiceResolutionInfo resolver,
+        public void GetDecoratedServiceShouldReturnTheExpectedResultInAThreeClassDecoratorStack([Frozen] IGetsSingleObjectFromResolutionInfo resolver,
                                                                                                 ServiceFromResolutionInfoResolver sut,
                                                                                                 IServiceInterface result1,
                                                                                                 IServiceInterface result2,
                                                                                                 IServiceInterface result3)
         {
-            ServiceResolutionInfo
-                serviceInfo1 = new ServiceResolutionInfo(typeof(ServiceImpl1)),
-                serviceInfo2 = new ServiceResolutionInfo(typeof(ServiceDecorator1)),
-                serviceInfo3 = new ServiceResolutionInfo(typeof(ServiceDecorator2));
+            SingleObjectResolutionInfo
+                serviceInfo1 = new SingleObjectResolutionInfo(typeof(ServiceImpl1)),
+                serviceInfo2 = new SingleObjectResolutionInfo(typeof(ServiceDecorator1)),
+                serviceInfo3 = new SingleObjectResolutionInfo(typeof(ServiceDecorator2));
             var resolutionInfo = new DecoratorBasedServiceResolutionInfo(typeof(IServiceInterface));
             resolutionInfo.ServicesToResolve.Enqueue(serviceInfo1);
             resolutionInfo.ServicesToResolve.Enqueue(serviceInfo2);

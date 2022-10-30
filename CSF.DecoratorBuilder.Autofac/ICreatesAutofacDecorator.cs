@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using Autofac;
 using Autofac.Core;
 
 namespace CSF.DecoratorBuilder
@@ -9,7 +11,7 @@ namespace CSF.DecoratorBuilder
     /// not a decorator type.
     /// </summary>
     /// <typeparam name="TService">The service type, typically an interface.</typeparam>
-    public interface ICreatesAutofacDecorator<in TService> where TService : class
+    public interface ICreatesAutofacDecorator<TService> where TService : class
     {
         /// <summary>
         /// Selects the initial implementation type using a generic type parameter.
@@ -27,6 +29,28 @@ namespace CSF.DecoratorBuilder
         /// <param name="initialImplType">The type of the initial concrete implementation.</param>
         /// <param name="parameters">An optional collection of <see cref="Parameter"/>.</param>
         ICustomizesAutofacDecorator<TService> UsingInitialImplType(Type initialImplType, params Parameter[] parameters);
+
+        /// <summary>
+        /// Selects the initial implementation type using a generic type parameter.
+        /// </summary>
+        /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
+        /// <param name="factoryFunction">A function which creates the instance of the implementation type.</param>
+        /// <param name="parameters">An optional collection of <see cref="Parameter"/>.</param>
+        /// <typeparam name="TInitialImpl">The type of the initial concrete implementation.</typeparam>
+        ICustomizesAutofacDecorator<TService> UsingInitialImpl<TInitialImpl>(Func<IComponentContext,IEnumerable<Parameter>,TInitialImpl> factoryFunction,
+                                                                             params Parameter[] parameters)
+            where TInitialImpl : class, TService;
+
+        /// <summary>
+        /// Selects the initial implementation type.
+        /// </summary>
+        /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
+        /// <param name="initialImplType">The type of the initial concrete implementation.</param>
+        /// <param name="factoryFunction">A function which creates the instance of the implementation type.</param>
+        /// <param name="parameters">An optional collection of <see cref="Parameter"/>.</param>
+        ICustomizesAutofacDecorator<TService> UsingInitialImplType(Type initialImplType,
+                                                                   Func<IComponentContext,IEnumerable<Parameter>,TService> factoryFunction,
+                                                                   params Parameter[] parameters);
     }
 
     /// <summary>
@@ -52,5 +76,24 @@ namespace CSF.DecoratorBuilder
         /// <param name="initialImplType">The type of the initial concrete implementation.</param>
         /// <param name="parameters">An optional collection of <see cref="Parameter"/>.</param>
         ICustomizesAutofacDecorator UsingInitialImplType(Type initialImplType, params Parameter[] parameters);
+
+        /// <summary>
+        /// Selects the initial implementation type using a generic type parameter.
+        /// </summary>
+        /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
+        /// <param name="factoryFunction">A function which creates the instance of the implementation type.</param>
+        /// <param name="parameters">An optional collection of <see cref="Parameter"/>.</param>
+        /// <typeparam name="TInitialImpl">The type of the initial concrete implementation.</typeparam>
+        ICustomizesAutofacDecorator UsingInitialImpl<TInitialImpl>(Func<IComponentContext,IEnumerable<Parameter>,TInitialImpl> factoryFunction, params Parameter[] parameters)
+            where TInitialImpl : class;
+
+        /// <summary>
+        /// Selects the initial implementation type.
+        /// </summary>
+        /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
+        /// <param name="initialImplType">The type of the initial concrete implementation.</param>
+        /// <param name="factoryFunction">A function which creates the instance of the implementation type.</param>
+        /// <param name="parameters">An optional collection of <see cref="Parameter"/>.</param>
+        ICustomizesAutofacDecorator UsingInitialImplType(Type initialImplType, Func<IComponentContext,IEnumerable<Parameter>,object> factoryFunction, params Parameter[] parameters);
     }
 }

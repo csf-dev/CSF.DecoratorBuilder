@@ -23,9 +23,8 @@ namespace CSF.DecoratorBuilder
             var builder = new GenericDecoratorBasedServiceResolutionInfoBuilder<TService>(globalParams.ToTypedResolvables());
             var autofacBuilder = new AutofacGenericDecoratorBasedServiceResolutionInfoBuilderAdapter<TService>(builder);
             customizationFunc(autofacBuilder);
-            var resolutionInfo = autofacBuilder.GetResolutionInfo();
 
-            return (TService) resolver.GetDecoratedService(resolutionInfo);
+            return (TService) resolver.GetDecoratedService(autofacBuilder.ResolutionInfo);
         }
 
         /// <inheritdoc/>
@@ -39,9 +38,8 @@ namespace CSF.DecoratorBuilder
             var builder = new DecoratorBasedServiceResolutionInfoBuilder(serviceType, globalParams.ToTypedResolvables());
             var autofacBuilder = new AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter(builder);
             customizationFunc(autofacBuilder);
-            var resolutionInfo = autofacBuilder.GetResolutionInfo();
 
-            return resolver.GetDecoratedService(resolutionInfo);
+            return resolver.GetDecoratedService(autofacBuilder.ResolutionInfo);
         }
 
         /// <summary>

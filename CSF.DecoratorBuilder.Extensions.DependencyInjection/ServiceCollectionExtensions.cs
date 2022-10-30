@@ -18,7 +18,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <list type="bullet">
         /// <item><description><see cref="IGetsDecoratedService"/></description></item>
         /// <item><description><see cref="IGetsDecoratedServiceFromResolutionInfo"/></description></item>
-        /// <item><description><see cref="IGetsServiceFromServiceResolutionInfo"/></description></item>
+        /// <item><description><see cref="IGetsSingleObjectFromResolutionInfo"/></description></item>
         /// </list>
         /// <para>
         /// This method must be used in order to activate the decorator builder functionality within
@@ -34,7 +34,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
             services.AddTransient<IGetsDecoratedService, DecoratedServiceFactory>();
             services.AddTransient<IGetsDecoratedServiceFromResolutionInfo, ServiceFromResolutionInfoResolver>();
-            services.AddTransient<IGetsServiceFromServiceResolutionInfo, DependencyInjectionServiceResolver>();
+            services.AddTransient<IGetsSingleObjectFromResolutionInfo, DependencyInjectionObjectResolver>();
         }
 
         /// <summary>
