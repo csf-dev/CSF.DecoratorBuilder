@@ -71,17 +71,6 @@ namespace CSF.DecoratorBuilder
         }
 
         [Test]
-        public void Non_autofac_service_factory_can_get_decorated_service_with_runtime_typed_parameter()
-        {
-            using (var scope = container.BeginLifetimeScope())
-            {
-                var factory = scope.Resolve<NonAutofacServiceFactory>();
-                var service = factory.GetService(66);
-                Assert.That(() => service.ServiceMethod(), Is.EqualTo("ServiceDecorator1\nServiceDecorator2: 66\nServiceImpl2"));
-            }
-        }
-
-        [Test]
         public void Autofac_nongeneric_service_factory_can_get_decorated_service_with_runtime_named_parameter()
         {
             using (var scope = container.BeginLifetimeScope())
@@ -91,19 +80,6 @@ namespace CSF.DecoratorBuilder
 
                 Assert.That(service, Is.InstanceOf<IServiceInterface>(), "Service must be correct type");
                 Assert.That(() => ((IServiceInterface) service).ServiceMethod(), Is.EqualTo("ServiceDecorator1\nServiceDecorator2: 22\nServiceImpl2"));
-            }
-        }
-
-        [Test]
-        public void Non_autofac_nongeneric_service_factory_can_get_decorated_service_with_runtime_typed_parameter()
-        {
-            using (var scope = container.BeginLifetimeScope())
-            {
-                var factory = scope.Resolve<NonAutofacNonGenericServiceFactory>();
-                var service = factory.GetService(66);
-
-                Assert.That(service, Is.InstanceOf<IServiceInterface>(), "Service must be correct type");
-                Assert.That(() => ((IServiceInterface) service).ServiceMethod(), Is.EqualTo("ServiceDecorator1\nServiceDecorator2: 66\nServiceImpl2"));
             }
         }
 

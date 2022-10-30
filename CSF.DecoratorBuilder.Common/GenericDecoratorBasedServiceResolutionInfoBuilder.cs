@@ -101,7 +101,7 @@ namespace CSF.DecoratorBuilder
             return this;
         }
 
-        void AssertObjectTypeImplementsServiceType(Type objectType)
+        static void AssertObjectTypeImplementsServiceType(Type objectType)
         {
             if (objectType is null)
                 throw new ArgumentNullException(nameof(objectType));

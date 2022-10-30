@@ -55,6 +55,7 @@
     </PackageReference>
     <PackageReference Include="NunitXml.TestLogger" Version="2.1.41" />
     <PackageReference Include="System.ComponentModel.TypeConverter" Version="4.3.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -66,5 +67,6 @@
   <ItemGroup>
     <ProjectReference Include="..\CSF.DecoratorBuilder.Abstractions\CSF.DecoratorBuilder.Abstractions.csproj" />
     <ProjectReference Include="..\CSF.DecoratorBuilder.Autofac\CSF.DecoratorBuilder.Autofac.csproj" />
+    <ProjectReference Include="..\CSF.DecoratorBuilder.Extensions.DependencyInjection\CSF.DecoratorBuilder.Extensions.DependencyInjection.csproj" />
   </ItemGroup>
 </Project>

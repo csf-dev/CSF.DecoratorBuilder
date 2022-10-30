@@ -18,7 +18,7 @@ namespace CSF.DecoratorBuilder
     /// <typeparam name="TService">The overall type of the service to be created.</typeparam>
     public class AutofacGenericDecoratorBasedServiceResolutionInfoBuilderAdapter<TService> : IAutofacGenericDecoratorBuilder<TService> where TService : class
     {
-        readonly GenericDecoratorBasedServiceResolutionInfoBuilder<TService> wrapped;
+        readonly IGenericDecoratorBuilder<TService> wrapped;
 
         /// <inheritdoc/>
         public DecoratorBasedServiceResolutionInfo ResolutionInfo => wrapped.ResolutionInfo;
@@ -110,7 +110,7 @@ namespace CSF.DecoratorBuilder
         /// </summary>
         /// <param name="wrapped">The wrapped builder</param>
         /// <exception cref="ArgumentNullException">If <paramref name="wrapped"/> is <see langword="null" />.</exception>
-        public AutofacGenericDecoratorBasedServiceResolutionInfoBuilderAdapter(GenericDecoratorBasedServiceResolutionInfoBuilder<TService> wrapped)
+        public AutofacGenericDecoratorBasedServiceResolutionInfoBuilderAdapter(IGenericDecoratorBuilder<TService> wrapped)
         {
             this.wrapped = wrapped ?? throw new ArgumentNullException(nameof(wrapped));
         }
