@@ -10,6 +10,12 @@ namespace CSF.DecoratorBuilder
     public class DecoratedServiceFactoryTests
     {
         [Test,AutoMoqData]
+        public void GetDecoratedServiceGenericShouldThrowIfCustomizationFunctionIsNull(DecoratedServiceFactory sut)
+        {
+            Assert.That(() => sut.GetDecoratedService<IServiceInterface>(null), Throws.ArgumentNullException);
+        }
+
+        [Test,AutoMoqData]
         public void GetDecoratedServiceGenericShouldReturnServiceFromResolverWithCustomisedResolutionInfo([Frozen] IGetsDecoratedServiceFromResolutionInfo resolver,
                                                                                                           ITypedResolvable param1,
                                                                                                           ITypedResolvable param2,
@@ -25,6 +31,12 @@ namespace CSF.DecoratorBuilder
             
             Assert.That(() => sut.GetDecoratedService<IServiceInterface>(x => x.UsingInitialImpl<ServiceImpl1>().ThenWrapWith<ServiceDecorator1>(), param1, param2),
                         Is.SameAs(expectedResult));
+        }
+
+        [Test,AutoMoqData]
+        public void GetDecoratedServiceNonGenericShouldThrowIfCustomizationFunctionIsNull(DecoratedServiceFactory sut)
+        {
+            Assert.That(() => sut.GetDecoratedService(typeof(object), null), Throws.ArgumentNullException);
         }
 
         [Test,AutoMoqData]

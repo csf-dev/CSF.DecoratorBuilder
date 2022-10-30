@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using Autofac;
+using CSF.DecoratorBuilder.Factories;
 using CSF.DecoratorBuilder.SampleService;
 using NUnit.Framework;
 
@@ -81,6 +82,32 @@ namespace CSF.DecoratorBuilder
         }
 
         [Test]
+        public void Autofac_nongeneric_service_factory_can_get_decorated_service_with_runtime_named_parameter()
+        {
+            using (var scope = container.BeginLifetimeScope())
+            {
+                var factory = scope.Resolve<AutofacNonGenericServiceFactory>();
+                var service = factory.GetService(22);
+
+                Assert.That(service, Is.InstanceOf<IServiceInterface>(), "Service must be correct type");
+                Assert.That(() => ((IServiceInterface) service).ServiceMethod(), Is.EqualTo("ServiceDecorator1\nServiceDecorator2: 22\nServiceImpl2"));
+            }
+        }
+
+        [Test]
+        public void Non_autofac_nongeneric_service_factory_can_get_decorated_service_with_runtime_typed_parameter()
+        {
+            using (var scope = container.BeginLifetimeScope())
+            {
+                var factory = scope.Resolve<NonAutofacNonGenericServiceFactory>();
+                var service = factory.GetService(66);
+
+                Assert.That(service, Is.InstanceOf<IServiceInterface>(), "Service must be correct type");
+                Assert.That(() => ((IServiceInterface) service).ServiceMethod(), Is.EqualTo("ServiceDecorator1\nServiceDecorator2: 66\nServiceImpl2"));
+            }
+        }
+
+        [Test]
         public void Static_registration_may_use_decorator_which_uses_resolution_function()
         {
             void CustomiseContainer(ContainerBuilder builder)
@@ -109,47 +136,5 @@ namespace CSF.DecoratorBuilder
                 Assert.That(() => service.ServiceMethod(), Is.EqualTo("ServiceDecorator1\nServiceImpl3"));
             }
         }
-
-        #region Embedded types
-
-        public class AutofacServiceFactory
-        {
-            private readonly IGetsAutofacDecoratedService builder;
-
-            public IServiceInterface GetService(int paramValue)
-            {
-                return builder.GetDecoratedService<IServiceInterface>(d =>
-                    d.UsingInitialImpl<ServiceImpl2>()
-                    .ThenWrapWith<ServiceDecorator2>(new NamedParameter("aParam", paramValue))
-                    .ThenWrapWith<ServiceDecorator1>()
-                );
-            }
-
-            public AutofacServiceFactory(IGetsAutofacDecoratedService builder)
-            {
-                this.builder = builder ?? throw new ArgumentNullException(nameof(builder));
-            }
-        }
-
-        public class NonAutofacServiceFactory
-        {
-            private readonly IGetsDecoratedService builder;
-
-            public IServiceInterface GetService(int paramValue)
-            {
-                return builder.GetDecoratedService<IServiceInterface>(d =>
-                    d.UsingInitialImpl<ServiceImpl2>()
-                    .ThenWrapWith<ServiceDecorator2>(TypedParam.From(paramValue))
-                    .ThenWrapWith<ServiceDecorator1>()
-                );
-            }
-
-            public NonAutofacServiceFactory(IGetsDecoratedService builder)
-            {
-                this.builder = builder ?? throw new ArgumentNullException(nameof(builder));
-            }
-        }
-
-        #endregion
     }
 }
