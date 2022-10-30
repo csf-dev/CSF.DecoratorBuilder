@@ -1,5 +1,5 @@
 ﻿//
-// ServiceImpl1.cs
+// DecoratorBuilderModule.cs
 //
 // Author:
 //       Craig Fowler <craig@csf-dev.com>
@@ -23,11 +23,27 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
-namespace CSF.DecoratorBuilder.SampleService
+using Autofac;
+
+namespace CSF.DecoratorBuilder
 {
-    public class ServiceImpl1 : IServiceInterface
+    /// <summary>
+    /// An Autofac <c>Module</c> which registers all of the CSF.DecoratorBuilder types.
+    /// Register this module to use the decorator builder in your own application.
+    /// </summary>
+    public class DecoratorBuilderModule : Module
     {
-        public string ServiceMethod() => GetType().Name;
+        /// <summary>
+        /// Load the current module.
+        /// </summary>
+        /// <param name="builder">A container builder.</param>
+        protected override void Load(ContainerBuilder builder)
+        {
+            builder
+                .RegisterAssemblyTypes(ThisAssembly, typeof(DecoratedServiceFactory).Assembly)
+                .Except<DecoratorBuilderModule>()
+                .AsSelf()
+                .AsImplementedInterfaces();
+        }
     }
 }

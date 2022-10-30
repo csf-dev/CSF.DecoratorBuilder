@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <IsTestProject>true</IsTestProject>
     <ReleaseVersion>2.1.0</ReleaseVersion>
     <IsPackable>false</IsPackable>
@@ -9,42 +9,18 @@
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' " />
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' " />
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Autofac_62|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration.TrimEnd(`0123456789`))|$(Platform)' == 'Autofac_|AnyCPU' ">
     <IntermediateOutputPath>obj\$(Configuration)</IntermediateOutputPath>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>portable</DebugType>
     <OutputPath>bin\$(Configuration)</OutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Autofac_51|AnyCPU' ">
-    <IntermediateOutputPath>obj\$(Configuration)</IntermediateOutputPath>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>portable</DebugType>
-    <OutputPath>bin\$(Configuration)</OutputPath>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Autofac_40|AnyCPU' ">
-    <IntermediateOutputPath>obj\$(Configuration)</IntermediateOutputPath>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>portable</DebugType>
-    <OutputPath>bin\$(Configuration)</OutputPath>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Autofac_49|AnyCPU' ">
-    <IntermediateOutputPath>obj\$(Configuration)</IntermediateOutputPath>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>portable</DebugType>
-    <OutputPath>bin\$(Configuration)</OutputPath>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Autofac_50|AnyCPU' ">
-    <IntermediateOutputPath>obj\$(Configuration)</IntermediateOutputPath>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>portable</DebugType>
-    <OutputPath>bin\$(Configuration)</OutputPath>
-  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="NUnit" Version="3.12.0" />
     <PackageReference Include="AutoFixture.NUnit3" Version="4.11.0" />
     <PackageReference Include="AutoFixture.AutoMoq" Version="4.11.0" />
-    <PackageReference Include="Autofac" Version="4.0.1" Condition="'$(Configuration)' == 'Autofac_40'" />
-    <PackageReference Include="Autofac" Version="4.9.4" Condition="'$(Configuration)' == 'Autofac_49'" />
+    <PackageReference Include="Autofac" Version="4.9.1" Condition="'$(Configuration)' == 'Autofac_49'" />
     <PackageReference Include="Autofac" Version="5.0.0" Condition="'$(Configuration)' == 'Autofac_50'" />
     <PackageReference Include="Autofac" Version="5.1.2" Condition="'$(Configuration)' == 'Autofac_51'" />
     <PackageReference Include="Autofac" Version="6.2.0" Condition="'$(Configuration)' == 'Autofac_62'" />
@@ -56,16 +32,13 @@
     </PackageReference>
     <PackageReference Include="NunitXml.TestLogger" Version="2.1.41" />
     <PackageReference Include="System.ComponentModel.TypeConverter" Version="4.3.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Autofac\" />
-    <Folder Include="NonAutofac\" />
-    <Folder Include="SampleService\" />
-    <Folder Include="NonAutofac\" />
+    <ProjectReference Include="..\CSF.DecoratorBuilder.Abstractions\CSF.DecoratorBuilder.Abstractions.csproj" />
+    <ProjectReference Include="..\CSF.DecoratorBuilder.Autofac\CSF.DecoratorBuilder.Autofac.csproj" />
+    <ProjectReference Include="..\CSF.DecoratorBuilder.Extensions.DependencyInjection\CSF.DecoratorBuilder.Extensions.DependencyInjection.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CSF.DecoratorBuilder\CSF.DecoratorBuilder.csproj" />
-    <ProjectReference Include="..\CSF.DecoratorBuilder.Impl\CSF.DecoratorBuilder.Impl.csproj" />
-  </ItemGroup>
+
 </Project>

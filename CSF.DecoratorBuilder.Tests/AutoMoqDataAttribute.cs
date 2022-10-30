@@ -28,7 +28,7 @@ using AutoFixture;
 using AutoFixture.AutoMoq;
 using AutoFixture.NUnit3;
 
-namespace CSF.DecoratorBuilder.Tests
+namespace CSF.DecoratorBuilder
 {
     public class AutoMoqDataAttribute : AutoDataAttribute
     {

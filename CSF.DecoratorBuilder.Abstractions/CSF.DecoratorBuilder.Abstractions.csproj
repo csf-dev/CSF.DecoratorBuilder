@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\Tools\CommonSolutionProperties.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>Abstractions for the builder &amp; factory services to create objects using the decorator pattern.</Description>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\CSF.DecoratorBuilder.Abstractions.xml</DocumentationFile>
+  </PropertyGroup>
+  
+</Project>
