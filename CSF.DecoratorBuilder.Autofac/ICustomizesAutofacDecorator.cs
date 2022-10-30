@@ -25,17 +25,6 @@ namespace CSF.DecoratorBuilder
             where TDecorator : class, TService;
 
         /// <summary>
-        /// Selects a decorator type.  The implementation directly
-        /// before this point in the decorator 'stack' (be it the initial implementation or a
-        /// decorator itself) will be passed to the selected implementation.  Thus this implementation
-        /// will 'wrap' the one before it.
-        /// </summary>
-        /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
-        /// <param name="decoratorType">The type of the concrete implementation to use as a decorator.</param>
-        /// <param name="parameters">An optional collection of <see cref="Parameter"/>.</param>
-        ICustomizesAutofacDecorator<TService> ThenWrapWithType(Type decoratorType, params Parameter[] parameters);
-
-        /// <summary>
         /// Selects a decorator type using a generic type parameter.  The implementation directly
         /// before this point in the decorator 'stack' (be it the initial implementation or a
         /// decorator itself) will be passed to the selected implementation.  Thus this implementation
@@ -48,6 +37,17 @@ namespace CSF.DecoratorBuilder
         ICustomizesAutofacDecorator<TService> ThenWrapWith<TDecorator>(Func<TService,IComponentContext,IEnumerable<Parameter>,TDecorator> factoryFunction,
                                                                        params Parameter[] parameters)
             where TDecorator : class, TService;
+
+        /// <summary>
+        /// Selects a decorator type.  The implementation directly
+        /// before this point in the decorator 'stack' (be it the initial implementation or a
+        /// decorator itself) will be passed to the selected implementation.  Thus this implementation
+        /// will 'wrap' the one before it.
+        /// </summary>
+        /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
+        /// <param name="decoratorType">The type of the concrete implementation to use as a decorator.</param>
+        /// <param name="parameters">An optional collection of <see cref="Parameter"/>.</param>
+        ICustomizesAutofacDecorator<TService> ThenWrapWithType(Type decoratorType, params Parameter[] parameters);
 
         /// <summary>
         /// Selects a decorator type.  The implementation directly
@@ -83,17 +83,6 @@ namespace CSF.DecoratorBuilder
             where TDecorator : class;
 
         /// <summary>
-        /// Selects a decorator type.  The implementation directly
-        /// before this point in the decorator 'stack' (be it the initial implementation or a
-        /// decorator itself) will be passed to the selected implementation.  Thus this implementation
-        /// will 'wrap' the one before it.
-        /// </summary>
-        /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
-        /// <param name="decoratorType">The type of the concrete implementation to use as a decorator.</param>
-        /// <param name="parameters">An optional collection of <see cref="Parameter"/>.</param>
-        ICustomizesAutofacDecorator ThenWrapWithType(Type decoratorType, params Parameter[] parameters);
-
-        /// <summary>
         /// Selects a decorator type using a generic type parameter.  The implementation directly
         /// before this point in the decorator 'stack' (be it the initial implementation or a
         /// decorator itself) will be passed to the selected implementation.  Thus this implementation
@@ -106,6 +95,17 @@ namespace CSF.DecoratorBuilder
         ICustomizesAutofacDecorator ThenWrapWith<TDecorator>(Func<object,IComponentContext,IEnumerable<Parameter>,TDecorator> factoryFunction,
                                                              params Parameter[] parameters)
             where TDecorator : class;
+
+        /// <summary>
+        /// Selects a decorator type.  The implementation directly
+        /// before this point in the decorator 'stack' (be it the initial implementation or a
+        /// decorator itself) will be passed to the selected implementation.  Thus this implementation
+        /// will 'wrap' the one before it.
+        /// </summary>
+        /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
+        /// <param name="decoratorType">The type of the concrete implementation to use as a decorator.</param>
+        /// <param name="parameters">An optional collection of <see cref="Parameter"/>.</param>
+        ICustomizesAutofacDecorator ThenWrapWithType(Type decoratorType, params Parameter[] parameters);
 
         /// <summary>
         /// Selects a decorator type.  The implementation directly

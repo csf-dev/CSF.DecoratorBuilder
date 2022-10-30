@@ -30,27 +30,6 @@ namespace CSF.DecoratorBuilder
         }
 
         /// <inheritdoc/>
-        public ICustomizesAutofacDecorator UsingInitialImplType(Type initialImplType, params Parameter[] parameters)
-        {
-            wrapped.UsingInitialImplType(initialImplType, parameters.ToTypedResolvables());
-            return this;
-        }
-
-        /// <inheritdoc/>
-        public ICustomizesAutofacDecorator ThenWrapWith<TDecorator>(params Parameter[] parameters) where TDecorator : class
-        {
-            wrapped.ThenWrapWith<TDecorator>(parameters.ToTypedResolvables());
-            return this;
-        }
-
-        /// <inheritdoc/>
-        public ICustomizesAutofacDecorator ThenWrapWithType(Type decoratorType, params Parameter[] parameters)
-        {
-            wrapped.ThenWrapWithType(decoratorType, parameters.ToTypedResolvables());
-            return this;
-        }
-
-        /// <inheritdoc/>
         public ICustomizesAutofacDecorator UsingInitialImpl<TInitialImpl>(Func<IComponentContext, IEnumerable<Parameter>, TInitialImpl> factoryFunction,
                                                                           params Parameter[] parameters)
             where TInitialImpl : class
@@ -60,6 +39,13 @@ namespace CSF.DecoratorBuilder
                 factoryFunc = (serviceProvider, @params) => factoryFunction(((AutofacServiceProvider)serviceProvider).LifetimeScope,
                                                                             @params.Cast<ParameterAdapter>().Select(x => x.Parameter).ToList());
             wrapped.UsingInitialImpl<TInitialImpl>(factoryFunc, parameters.Select(x => new ParameterAdapter(x)).ToArray());
+            return this;
+        }
+
+        /// <inheritdoc/>
+        public ICustomizesAutofacDecorator UsingInitialImplType(Type initialImplType, params Parameter[] parameters)
+        {
+            wrapped.UsingInitialImplType(initialImplType, parameters.ToTypedResolvables());
             return this;
         }
 
@@ -77,6 +63,13 @@ namespace CSF.DecoratorBuilder
         }
 
         /// <inheritdoc/>
+        public ICustomizesAutofacDecorator ThenWrapWith<TDecorator>(params Parameter[] parameters) where TDecorator : class
+        {
+            wrapped.ThenWrapWith<TDecorator>(parameters.ToTypedResolvables());
+            return this;
+        }
+
+        /// <inheritdoc/>
         public ICustomizesAutofacDecorator ThenWrapWith<TDecorator>(Func<object, IComponentContext, IEnumerable<Parameter>, TDecorator> factoryFunction,
                                                                     params Parameter[] parameters)
             where TDecorator : class
@@ -87,6 +80,13 @@ namespace CSF.DecoratorBuilder
                                                                                      ((AutofacServiceProvider)serviceProvider).LifetimeScope,
                                                                                      @params.Cast<ParameterAdapter>().Select(x => x.Parameter).ToList());
             wrapped.ThenWrapWith<TDecorator>(factoryFunc, parameters.Select(x => new ParameterAdapter(x)).ToArray());
+            return this;
+        }
+
+        /// <inheritdoc/>
+        public ICustomizesAutofacDecorator ThenWrapWithType(Type decoratorType, params Parameter[] parameters)
+        {
+            wrapped.ThenWrapWithType(decoratorType, parameters.ToTypedResolvables());
             return this;
         }
 

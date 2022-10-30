@@ -21,14 +21,6 @@ namespace CSF.DecoratorBuilder
             where TInitialImpl : class, TService;
 
         /// <summary>
-        /// Selects the initial implementation type.
-        /// </summary>
-        /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
-        /// <param name="initialImplType">The type of the initial concrete implementation.</param>
-        /// <param name="parameters">An optional collection of <see cref="ITypedResolvable"/>.</param>
-        ICustomizesDecorator<TService> UsingInitialImplType(Type initialImplType, params ITypedResolvable[] parameters);
-
-        /// <summary>
         /// Selects the initial implementation type using a generic type parameter.
         /// </summary>
         /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
@@ -38,6 +30,14 @@ namespace CSF.DecoratorBuilder
         ICustomizesDecorator<TService> UsingInitialImpl<TInitialImpl>(Func<IServiceProvider,IEnumerable<ITypedResolvable>,TInitialImpl> factoryFunction,
                                                                       params ITypedResolvable[] parameters)
             where TInitialImpl : class, TService;
+
+        /// <summary>
+        /// Selects the initial implementation type.
+        /// </summary>
+        /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
+        /// <param name="initialImplType">The type of the initial concrete implementation.</param>
+        /// <param name="parameters">An optional collection of <see cref="ITypedResolvable"/>.</param>
+        ICustomizesDecorator<TService> UsingInitialImplType(Type initialImplType, params ITypedResolvable[] parameters);
 
         /// <summary>
         /// Selects the initial implementation type.
@@ -68,14 +68,6 @@ namespace CSF.DecoratorBuilder
             where TInitialImpl : class;
 
         /// <summary>
-        /// Selects the initial implementation type.
-        /// </summary>
-        /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
-        /// <param name="initialImplType">The type of the initial concrete implementation.</param>
-        /// <param name="parameters">An optional collection of <see cref="ITypedResolvable"/>.</param>
-        ICustomizesDecorator UsingInitialImplType(Type initialImplType, params ITypedResolvable[] parameters);
-
-        /// <summary>
         /// Selects the initial implementation type using a generic type parameter.
         /// </summary>
         /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
@@ -85,6 +77,14 @@ namespace CSF.DecoratorBuilder
         ICustomizesDecorator UsingInitialImpl<TInitialImpl>(Func<IServiceProvider,IEnumerable<ITypedResolvable>,TInitialImpl> factoryFunction,
                                                             params ITypedResolvable[] parameters)
             where TInitialImpl : class;
+
+        /// <summary>
+        /// Selects the initial implementation type.
+        /// </summary>
+        /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
+        /// <param name="initialImplType">The type of the initial concrete implementation.</param>
+        /// <param name="parameters">An optional collection of <see cref="ITypedResolvable"/>.</param>
+        ICustomizesDecorator UsingInitialImplType(Type initialImplType, params ITypedResolvable[] parameters);
 
         /// <summary>
         /// Selects the initial implementation type.

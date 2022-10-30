@@ -23,14 +23,6 @@ namespace CSF.DecoratorBuilder
             where TInitialImpl : class, TService;
 
         /// <summary>
-        /// Selects the initial implementation type.
-        /// </summary>
-        /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
-        /// <param name="initialImplType">The type of the initial concrete implementation.</param>
-        /// <param name="parameters">An optional collection of <see cref="Parameter"/>.</param>
-        ICustomizesAutofacDecorator<TService> UsingInitialImplType(Type initialImplType, params Parameter[] parameters);
-
-        /// <summary>
         /// Selects the initial implementation type using a generic type parameter.
         /// </summary>
         /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
@@ -40,6 +32,14 @@ namespace CSF.DecoratorBuilder
         ICustomizesAutofacDecorator<TService> UsingInitialImpl<TInitialImpl>(Func<IComponentContext,IEnumerable<Parameter>,TInitialImpl> factoryFunction,
                                                                              params Parameter[] parameters)
             where TInitialImpl : class, TService;
+
+        /// <summary>
+        /// Selects the initial implementation type.
+        /// </summary>
+        /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
+        /// <param name="initialImplType">The type of the initial concrete implementation.</param>
+        /// <param name="parameters">An optional collection of <see cref="Parameter"/>.</param>
+        ICustomizesAutofacDecorator<TService> UsingInitialImplType(Type initialImplType, params Parameter[] parameters);
 
         /// <summary>
         /// Selects the initial implementation type.
@@ -70,14 +70,6 @@ namespace CSF.DecoratorBuilder
             where TInitialImpl : class;
 
         /// <summary>
-        /// Selects the initial implementation type.
-        /// </summary>
-        /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
-        /// <param name="initialImplType">The type of the initial concrete implementation.</param>
-        /// <param name="parameters">An optional collection of <see cref="Parameter"/>.</param>
-        ICustomizesAutofacDecorator UsingInitialImplType(Type initialImplType, params Parameter[] parameters);
-
-        /// <summary>
         /// Selects the initial implementation type using a generic type parameter.
         /// </summary>
         /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
@@ -86,6 +78,14 @@ namespace CSF.DecoratorBuilder
         /// <typeparam name="TInitialImpl">The type of the initial concrete implementation.</typeparam>
         ICustomizesAutofacDecorator UsingInitialImpl<TInitialImpl>(Func<IComponentContext,IEnumerable<Parameter>,TInitialImpl> factoryFunction, params Parameter[] parameters)
             where TInitialImpl : class;
+
+        /// <summary>
+        /// Selects the initial implementation type.
+        /// </summary>
+        /// <returns>A customisation helper by which further implementations may be added to the decorator 'stack'.</returns>
+        /// <param name="initialImplType">The type of the initial concrete implementation.</param>
+        /// <param name="parameters">An optional collection of <see cref="Parameter"/>.</param>
+        ICustomizesAutofacDecorator UsingInitialImplType(Type initialImplType, params Parameter[] parameters);
 
         /// <summary>
         /// Selects the initial implementation type.

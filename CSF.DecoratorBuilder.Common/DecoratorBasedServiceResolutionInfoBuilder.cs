@@ -25,18 +25,6 @@ namespace CSF.DecoratorBuilder
             => UsingInitialImpl<TInitialImpl>(null, parameters);
 
         /// <inheritdoc/>
-        public ICustomizesDecorator UsingInitialImplType(Type initialImplType, params ITypedResolvable[] parameters)
-            => UsingInitialImplType(initialImplType, null, parameters);
-
-        /// <inheritdoc/>
-        public ICustomizesDecorator ThenWrapWith<TDecorator>(params ITypedResolvable[] parameters) where TDecorator : class
-            => ThenWrapWith<TDecorator>(null, parameters);
-
-        /// <inheritdoc/>
-        public ICustomizesDecorator ThenWrapWithType(Type decoratorType, params ITypedResolvable[] parameters)
-            => ThenWrapWithType(decoratorType, null, parameters);
-
-        /// <inheritdoc/>
         public ICustomizesDecorator UsingInitialImpl<TInitialImpl>(Func<IServiceProvider, IEnumerable<ITypedResolvable>, TInitialImpl> factoryFunction, params ITypedResolvable[] parameters) where TInitialImpl : class
         {
             AssertObjectTypeImplementsServiceType(typeof(TInitialImpl));
@@ -49,6 +37,10 @@ namespace CSF.DecoratorBuilder
             ResolutionInfo.ServicesToResolve.Enqueue(objectResolutionInfo);
             return this;
         }
+
+        /// <inheritdoc/>
+        public ICustomizesDecorator UsingInitialImplType(Type initialImplType, params ITypedResolvable[] parameters)
+            => UsingInitialImplType(initialImplType, null, parameters);
 
         /// <inheritdoc/>
         public ICustomizesDecorator UsingInitialImplType(Type initialImplType, Func<IServiceProvider, IEnumerable<ITypedResolvable>, object> factoryFunction, params ITypedResolvable[] parameters)
@@ -65,6 +57,10 @@ namespace CSF.DecoratorBuilder
         }
 
         /// <inheritdoc/>
+        public ICustomizesDecorator ThenWrapWith<TDecorator>(params ITypedResolvable[] parameters) where TDecorator : class
+            => ThenWrapWith<TDecorator>(null, parameters);
+
+        /// <inheritdoc/>
         public ICustomizesDecorator ThenWrapWith<TDecorator>(Func<object, IServiceProvider, IEnumerable<ITypedResolvable>, TDecorator> factoryFunction, params ITypedResolvable[] parameters) where TDecorator : class
         {
             AssertObjectTypeImplementsServiceType(typeof(TDecorator));
@@ -77,6 +73,10 @@ namespace CSF.DecoratorBuilder
             ResolutionInfo.ServicesToResolve.Enqueue(objectResolutionInfo);
             return this;
         }
+
+        /// <inheritdoc/>
+        public ICustomizesDecorator ThenWrapWithType(Type decoratorType, params ITypedResolvable[] parameters)
+            => ThenWrapWithType(decoratorType, null, parameters);
 
         /// <inheritdoc/>
         public ICustomizesDecorator ThenWrapWithType(Type decoratorType, Func<object, IServiceProvider, IEnumerable<ITypedResolvable>, object> factoryFunction, params ITypedResolvable[] parameters)
