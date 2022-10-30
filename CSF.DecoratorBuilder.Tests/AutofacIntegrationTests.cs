@@ -41,6 +41,21 @@ namespace CSF.DecoratorBuilder
         }
 
         [Test]
+        public void Static_registration_can_get_decorated_service_using_nongeneric_api()
+        {
+            void CustomiseContainer(ContainerBuilder builder)
+            {
+                builder.RegisterDecoratedServiceType(typeof(IServiceInterface), d => d.UsingInitialImpl<ServiceImpl1>().ThenWrapWith<ServiceDecorator1>());
+            }
+
+            using (var scope = container.BeginLifetimeScope(CustomiseContainer))
+            {
+                var service = scope.Resolve<IServiceInterface>();
+                Assert.That(() => service.ServiceMethod(), Is.EqualTo("ServiceDecorator1\nServiceImpl1"));
+            }
+        }
+
+        [Test]
         public void Static_registration_can_provide_parameter_to_decorated_service()
         {
             void CustomiseContainer(ContainerBuilder builder)

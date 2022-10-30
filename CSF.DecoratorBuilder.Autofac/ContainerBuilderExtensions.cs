@@ -80,11 +80,13 @@ namespace Autofac
                                          Type serviceType,
                                          Func<ICreatesAutofacDecorator, Parameter[], ICustomizesAutofacDecorator> customizationFunc)
         {
-            return builder.Register((ctx, parameters) => {
-                var provider = ctx.Resolve<IGetsAutofacDecoratedService>();
-                var afParams = parameters?.ToArray() ?? Array.Empty<Parameter>();
-                return provider.GetDecoratedService(serviceType, creator => customizationFunc(creator, afParams));
-            });
+            return builder
+                .Register((ctx, parameters) => {
+                    var provider = ctx.Resolve<IGetsAutofacDecoratedService>();
+                    var afParams = parameters?.ToArray() ?? Array.Empty<Parameter>();
+                    return provider.GetDecoratedService(serviceType, creator => customizationFunc(creator, afParams));
+                })
+                .As(serviceType);
         }
 
         /// <summary>
