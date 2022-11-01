@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Using the decorator builder </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Using the decorator builder ">
+    <meta name="generator" content="docfx 2.58.9.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-6CMQ58LNKX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+  
+      gtag('config', 'G-6CMQ58LNKX');
+    </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="using-the-decorator-builder">Using the decorator builder</h1>
+
+<p>The <a href="StaticDependencyInjection.html">static dependency injection technique</a> for configuring services to be assembled via the decorator pattern is the simplest when <em>For interface X, I always want implementation Y, wrapped with Z decorator(s), in the same order.</em>
+When the above is not applicable then you may gain more flexibility by consuming the decorator builder directly within your own application.</p>
+<p>Consuming the decorator builder directly is best accomplished from <a href="https://en.wikipedia.org/wiki/Factory_method_pattern">a <strong>factory class</strong></a>.
+It is best not to scatter dependencies upon the decorator builder around other business logic, lest it accidentally become <a href="https://blog.ploeh.dk/2010/02/03/ServiceLocatorisanAnti-Pattern/">a service locator</a>.
+When using a decorator builder, you may write your own arbitrary logic to determine:</p>
+<ul>
+<li>Which primary implementation to use</li>
+<li>Which decorator(s) to use</li>
+<li>The order in which those decorators should wrap one another</li>
+</ul>
+<h2 id="if-possible-rely-only-upon-igetsdecoratedservice">If possible, rely only upon <code>IGetsDecoratedService</code></h2>
+<p>When you need to use the decorator builder in your own logic, the advice is to try and use the interface <a class="xref" href="../api/CSF.DecoratorBuilder.IGetsDecoratedService.html"><code>IGetsDecoratedService</code></a> if you possibly can.
+This interfaces resides in the <code>CSF.DecoratorBuilder.Abstractions</code> <a href="NuGetPackages.html">NuGet package</a>, which is <em>a very lightweight dependency</em>.
+You might find this dependency suitable to take as a <code>&lt;PackageReference&gt;</code> in your main business logic projects.
+Other packages for this library are suitable only as dependencies to projects that deal directly with configuring dependency injection, such as your startup project.</p>
+<p>Here is an example of a hypothetical class which uses the decorator builder, with <code>IGetsDecoratedService</code>.</p>
+<pre><code class="lang-csharp">using CSF.DecoratorBuilder;
+
+public class UserInterfaceFormatterFactory
+{
+    readonly IGetsDecoratedService decoratorBuilder;
+    readonly IGetsAccessibilitySettings accessibilitySettingsProvider;
+
+    public IGetsUserInterfaceFormat GetTaxAmountProvider()
+    {
+        return decoratorBuilder.GetDecoratedService&lt;IGetsUserInterfaceFormat&gt;(initial =&gt; {
+            var customiser = initial.UsingInitialImpl&lt;BasicUiFormatter&gt;();
+            customiser = customiser.ThenWrapWith&lt;TutorialsUiFormatDecorator&gt;();
+
+            if(accessibilitySettingsProvider.IsColourBlind())
+                customiser = customiser.ThenWrapWith&lt;ColourBlindUiFormatDecorator&gt;();
+
+            if(accessibilitySettingsProvider.UsesLargerUi())
+                customiser = customiser.ThenWrapWith&lt;LargerUiFormatDecorator&gt;();
+
+            customiser = customiser.ThenWrapWith&lt;ThemeAwareUiFormatDecorator&gt;();
+
+            return customiser;
+        });
+    }
+
+    public UserInterfaceFormatterFactory(IGetsDecoratedService decoratorBuilder,
+                                         IGetsAccessibilitySettings accessibilitySettingsProvider)
+    {
+        this.decoratorBuilder = decoratorBuilder;
+        this.accessibilitySettingsProvider = accessibilitySettingsProvider;
+    }
+}
+</code></pre>
+<p>The example above demonstrates the use of an external (hypothetical) dependency upon an <code>IGetsAccessibilitySettings</code> to decide which of two additional decorators to apply to the final service when it is assembled.</p>
+<h2 id="if-required-use-igetsautofacdecoratedservice">If required, use <code>IGetsAutofacDecoratedService</code></h2>
+<p>The alternative to the above is to use the <a class="xref" href="../api/CSF.DecoratorBuilder.IGetsAutofacDecoratedService.html"><code>IGetsAutofacDecoratedService</code></a> interface.
+This is used in the same was way as the example above, but it offers the power of the <a href="https://autofac.org/">Autofac</a> API, including:</p>
+<ul>
+<li><a href="https://docs.autofac.org/en/latest/register/parameters.html">Autofac parameters</a></li>
+<li>Access to the <code>IComponentContext</code> for more complex resolution</li>
+</ul>
+<p>The drawbacks to this approach are somewhat obvious:</p>
+<ul>
+<li>You <em>must be using Autofac</em> for your application's DI.</li>
+<li>Projects that make use of <code>IGetsAutofacDecoratedService</code> require a NuGet package dependency upon both <code>CSF.DecoratorBuilder.Autofac</code> &amp; <code>Autofac</code> itself.
+These are much <em>larger and higher-risk dependencies</em> than those required by the non-Autofac decorator builder described above.</li>
+</ul>
+<p>When using the Autofac decorator builder, it is best to add your factory classes only to projects which deal directly with dependency injection, such as your startup project.
+This avoids needing to add large dependencies across your whole solution.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/csf-dev/CSF.DecoratorBuilder/blob/master/CSF.DecoratorBuilder.Docs/articles/ConsumingTheDecoratorBuilder.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

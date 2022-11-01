@@ -5,3 +5,4 @@ obj/
 packages/
 .directory
 *.user
+CSF.DecoratorBuilder.Docs/log.txt

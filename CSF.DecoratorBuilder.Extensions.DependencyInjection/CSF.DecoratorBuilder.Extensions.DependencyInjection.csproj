@@ -8,6 +8,7 @@
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\CSF.DecoratorBuilder.Extensions.DependencyInjection.xml</DocumentationFile>
     <NuspecFile>CSF.DecoratorBuilder.Extensions.DependencyInjection.nuspec</NuspecFile>
     <NuspecProperties>ReleaseVersion=$(PackageVersion);Url=$(PackageProjectUrl);Description=$(Description);CopyrightStatement=$(Copyright);Configuration=$(Configuration)</NuspecProperties>
+    <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
   </PropertyGroup>
     
   <ItemGroup>

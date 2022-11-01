@@ -34,7 +34,7 @@ namespace Autofac
     /// <summary>
     /// Extension methods for the Autofac <c>ContainerBuilder</c>.
     /// </summary>
-    public static class ContainerBuilderExtensions
+    public static class DecoratorContainerBuilderExtensions
     {
         /// <summary>
         /// Registers a service created with the decorator pattern.

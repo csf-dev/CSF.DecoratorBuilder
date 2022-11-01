@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Static dependency injection </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Static dependency injection ">
+    <meta name="generator" content="docfx 2.58.9.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-6CMQ58LNKX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+  
+      gtag('config', 'G-6CMQ58LNKX');
+    </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="static-dependency-injection">Static dependency injection</h1>
+
+<p>Static dependency injection refers to configuring your dependency injection such that when your service is resolved, typically via an interface, it always uses the same configuration of primary implementation class and decorator(s).
+This differs to <a href="ConsumingTheDecoratorBuilder.html">using the decorator builder directly</a> where instances are created via a factory and the implementation classes, including which decorators are used and in which order they wrap one another, may differ each time.</p>
+<p>Note that the two examples shown below <em>are functionally equivalent</em>.
+The Autofac API is more powerful than the Microsoft.Extensions.DependencyInjection API, at the cost of being compatible only with Autofac.
+The Microsoft.Extensions.DependencyInjection API is compatible with any DI container that exposes an implementation of <code>IServiceCollection</code>.</p>
+<h2 id="with-microsoftextensionsdependencyinjection">With Microsoft.Extensions.DependencyInjection</h2>
+<p>When using any implementation of <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection"><code>Microsoft.Extensions.DependencyInjection.IServiceCollection</code></a> to configure your DI, you will want to use the extension methods present upon <a class="xref" href="../api/Microsoft.Extensions.DependencyInjection.DecoratorServiceCollectionExtensions.html"><code>DecoratorServiceCollectionExtensions</code></a> to configure your services.
+Here is an example of the technique; <em>remember to also install the library into your dependency injection</em> as described in <a href="../api/index.html">the API docs</a>.</p>
+<pre><code class="lang-csharp">using Microsoft.Extensions.DependencyInjection;
+
+// All three of these classes are assumed to implement IServiceInterface.
+// Both the 'decorator' classes would take a constructor dependency upon an
+// instance of IServiceInterface in order to wrap its functionality.
+serviceCollection.AddTransient&lt;ServiceImplementation&gt;();
+serviceCollection.AddTransient&lt;ServiceDecoratorOne&gt;();
+serviceCollection.AddTransient&lt;ServiceDecoratorTwo&gt;();
+
+serviceCollection.AddTransientDecorator&lt;IServiceInterface&gt;(d =&gt;
+    d.UsingInitialImpl&lt;ServiceImplementation&gt;()
+     .ThenWrapWith&lt;ServiceDecoratorOne&gt;()
+     .ThenWrapWith&lt;ServiceDecoratorTwo&gt;()
+);
+</code></pre>
+<p>Notice how each of the three classes <code>ServiceImplementation</code>, <code>ServiceDecoratorOne</code> &amp; <code>ServiceDecoratorTwo</code> is added individually first, but without adding them 'as' their interface.
+Then, the <code>AddTransientDecorator</code> method is to used to add the assembled service, built via the decorator pattern, 'as' the interface.</p>
+<p>Following the logic of this example, if <code>IServiceInterface</code> were injected as a constructor dependency elsewhere in the app, the object received as a dependency would be:</p>
+<ul>
+<li>An instance of <code>ServiceDecoratorTwo</code> ...</li>
+<li>... wrapping an instance of <code>ServiceDecoratorOne</code> ...</li>
+<li>... wrapping an instance of <code>ServiceImplementation</code></li>
+</ul>
+<h2 id="with-autofac">With Autofac</h2>
+<p>When using [Autofac] to configure your DI, you will want to use the extension methods present upon <a class="xref" href="../api/Autofac.DecoratorContainerBuilderExtensions.html"><code>DecoratorContainerBuilderExtensions</code></a> to configure your services.
+Here is an example of the technique; <em>remember to also install the library into your dependency injection</em> as described in <a href="../api/index.html">the API docs</a>.</p>
+<pre><code class="lang-csharp">using Autofac;
+
+// All three of these classes are assumed to implement IServiceInterface.
+// Both the 'decorator' classes would take a constructor dependency upon an
+// instance of IServiceInterface in order to wrap its functionality.
+builder.RegisterType&lt;ServiceImplementation&gt;();
+builder.RegisterType&lt;ServiceDecoratorOne&gt;();
+builder.RegisterType&lt;ServiceDecoratorTwo&gt;();
+
+builder.RegisterDecoratedService&lt;IServiceInterface&gt;(d =&gt;
+    d.UsingInitialImpl&lt;ServiceImplementation&gt;()
+     .ThenWrapWith&lt;ServiceDecoratorOne&gt;()
+     .ThenWrapWith&lt;ServiceDecoratorTwo&gt;()
+);
+</code></pre>
+<p>As with the previous example, each of the three classes <code>ServiceImplementation</code>, <code>ServiceDecoratorOne</code> &amp; <code>ServiceDecoratorTwo</code> are registered individually, without <code>.As&lt;IServiceInterface&gt;()</code>.
+The <code>RegisterDecoratedService</code> method then handles the registstration for the interface, returning a service assembled via the decorator pattern.</p>
+<p>This example would produce the same outcome as the example above, if <code>IServiceInterface</code> were injected as a constructor dependency elsewhere in the app.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/csf-dev/CSF.DecoratorBuilder/blob/master/CSF.DecoratorBuilder.Docs/articles/StaticDependencyInjection.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

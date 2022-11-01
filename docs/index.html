@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Decorator Builder </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Decorator Builder ">
+    <meta name="generator" content="docfx 2.58.9.0">
+    
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles/docfx.vendor.css">
+    <link rel="stylesheet" href="styles/docfx.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <meta property="docfx:navrel" content="toc.html">
+    <meta property="docfx:tocrel" content="articles/toc.html">
+    
+    
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-6CMQ58LNKX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+  
+      gtag('config', 'G-6CMQ58LNKX');
+    </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="decorator-builder">Decorator Builder</h1>
+
+<p><strong>CSF.DecoratorBuilder</strong> is a small library to assist developers in making use of the decorator pattern in their own .NET projects.
+It provides a structured, easy-to-read &amp; boilerplate-free way to configure how services are created through dependency injection, using the decorator or chain of responsibility patterns.</p>
+<h2 id="tldr-whats-decorator">TL;DR what's decorator?</h2>
+<p>The <a href="https://en.wikipedia.org/wiki/Decorator_pattern">decorator pattern</a> is characterised by multiple classes <em>which implement the same interface</em>.
+A decorator class takes a dependency upon (it wraps) an object of the same interface as it implements.</p>
+<p>The functionality of a decorator class is typically <em>&quot;do whatever the wrapped object would have done, plus the functionality in this class&quot;</em>.
+The decorator pattern is well-used to add functionality to (to &quot;decorate&quot;) an existing service, without needing to edit the original class that provides the service.
+Thus it helps developers adhere to <a href="https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle">open/closed principle</a>.</p>
+<p>There is also a good writeup of decorator on <a href="https://refactoring.guru/design-patterns/decorator">the refactoring guru website</a>.</p>
+<h3 id="chain-of-responsibility-too">Chain of responsibility too</h3>
+<p>The <a href="https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern">chain of responsibility pattern</a> is structurally the same as decorator except it is characterised by different behaviour.
+In a chain of responsibility each class determines <em>&quot;can I do the work?&quot;</em>.
+If the class can, then it performs whatever functional task is required and/or returns a result.
+If it cannot then it does nothing more than return the result from the wrapped object (which has the same interface).</p>
+<p>This library can also support chain of responsibility interchangeably with decorator.</p>
+<h2 id="how-this-library-is-used">How this library is used</h2>
+<p>There are a few ways to use this library.
+Firstly you will want to <a href="articles/NuGetPackages.html">choose the right NuGet package(s)</a>; this library is usable with either or both of <a href="https://www.nuget.org/packages/Microsoft.Extensions.DependencyInjection.Abstractions/">Microsoft.DependencyInjection.Abstractions</a> or <a href="https://autofac.org/">Autofac</a>, depending upon your dependency injection needs.</p>
+<p>This library supports both <a href="articles/StaticDependencyInjection.html">static dependency injection logic</a> &amp; <a href="articles/ConsumingTheDecoratorBuilder.html">using the decorator builder</a> directly, such as within your own factory classes.
+These two techniques may also be mixed and used together, as appropriate for the needs of your application.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/csf-dev/CSF.DecoratorBuilder/blob/master/CSF.DecoratorBuilder.Docs/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>

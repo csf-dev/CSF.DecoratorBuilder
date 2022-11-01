@@ -1,0 +1,804 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter
+   ">
+    <meta name="generator" content="docfx 2.58.9.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-6CMQ58LNKX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+  
+      gtag('config', 'G-6CMQ58LNKX');
+    </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter">
+  
+  
+  <h1 id="CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter" data-uid="CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter" class="text-break">Class AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter
+  </h1>
+  <div class="markdown level0 summary"><p>A non-generic builder which creates an instance of <a class="xref" href="CSF.DecoratorBuilder.DecoratorBasedServiceResolutionInfo.html">DecoratorBasedServiceResolutionInfo</a>.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="CSF.DecoratorBuilder.IAutofacDecoratorBuilder.html">IAutofacDecoratorBuilder</a></div>
+    <div><a class="xref" href="CSF.DecoratorBuilder.ICreatesAutofacDecorator.html">ICreatesAutofacDecorator</a></div>
+    <div><a class="xref" href="CSF.DecoratorBuilder.ICustomizesAutofacDecorator.html">ICustomizesAutofacDecorator</a></div>
+    <div><a class="xref" href="CSF.DecoratorBuilder.IHasDecoratorBasedServiceResolutionInfo.html">IHasDecoratorBasedServiceResolutionInfo</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="CSF.DecoratorBuilder.html">CSF.DecoratorBuilder</a></h6>
+  <h6><strong>Assembly</strong>: CSF.DecoratorBuilder.Autofac.dll</h6>
+  <h5 id="CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter : IAutofacDecoratorBuilder, ICreatesAutofacDecorator, ICustomizesAutofacDecorator, IHasDecoratorBasedServiceResolutionInfo</code></pre>
+  </div>
+  <h5 id="CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>
+Instances of this builder class must be used a maximum of once.  They are not reusable.
+</p>
+</div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.DecoratorBuilder/new/master/apiSpec/new?filename=CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter__ctor_CSF_DecoratorBuilder_IDecoratorBuilder_.md&amp;value=---%0Auid%3A%20CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.%23ctor(CSF.DecoratorBuilder.IDecoratorBuilder)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.DecoratorBuilder/blob/feature/docs/CSF.DecoratorBuilder.Autofac/AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.cs/#L112">View Source</a>
+  </span>
+  <a id="CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter__ctor_" data-uid="CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.#ctor*"></a>
+  <h4 id="CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter__ctor_CSF_DecoratorBuilder_IDecoratorBuilder_" data-uid="CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.#ctor(CSF.DecoratorBuilder.IDecoratorBuilder)">AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter(IDecoratorBuilder)</h4>
+  <div class="markdown level1 summary"><p>Initialises a new instance of <a class="xref" href="CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.html">AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter(IDecoratorBuilder wrapped)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.DecoratorBuilder.IDecoratorBuilder.html">IDecoratorBuilder</a></td>
+        <td><span class="parametername">wrapped</span></td>
+        <td><p>The wrapped builder</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>If <code data-dev-comment-type="paramref" class="paramref">wrapped</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.DecoratorBuilder/new/master/apiSpec/new?filename=CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter_ResolutionInfo.md&amp;value=---%0Auid%3A%20CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.ResolutionInfo%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.DecoratorBuilder/blob/feature/docs/CSF.DecoratorBuilder.Autofac/AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.cs/#L23">View Source</a>
+  </span>
+  <a id="CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter_ResolutionInfo_" data-uid="CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.ResolutionInfo*"></a>
+  <h4 id="CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter_ResolutionInfo" data-uid="CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.ResolutionInfo">ResolutionInfo</h4>
+  <div class="markdown level1 summary"><p>Gets the resolution information for the decorator-based services.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DecoratorBasedServiceResolutionInfo ResolutionInfo { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.DecoratorBuilder.DecoratorBasedServiceResolutionInfo.html">DecoratorBasedServiceResolutionInfo</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.DecoratorBuilder/new/master/apiSpec/new?filename=CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter_ThenWrapWith__1_Autofac_Core_Parameter___.md&amp;value=---%0Auid%3A%20CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.ThenWrapWith%60%601(Autofac.Core.Parameter%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.DecoratorBuilder/blob/feature/docs/CSF.DecoratorBuilder.Autofac/AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.cs/#L66">View Source</a>
+  </span>
+  <a id="CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter_ThenWrapWith_" data-uid="CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.ThenWrapWith*"></a>
+  <h4 id="CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter_ThenWrapWith__1_Autofac_Core_Parameter___" data-uid="CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.ThenWrapWith``1(Autofac.Core.Parameter[])">ThenWrapWith&lt;TDecorator&gt;(Parameter[])</h4>
+  <div class="markdown level1 summary"><p>Selects a decorator type using a generic type parameter.  The implementation directly
+before this point in the decorator 'stack' (be it the initial implementation or a
+decorator itself) will be passed to the selected implementation.  Thus this implementation
+will 'wrap' the one before it.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICustomizesAutofacDecorator ThenWrapWith&lt;TDecorator&gt;(params Parameter[] parameters)
+    where TDecorator : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Autofac.Core.Parameter</span>[]</td>
+        <td><span class="parametername">parameters</span></td>
+        <td><p>An optional collection of <span class="xref">Autofac.Core.Parameter</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.DecoratorBuilder.ICustomizesAutofacDecorator.html">ICustomizesAutofacDecorator</a></td>
+        <td><p>A customisation helper by which further implementations may be added to the decorator 'stack'.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TDecorator</span></td>
+        <td><p>The type of the concrete implementation to use as a decorator.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.DecoratorBuilder/new/master/apiSpec/new?filename=CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter_ThenWrapWith__1_System_Func_System_Object_Autofac_IComponentContext_System_Collections_Generic_IEnumerable_Autofac_Core_Parameter____0__Autofac_Core_Parameter___.md&amp;value=---%0Auid%3A%20CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.ThenWrapWith%60%601(System.Func%7BSystem.Object%2CAutofac.IComponentContext%2CSystem.Collections.Generic.IEnumerable%7BAutofac.Core.Parameter%7D%2C%60%600%7D%2CAutofac.Core.Parameter%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.DecoratorBuilder/blob/feature/docs/CSF.DecoratorBuilder.Autofac/AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.cs/#L73">View Source</a>
+  </span>
+  <a id="CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter_ThenWrapWith_" data-uid="CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.ThenWrapWith*"></a>
+  <h4 id="CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter_ThenWrapWith__1_System_Func_System_Object_Autofac_IComponentContext_System_Collections_Generic_IEnumerable_Autofac_Core_Parameter____0__Autofac_Core_Parameter___" data-uid="CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.ThenWrapWith``1(System.Func{System.Object,Autofac.IComponentContext,System.Collections.Generic.IEnumerable{Autofac.Core.Parameter},``0},Autofac.Core.Parameter[])">ThenWrapWith&lt;TDecorator&gt;(Func&lt;Object, IComponentContext, IEnumerable&lt;Parameter&gt;, TDecorator&gt;, Parameter[])</h4>
+  <div class="markdown level1 summary"><p>Selects a decorator type using a generic type parameter.  The implementation directly
+before this point in the decorator 'stack' (be it the initial implementation or a
+decorator itself) will be passed to the selected implementation.  Thus this implementation
+will 'wrap' the one before it.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICustomizesAutofacDecorator ThenWrapWith&lt;TDecorator&gt;(Func&lt;object, IComponentContext, IEnumerable&lt;Parameter&gt;, TDecorator&gt; factoryFunction, params Parameter[] parameters)
+    where TDecorator : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">System.Object</span>, <span class="xref">Autofac.IComponentContext</span>, <span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">Autofac.Core.Parameter</span>&gt;, TDecorator&gt;</td>
+        <td><span class="parametername">factoryFunction</span></td>
+        <td><p>A function which creates the instance of the decorator type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Autofac.Core.Parameter</span>[]</td>
+        <td><span class="parametername">parameters</span></td>
+        <td><p>An optional collection of <span class="xref">Autofac.Core.Parameter</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.DecoratorBuilder.ICustomizesAutofacDecorator.html">ICustomizesAutofacDecorator</a></td>
+        <td><p>A customisation helper by which further implementations may be added to the decorator 'stack'.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TDecorator</span></td>
+        <td><p>The type of the concrete implementation to use as a decorator.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.DecoratorBuilder/new/master/apiSpec/new?filename=CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter_ThenWrapWithType_System_Type_Autofac_Core_Parameter___.md&amp;value=---%0Auid%3A%20CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.ThenWrapWithType(System.Type%2CAutofac.Core.Parameter%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.DecoratorBuilder/blob/feature/docs/CSF.DecoratorBuilder.Autofac/AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.cs/#L87">View Source</a>
+  </span>
+  <a id="CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter_ThenWrapWithType_" data-uid="CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.ThenWrapWithType*"></a>
+  <h4 id="CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter_ThenWrapWithType_System_Type_Autofac_Core_Parameter___" data-uid="CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.ThenWrapWithType(System.Type,Autofac.Core.Parameter[])">ThenWrapWithType(Type, Parameter[])</h4>
+  <div class="markdown level1 summary"><p>Selects a decorator type.  The implementation directly
+before this point in the decorator 'stack' (be it the initial implementation or a
+decorator itself) will be passed to the selected implementation.  Thus this implementation
+will 'wrap' the one before it.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICustomizesAutofacDecorator ThenWrapWithType(Type decoratorType, params Parameter[] parameters)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td><span class="parametername">decoratorType</span></td>
+        <td><p>The type of the concrete implementation to use as a decorator.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Autofac.Core.Parameter</span>[]</td>
+        <td><span class="parametername">parameters</span></td>
+        <td><p>An optional collection of <span class="xref">Autofac.Core.Parameter</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.DecoratorBuilder.ICustomizesAutofacDecorator.html">ICustomizesAutofacDecorator</a></td>
+        <td><p>A customisation helper by which further implementations may be added to the decorator 'stack'.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.DecoratorBuilder/new/master/apiSpec/new?filename=CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter_ThenWrapWithType_System_Type_System_Func_System_Object_Autofac_IComponentContext_System_Collections_Generic_IEnumerable_Autofac_Core_Parameter__System_Object__Autofac_Core_Parameter___.md&amp;value=---%0Auid%3A%20CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.ThenWrapWithType(System.Type%2CSystem.Func%7BSystem.Object%2CAutofac.IComponentContext%2CSystem.Collections.Generic.IEnumerable%7BAutofac.Core.Parameter%7D%2CSystem.Object%7D%2CAutofac.Core.Parameter%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.DecoratorBuilder/blob/feature/docs/CSF.DecoratorBuilder.Autofac/AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.cs/#L94">View Source</a>
+  </span>
+  <a id="CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter_ThenWrapWithType_" data-uid="CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.ThenWrapWithType*"></a>
+  <h4 id="CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter_ThenWrapWithType_System_Type_System_Func_System_Object_Autofac_IComponentContext_System_Collections_Generic_IEnumerable_Autofac_Core_Parameter__System_Object__Autofac_Core_Parameter___" data-uid="CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.ThenWrapWithType(System.Type,System.Func{System.Object,Autofac.IComponentContext,System.Collections.Generic.IEnumerable{Autofac.Core.Parameter},System.Object},Autofac.Core.Parameter[])">ThenWrapWithType(Type, Func&lt;Object, IComponentContext, IEnumerable&lt;Parameter&gt;, Object&gt;, Parameter[])</h4>
+  <div class="markdown level1 summary"><p>Selects a decorator type.  The implementation directly
+before this point in the decorator 'stack' (be it the initial implementation or a
+decorator itself) will be passed to the selected implementation.  Thus this implementation
+will 'wrap' the one before it.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICustomizesAutofacDecorator ThenWrapWithType(Type decoratorType, Func&lt;object, IComponentContext, IEnumerable&lt;Parameter&gt;, object&gt; factoryFunction, params Parameter[] parameters)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td><span class="parametername">decoratorType</span></td>
+        <td><p>The type of the concrete implementation to use as a decorator.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">System.Object</span>, <span class="xref">Autofac.IComponentContext</span>, <span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">Autofac.Core.Parameter</span>&gt;, <span class="xref">System.Object</span>&gt;</td>
+        <td><span class="parametername">factoryFunction</span></td>
+        <td><p>A function which creates the instance of the decorator type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Autofac.Core.Parameter</span>[]</td>
+        <td><span class="parametername">parameters</span></td>
+        <td><p>An optional collection of <span class="xref">Autofac.Core.Parameter</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.DecoratorBuilder.ICustomizesAutofacDecorator.html">ICustomizesAutofacDecorator</a></td>
+        <td><p>A customisation helper by which further implementations may be added to the decorator 'stack'.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.DecoratorBuilder/new/master/apiSpec/new?filename=CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter_UsingInitialImpl__1_Autofac_Core_Parameter___.md&amp;value=---%0Auid%3A%20CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.UsingInitialImpl%60%601(Autofac.Core.Parameter%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.DecoratorBuilder/blob/feature/docs/CSF.DecoratorBuilder.Autofac/AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.cs/#L26">View Source</a>
+  </span>
+  <a id="CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter_UsingInitialImpl_" data-uid="CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.UsingInitialImpl*"></a>
+  <h4 id="CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter_UsingInitialImpl__1_Autofac_Core_Parameter___" data-uid="CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.UsingInitialImpl``1(Autofac.Core.Parameter[])">UsingInitialImpl&lt;TInitialImpl&gt;(Parameter[])</h4>
+  <div class="markdown level1 summary"><p>Selects the initial implementation type using a generic type parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICustomizesAutofacDecorator UsingInitialImpl&lt;TInitialImpl&gt;(params Parameter[] parameters)
+    where TInitialImpl : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Autofac.Core.Parameter</span>[]</td>
+        <td><span class="parametername">parameters</span></td>
+        <td><p>An optional collection of <span class="xref">Autofac.Core.Parameter</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.DecoratorBuilder.ICustomizesAutofacDecorator.html">ICustomizesAutofacDecorator</a></td>
+        <td><p>A customisation helper by which further implementations may be added to the decorator 'stack'.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TInitialImpl</span></td>
+        <td><p>The type of the initial concrete implementation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.DecoratorBuilder/new/master/apiSpec/new?filename=CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter_UsingInitialImpl__1_System_Func_Autofac_IComponentContext_System_Collections_Generic_IEnumerable_Autofac_Core_Parameter____0__Autofac_Core_Parameter___.md&amp;value=---%0Auid%3A%20CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.UsingInitialImpl%60%601(System.Func%7BAutofac.IComponentContext%2CSystem.Collections.Generic.IEnumerable%7BAutofac.Core.Parameter%7D%2C%60%600%7D%2CAutofac.Core.Parameter%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.DecoratorBuilder/blob/feature/docs/CSF.DecoratorBuilder.Autofac/AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.cs/#L33">View Source</a>
+  </span>
+  <a id="CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter_UsingInitialImpl_" data-uid="CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.UsingInitialImpl*"></a>
+  <h4 id="CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter_UsingInitialImpl__1_System_Func_Autofac_IComponentContext_System_Collections_Generic_IEnumerable_Autofac_Core_Parameter____0__Autofac_Core_Parameter___" data-uid="CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.UsingInitialImpl``1(System.Func{Autofac.IComponentContext,System.Collections.Generic.IEnumerable{Autofac.Core.Parameter},``0},Autofac.Core.Parameter[])">UsingInitialImpl&lt;TInitialImpl&gt;(Func&lt;IComponentContext, IEnumerable&lt;Parameter&gt;, TInitialImpl&gt;, Parameter[])</h4>
+  <div class="markdown level1 summary"><p>Selects the initial implementation type using a generic type parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICustomizesAutofacDecorator UsingInitialImpl&lt;TInitialImpl&gt;(Func&lt;IComponentContext, IEnumerable&lt;Parameter&gt;, TInitialImpl&gt; factoryFunction, params Parameter[] parameters)
+    where TInitialImpl : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">Autofac.IComponentContext</span>, <span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">Autofac.Core.Parameter</span>&gt;, TInitialImpl&gt;</td>
+        <td><span class="parametername">factoryFunction</span></td>
+        <td><p>A function which creates the instance of the implementation type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Autofac.Core.Parameter</span>[]</td>
+        <td><span class="parametername">parameters</span></td>
+        <td><p>An optional collection of <span class="xref">Autofac.Core.Parameter</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.DecoratorBuilder.ICustomizesAutofacDecorator.html">ICustomizesAutofacDecorator</a></td>
+        <td><p>A customisation helper by which further implementations may be added to the decorator 'stack'.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TInitialImpl</span></td>
+        <td><p>The type of the initial concrete implementation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.DecoratorBuilder/new/master/apiSpec/new?filename=CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter_UsingInitialImplType_System_Type_Autofac_Core_Parameter___.md&amp;value=---%0Auid%3A%20CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.UsingInitialImplType(System.Type%2CAutofac.Core.Parameter%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.DecoratorBuilder/blob/feature/docs/CSF.DecoratorBuilder.Autofac/AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.cs/#L46">View Source</a>
+  </span>
+  <a id="CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter_UsingInitialImplType_" data-uid="CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.UsingInitialImplType*"></a>
+  <h4 id="CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter_UsingInitialImplType_System_Type_Autofac_Core_Parameter___" data-uid="CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.UsingInitialImplType(System.Type,Autofac.Core.Parameter[])">UsingInitialImplType(Type, Parameter[])</h4>
+  <div class="markdown level1 summary"><p>Selects the initial implementation type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICustomizesAutofacDecorator UsingInitialImplType(Type initialImplType, params Parameter[] parameters)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td><span class="parametername">initialImplType</span></td>
+        <td><p>The type of the initial concrete implementation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Autofac.Core.Parameter</span>[]</td>
+        <td><span class="parametername">parameters</span></td>
+        <td><p>An optional collection of <span class="xref">Autofac.Core.Parameter</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.DecoratorBuilder.ICustomizesAutofacDecorator.html">ICustomizesAutofacDecorator</a></td>
+        <td><p>A customisation helper by which further implementations may be added to the decorator 'stack'.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/csf-dev/CSF.DecoratorBuilder/new/master/apiSpec/new?filename=CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter_UsingInitialImplType_System_Type_System_Func_Autofac_IComponentContext_System_Collections_Generic_IEnumerable_Autofac_Core_Parameter__System_Object__Autofac_Core_Parameter___.md&amp;value=---%0Auid%3A%20CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.UsingInitialImplType(System.Type%2CSystem.Func%7BAutofac.IComponentContext%2CSystem.Collections.Generic.IEnumerable%7BAutofac.Core.Parameter%7D%2CSystem.Object%7D%2CAutofac.Core.Parameter%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/csf-dev/CSF.DecoratorBuilder/blob/feature/docs/CSF.DecoratorBuilder.Autofac/AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.cs/#L53">View Source</a>
+  </span>
+  <a id="CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter_UsingInitialImplType_" data-uid="CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.UsingInitialImplType*"></a>
+  <h4 id="CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter_UsingInitialImplType_System_Type_System_Func_Autofac_IComponentContext_System_Collections_Generic_IEnumerable_Autofac_Core_Parameter__System_Object__Autofac_Core_Parameter___" data-uid="CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.UsingInitialImplType(System.Type,System.Func{Autofac.IComponentContext,System.Collections.Generic.IEnumerable{Autofac.Core.Parameter},System.Object},Autofac.Core.Parameter[])">UsingInitialImplType(Type, Func&lt;IComponentContext, IEnumerable&lt;Parameter&gt;, Object&gt;, Parameter[])</h4>
+  <div class="markdown level1 summary"><p>Selects the initial implementation type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICustomizesAutofacDecorator UsingInitialImplType(Type initialImplType, Func&lt;IComponentContext, IEnumerable&lt;Parameter&gt;, object&gt; factoryFunction, params Parameter[] parameters)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td><span class="parametername">initialImplType</span></td>
+        <td><p>The type of the initial concrete implementation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">Autofac.IComponentContext</span>, <span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">Autofac.Core.Parameter</span>&gt;, <span class="xref">System.Object</span>&gt;</td>
+        <td><span class="parametername">factoryFunction</span></td>
+        <td><p>A function which creates the instance of the implementation type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Autofac.Core.Parameter</span>[]</td>
+        <td><span class="parametername">parameters</span></td>
+        <td><p>An optional collection of <span class="xref">Autofac.Core.Parameter</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CSF.DecoratorBuilder.ICustomizesAutofacDecorator.html">ICustomizesAutofacDecorator</a></td>
+        <td><p>A customisation helper by which further implementations may be added to the decorator 'stack'.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="CSF.DecoratorBuilder.IAutofacDecoratorBuilder.html">IAutofacDecoratorBuilder</a>
+  </div>
+  <div>
+      <a class="xref" href="CSF.DecoratorBuilder.ICreatesAutofacDecorator.html">ICreatesAutofacDecorator</a>
+  </div>
+  <div>
+      <a class="xref" href="CSF.DecoratorBuilder.ICustomizesAutofacDecorator.html">ICustomizesAutofacDecorator</a>
+  </div>
+  <div>
+      <a class="xref" href="CSF.DecoratorBuilder.IHasDecoratorBasedServiceResolutionInfo.html">IHasDecoratorBasedServiceResolutionInfo</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/csf-dev/CSF.DecoratorBuilder/new/master/apiSpec/new?filename=CSF_DecoratorBuilder_AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.md&amp;value=---%0Auid%3A%20CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/csf-dev/CSF.DecoratorBuilder/blob/feature/docs/CSF.DecoratorBuilder.Autofac/AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.cs/#L18" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
