@@ -8,7 +8,7 @@
             "CSF.DecoratorBuilder.Abstractions/CSF.DecoratorBuilder.Abstractions.csproj",
             "CSF.DecoratorBuilder.Autofac/CSF.DecoratorBuilder.Autofac.csproj",
             "CSF.DecoratorBuilder.Common/CSF.DecoratorBuilder.Common.csproj",
-            "CSF.DecoratorBuilder.Extensions.DependencyInjection/CSF.DecoratorBuilder.Extensions.DependencyInjection.csproj",
+            "CSF.DecoratorBuilder.Extensions.DependencyInjection/CSF.DecoratorBuilder.Extensions.DependencyInjection.csproj"
           ],
           "exclude": [
             "**/bin/**",

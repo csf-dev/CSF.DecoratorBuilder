@@ -1,6 +1,8 @@
 - name: Introduction
-  href: index.md
-- name: Packages
+  href: ../index.md
+- name: NuGet packages
   href: NuGetPackages.md
-- name: Github
-  href: https://github.com/csf-dev/CSF.DecoratorBuilder/
+- name: Static decorators
+  href: StaticDependencyInjection.md
+- name: Dynamic decorators
+  href: ConsumingTheDecoratorBuilder.md

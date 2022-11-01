@@ -7,6 +7,7 @@
     <Description>Common logic &amp; services for the creation of objects using the decorator pattern.</Description>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\CSF.DecoratorBuilder.Common.xml</DocumentationFile>
     <IsPackable>false</IsPackable>
+    <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
   </PropertyGroup>
         
   <ItemGroup>

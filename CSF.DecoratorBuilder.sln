@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSF.DecoratorBuilder.Extens
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSF.DecoratorBuilder.Common", "CSF.DecoratorBuilder.Common\CSF.DecoratorBuilder.Common.csproj", "{D47EB477-F441-4746-BC06-586D473621F9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSF.DecoratorBuilder.Docs", "CSF.DecoratorBuilder.Docs\CSF.DecoratorBuilder.Docs.csproj", "{D09A60EB-FBEA-40A4-8365-3B1E2F219ABA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -94,6 +96,18 @@ Global
 		{D47EB477-F441-4746-BC06-586D473621F9}.Autofac_51|Any CPU.Build.0 = Debug|Any CPU
 		{D47EB477-F441-4746-BC06-586D473621F9}.Autofac_62|Any CPU.ActiveCfg = Debug|Any CPU
 		{D47EB477-F441-4746-BC06-586D473621F9}.Autofac_62|Any CPU.Build.0 = Debug|Any CPU
+		{D09A60EB-FBEA-40A4-8365-3B1E2F219ABA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D09A60EB-FBEA-40A4-8365-3B1E2F219ABA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D09A60EB-FBEA-40A4-8365-3B1E2F219ABA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D09A60EB-FBEA-40A4-8365-3B1E2F219ABA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D09A60EB-FBEA-40A4-8365-3B1E2F219ABA}.Autofac_49|Any CPU.ActiveCfg = Debug|Any CPU
+		{D09A60EB-FBEA-40A4-8365-3B1E2F219ABA}.Autofac_49|Any CPU.Build.0 = Debug|Any CPU
+		{D09A60EB-FBEA-40A4-8365-3B1E2F219ABA}.Autofac_50|Any CPU.ActiveCfg = Debug|Any CPU
+		{D09A60EB-FBEA-40A4-8365-3B1E2F219ABA}.Autofac_50|Any CPU.Build.0 = Debug|Any CPU
+		{D09A60EB-FBEA-40A4-8365-3B1E2F219ABA}.Autofac_51|Any CPU.ActiveCfg = Debug|Any CPU
+		{D09A60EB-FBEA-40A4-8365-3B1E2F219ABA}.Autofac_51|Any CPU.Build.0 = Debug|Any CPU
+		{D09A60EB-FBEA-40A4-8365-3B1E2F219ABA}.Autofac_62|Any CPU.ActiveCfg = Debug|Any CPU
+		{D09A60EB-FBEA-40A4-8365-3B1E2F219ABA}.Autofac_62|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
