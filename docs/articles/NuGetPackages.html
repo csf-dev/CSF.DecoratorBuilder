@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>NuGet packages </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="NuGet packages ">
+    <meta name="generator" content="docfx 2.58.9.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-6CMQ58LNKX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+  
+      gtag('config', 'G-6CMQ58LNKX');
+    </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="nuget-packages">NuGet packages</h1>
+
+<p>CSF.DecoratorBuilder consists of three NuGet packages.
+Most applications only need to depend upon <em>a maximum of two of them</em>.</p>
+<h2 id="if-you-are-using-microsoftextensionsdependencyinjection">If you are using Microsoft.Extensions.DependencyInjection</h2>
+<p>If the dependency injection for your application is based upon any implementation of <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection"><code>Microsoft.Extensions.DependencyInjection.IServiceCollection</code></a> then you may use the following two packages:</p>
+<ul>
+<li><a href="https://www.nuget.org/packages/CSF.DecoratorBuilder.Abstractions"><code>CSF.DecoratorBuilder.Abstractions</code></a></li>
+<li><a href="https://www.nuget.org/packages/CSF.DecoratorBuilder.Extensions.DependencyInjection"><code>CSF.DecoratorBuilder.Extensions.DependencyInjection</code></a></li>
+</ul>
+<p><strong>The abstractions package</strong> is very small and unlikely to undergo significant changes as versions increment.
+If you wish to write factory classes/services within your application logic, outside of projects which deal with dependency injection directly, then this package is quite safe to add as a dependency.
+This provides access to the interface <a class="xref" href="../api/CSF.DecoratorBuilder.IGetsDecoratedService.html"><code>IGetsDecoratedService</code></a> which may be constructor-injected into your own logic, to build services.</p>
+<p>The other package, above, is only required as a reference in your startup project (or wherever dependency injection is configured).
+See <a href="../api/index.html">the API documentation</a> for information about how to install the decorator builder into your app.</p>
+<h2 id="if-you-are-using-autofac">If you are using Autofac</h2>
+<p>If your dependency injection is based upon <a href="https://autofac.org/">Autofac</a>, then the packages which shall be used by your app are:</p>
+<ul>
+<li><a href="https://www.nuget.org/packages/CSF.DecoratorBuilder.Abstractions"><code>CSF.DecoratorBuilder.Abstractions</code></a></li>
+<li><a href="https://www.nuget.org/packages/CSF.DecoratorBuilder.Autofac"><code>CSF.DecoratorBuilder.Autofac</code></a></li>
+</ul>
+<p>Notice that <strong>the abstractions package</strong> is present here also, exactly the same as noted above applies.
+You may use the <a class="xref" href="../api/CSF.DecoratorBuilder.IGetsDecoratedService.html"><code>IGetsDecoratedService</code></a> interface from that package to create decorator-based services in your own app.</p>
+<p>The other package, above, is only required as a reference in your startup project (or wherever dependency injection is configured).
+As above <a href="../api/index.html">the API documentation</a> has a writeup of how to install the library into your app.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/csf-dev/CSF.DecoratorBuilder/blob/master/CSF.DecoratorBuilder.Docs/articles/NuGetPackages.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

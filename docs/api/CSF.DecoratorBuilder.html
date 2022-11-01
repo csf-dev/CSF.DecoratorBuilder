@@ -1,0 +1,254 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Namespace CSF.DecoratorBuilder
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Namespace CSF.DecoratorBuilder
+   ">
+    <meta name="generator" content="docfx 2.58.9.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-6CMQ58LNKX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+  
+      gtag('config', 'G-6CMQ58LNKX');
+    </script>
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="CSF.DecoratorBuilder">
+  
+  <h1 id="CSF_DecoratorBuilder" data-uid="CSF.DecoratorBuilder" class="text-break">Namespace CSF.DecoratorBuilder
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">Classes
+  </h3>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.AutofacDecoratedServiceFactory.html">AutofacDecoratedServiceFactory</a></h4>
+      <section><p>Implementation of <a class="xref" href="CSF.DecoratorBuilder.IGetsAutofacDecoratedService.html">IGetsAutofacDecoratedService</a> which creates an appropriate
+builder, applies customisations and returns the resolved service, created using the
+decorator pattern.</p>
+</section>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter.html">AutofacDecoratorBasedServiceResolutionInfoBuilderAdapter</a></h4>
+      <section><p>A non-generic builder which creates an instance of <a class="xref" href="CSF.DecoratorBuilder.DecoratorBasedServiceResolutionInfo.html">DecoratorBasedServiceResolutionInfo</a>.</p>
+</section>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.AutofacGenericDecoratorBasedServiceResolutionInfoBuilderAdapter-1.html">AutofacGenericDecoratorBasedServiceResolutionInfoBuilderAdapter&lt;TService&gt;</a></h4>
+      <section><p>A generic builder which creates an instance of <a class="xref" href="CSF.DecoratorBuilder.DecoratorBasedServiceResolutionInfo.html">DecoratorBasedServiceResolutionInfo</a>.</p>
+</section>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.AutofacServiceResolver.html">AutofacServiceResolver</a></h4>
+      <section><p>Implementation of <a class="xref" href="CSF.DecoratorBuilder.IGetsDecoratedServiceFromResolutionInfo.html">IGetsDecoratedServiceFromResolutionInfo</a> which makes use of the functionality
+within an <span class="xref">Autofac.IComponentContext</span> to resolve services.</p>
+</section>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.DecoratedServiceFactory.html">DecoratedServiceFactory</a></h4>
+      <section><p>Implementation of <a class="xref" href="CSF.DecoratorBuilder.IGetsDecoratedService.html">IGetsDecoratedService</a> which creates an appropriate
+builder, applies customisations and returns the resolved service, created using the
+decorator pattern.</p>
+</section>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.DecoratorBasedServiceResolutionInfo.html">DecoratorBasedServiceResolutionInfo</a></h4>
+      <section><p>A model for a series of <a class="xref" href="CSF.DecoratorBuilder.SingleObjectResolutionInfo.html">SingleObjectResolutionInfo</a> which describes 'a decorator stack'.</p>
+</section>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.DecoratorBasedServiceResolutionInfoBuilder.html">DecoratorBasedServiceResolutionInfoBuilder</a></h4>
+      <section><p>A non-generic builder which creates an instance of <a class="xref" href="CSF.DecoratorBuilder.DecoratorBasedServiceResolutionInfo.html">DecoratorBasedServiceResolutionInfo</a>.</p>
+</section>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.DecoratorBuilderModule.html">DecoratorBuilderModule</a></h4>
+      <section><p>An Autofac <code>Module</code> which registers all of the CSF.DecoratorBuilder types.
+Register this module to use the decorator builder in your own application.</p>
+</section>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.DependencyInjectionObjectResolver.html">DependencyInjectionObjectResolver</a></h4>
+      <section><p>Implementation of <a class="xref" href="CSF.DecoratorBuilder.IGetsSingleObjectFromResolutionInfo.html">IGetsSingleObjectFromResolutionInfo</a> which uses functionality within
+<code>Microsoft.Extensions.DependencyInjection.Abstractions</code> to resolve services.</p>
+</section>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.GenericDecoratorBasedServiceResolutionInfoBuilder-1.html">GenericDecoratorBasedServiceResolutionInfoBuilder&lt;TService&gt;</a></h4>
+      <section><p>A generic builder which creates an instance of <a class="xref" href="CSF.DecoratorBuilder.DecoratorBasedServiceResolutionInfo.html">DecoratorBasedServiceResolutionInfo</a>.</p>
+</section>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.ParameterAdapter.html">ParameterAdapter</a></h4>
+      <section><p>An implementation of <a class="xref" href="CSF.DecoratorBuilder.ITypedResolvable.html">ITypedResolvable</a> which wraps an Autofac <span class="xref">Autofac.Core.Parameter</span>.</p>
+</section>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.ResolutionException.html">ResolutionException</a></h4>
+      <section><p>Exception thrown when there is an unexpected exception resolving a service.</p>
+</section>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.ResolvedType.html">ResolvedType</a></h4>
+      <section><p>A model which represents an injectable dependency of a specified type, resolved from a service provider.</p>
+</section>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.ServiceFromResolutionInfoResolver.html">ServiceFromResolutionInfoResolver</a></h4>
+      <section><p>Implementation of <a class="xref" href="CSF.DecoratorBuilder.IGetsDecoratedServiceFromResolutionInfo.html">IGetsDecoratedServiceFromResolutionInfo</a> which builds up the
+service using the decorator pattern.</p>
+</section>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.SingleObjectResolutionInfo.html">SingleObjectResolutionInfo</a></h4>
+      <section><p>Model which represents information about how a service should be resolved.</p>
+</section>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.TypedParam.html">TypedParam</a></h4>
+      <section><p>A model which represents an injectable dependency of a specified type, created from a specific value.</p>
+</section>
+    <h3 id="interfaces">Interfaces
+  </h3>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.IAutofacDecoratorBuilder.html">IAutofacDecoratorBuilder</a></h4>
+      <section><p>An object which implements all of <a class="xref" href="CSF.DecoratorBuilder.ICreatesAutofacDecorator.html">ICreatesAutofacDecorator</a>, <a class="xref" href="CSF.DecoratorBuilder.ICustomizesAutofacDecorator.html">ICustomizesAutofacDecorator</a> &amp;
+<a class="xref" href="CSF.DecoratorBuilder.IHasDecoratorBasedServiceResolutionInfo.html">IHasDecoratorBasedServiceResolutionInfo</a>.</p>
+</section>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.IAutofacGenericDecoratorBuilder-1.html">IAutofacGenericDecoratorBuilder&lt;TService&gt;</a></h4>
+      <section><p>An object which implements all of <a class="xref" href="CSF.DecoratorBuilder.ICreatesAutofacDecorator-1.html">ICreatesAutofacDecorator&lt;TService&gt;</a>, <a class="xref" href="CSF.DecoratorBuilder.ICustomizesAutofacDecorator-1.html">ICustomizesAutofacDecorator&lt;TService&gt;</a> &amp;
+<a class="xref" href="CSF.DecoratorBuilder.IHasDecoratorBasedServiceResolutionInfo.html">IHasDecoratorBasedServiceResolutionInfo</a>.</p>
+</section>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.ICreatesAutofacDecorator.html">ICreatesAutofacDecorator</a></h4>
+      <section><p>A builder/helper object by which a developer selects the initial concrete implementation type for
+the innermost object in the decorator 'stack'.  This is the one class in the stack which is itself
+not a decorator type.</p>
+</section>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.ICreatesAutofacDecorator-1.html">ICreatesAutofacDecorator&lt;TService&gt;</a></h4>
+      <section><p>A builder/helper object by which a developer selects the initial concrete implementation type for
+the innermost object in the decorator 'stack'.  This is the one class in the stack which is itself
+not a decorator type.</p>
+</section>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.ICreatesDecorator.html">ICreatesDecorator</a></h4>
+      <section><p>A builder/helper object by which a developer selects the initial concrete implementation type for
+the innermost object in the decorator 'stack'.  This is the one class in the stack which is itself
+not a decorator type.</p>
+</section>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.ICreatesDecorator-1.html">ICreatesDecorator&lt;TService&gt;</a></h4>
+      <section><p>A builder/helper object by which a developer selects the initial concrete implementation type for
+the innermost object in the decorator 'stack'.  This is the one class in the stack which is itself
+not a decorator type.</p>
+</section>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.ICustomizesAutofacDecorator.html">ICustomizesAutofacDecorator</a></h4>
+      <section><p>A builder/helper object by which a developer selects the decorator types to be used
+when creating the service.</p>
+</section>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.ICustomizesAutofacDecorator-1.html">ICustomizesAutofacDecorator&lt;TService&gt;</a></h4>
+      <section><p>A builder/helper object by which a developer selects the decorator types to be used
+when creating the service.</p>
+</section>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.ICustomizesDecorator.html">ICustomizesDecorator</a></h4>
+      <section><p>A builder/helper object by which a developer selects the decorator types to be used
+when creating the service.</p>
+</section>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.ICustomizesDecorator-1.html">ICustomizesDecorator&lt;TService&gt;</a></h4>
+      <section><p>A builder/helper object by which a developer selects the decorator types to be used
+when creating the service.</p>
+</section>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.IDecoratorBuilder.html">IDecoratorBuilder</a></h4>
+      <section><p>An object which implements all of <a class="xref" href="CSF.DecoratorBuilder.ICreatesDecorator.html">ICreatesDecorator</a>, <a class="xref" href="CSF.DecoratorBuilder.ICustomizesDecorator.html">ICustomizesDecorator</a> &amp;
+<a class="xref" href="CSF.DecoratorBuilder.IHasDecoratorBasedServiceResolutionInfo.html">IHasDecoratorBasedServiceResolutionInfo</a>.</p>
+</section>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.IGenericDecoratorBuilder-1.html">IGenericDecoratorBuilder&lt;TService&gt;</a></h4>
+      <section><p>An object which implements all of <a class="xref" href="CSF.DecoratorBuilder.ICreatesDecorator-1.html">ICreatesDecorator&lt;TService&gt;</a>, <a class="xref" href="CSF.DecoratorBuilder.ICustomizesDecorator-1.html">ICustomizesDecorator&lt;TService&gt;</a> &amp;
+<a class="xref" href="CSF.DecoratorBuilder.IHasDecoratorBasedServiceResolutionInfo.html">IHasDecoratorBasedServiceResolutionInfo</a>.</p>
+</section>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.IGetsAutofacDecoratedService.html">IGetsAutofacDecoratedService</a></h4>
+      <section><p>A factory service which uses the decorator pattern to build and return a service by specifying which implementation types
+to use and in which order.</p>
+</section>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.IGetsDecoratedService.html">IGetsDecoratedService</a></h4>
+      <section><p>A factory service which uses the decorator pattern to build and return a service by specifying which implementation types
+to use and in which order.</p>
+</section>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.IGetsDecoratedServiceFromResolutionInfo.html">IGetsDecoratedServiceFromResolutionInfo</a></h4>
+      <section><p>An object which resolves a service using the decorator pattern, based upon a <a class="xref" href="CSF.DecoratorBuilder.DecoratorBasedServiceResolutionInfo.html">DecoratorBasedServiceResolutionInfo</a>.</p>
+</section>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.IGetsSingleObjectFromResolutionInfo.html">IGetsSingleObjectFromResolutionInfo</a></h4>
+      <section><p>An object which resolves an instance of a single object, from a <a class="xref" href="CSF.DecoratorBuilder.SingleObjectResolutionInfo.html">SingleObjectResolutionInfo</a>.</p>
+</section>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.IHasDecoratorBasedServiceResolutionInfo.html">IHasDecoratorBasedServiceResolutionInfo</a></h4>
+      <section><p>An object which can get <a class="xref" href="CSF.DecoratorBuilder.DecoratorBasedServiceResolutionInfo.html">DecoratorBasedServiceResolutionInfo</a>.</p>
+</section>
+      <h4><a class="xref" href="CSF.DecoratorBuilder.ITypedResolvable.html">ITypedResolvable</a></h4>
+      <section><p>An object which can resolve a value of a specified type.</p>
+</section>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
