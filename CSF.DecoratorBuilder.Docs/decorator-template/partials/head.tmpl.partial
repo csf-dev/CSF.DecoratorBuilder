@@ -18,11 +18,12 @@
   {{#_enableSearch}}<meta property="docfx:rel" content="{{_rel}}">{{/_enableSearch}}
   {{#_enableNewTab}}<meta property="docfx:newtab" content="true">{{/_enableNewTab}}
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=MY_ANALYTICS_TAG"></script> ->>
-  <!-- <script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6CMQ58LNKX"></script>
+  <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'MY_ANALYTICS_TAG');
-  </script> -->
+
+    gtag('config', 'G-6CMQ58LNKX');
+  </script>
 </head>
